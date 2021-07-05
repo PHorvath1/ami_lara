@@ -1,0 +1,39 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use {{ rootNamespace }}Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class {{ class }} extends Controller
+{
+    public function index(): Factory|View|Application|RedirectResponse
+    {
+        if(!Bouncer::can('index', {{ model }}::class)){
+                    abort(StatusCode::FORBIDDEN);
+        }
+
+        return view('{{ model }}.index', ['{{ model }}s' => {{ model }}::all()]);
+    }
+
+    public function store(Request $request): Factory|View|Application|RedirectResponse
+    {
+        //
+    }
+
+    public function show({{ model }} ${{ modelVariable }}): Factory|View|Application|RedirectResponse
+    {
+        //
+    }
+
+    public function update(Request $request, {{ model }} ${{ modelVariable }}): Factory|View|Application|RedirectResponse
+    {
+        //
+    }
+
+    public function destroy({{ model }} ${{ modelVariable }}): Factory|View|Application|RedirectResponse
+    {
+        //
+    }
+}

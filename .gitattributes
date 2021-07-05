@@ -1,0 +1,8 @@
+*.txt text eol=lf
+*.php text eol=lf
+*.md text eol=lf 
+.env text eol=lf
+*/*.txt text eol=lf
+*/*.php text eol=lf
+*/*.md text eol=lf 
+*/.env text eol=lf
