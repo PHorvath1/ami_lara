@@ -14,7 +14,7 @@ class ArticleFactory extends Factory
         return [
             'name' => $this->faker->paragraph(),
             'summary' => $this->faker->paragraph(),
-            'state' => $this->faker->numberBetween(0,3)
+            'state' => $this->faker->numberBetween(0,2)
         ];
     }
 }
