@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StaticController;
 use App\Http\Controllers\UserController;
@@ -13,5 +14,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [ProfileController::class, 'profile'])->name('user.profile');
     Route::get('/profile/edit', [ProfileController::class, 'editProfile'])->name('user.profile.edit');
     Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('signout');
+
     Route::resource('users', UserController::class);
+    Route::resource('articles', ArticleController::class);
 });
