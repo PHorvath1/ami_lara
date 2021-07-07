@@ -14,7 +14,7 @@ class ArticleFactory extends Factory
         return [
             'name' => $this->faker->paragraph(),
             'summary' => $this->faker->paragraph(),
-            'state' => $this->faker->randomElement([ 'SUBMITTED', 'UNDER_REVIEW', 'ACCEPTED', 'REJECTED' ])
+            'state' => $this->faker->numberBetween(0,3)
         ];
     }
 }
