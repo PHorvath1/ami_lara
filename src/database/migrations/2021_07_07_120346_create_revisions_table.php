@@ -11,8 +11,8 @@ class CreateRevisionsTable extends Migration
         Schema::create('revisions', function (Blueprint $table) {
             $table->id();
             $table->string('pdf_path');
-            $table->string('latex_path');
-            $table->timestamp('deleted_at');
+            $table->string('latex_path')->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }
