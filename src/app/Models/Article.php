@@ -26,7 +26,7 @@ class Article extends Model
 {
     use HasFactory, ApiResource, UUID;
 
-    private const STATES = [ 'SUBMITTED', 'UNDER_REVIEW', 'ACCEPTED', 'REJECTED' ];
+    private const STATES = [ 'UNDER_REVIEW', 'ACCEPTED', 'REJECTED' ];
 
     protected $appends = ['stateText'];
 
