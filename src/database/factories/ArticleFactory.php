@@ -12,7 +12,9 @@ class ArticleFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->paragraph(),
+            'summary' => $this->faker->paragraph(),
+            'state' => $this->faker->numberBetween(0,2)
         ];
     }
 }

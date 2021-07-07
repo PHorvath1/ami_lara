@@ -10,7 +10,11 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles',
             function (Blueprint $table) {
-                $table->id();
+                $table->uuid('id')->primary();
+                $table->string('name');
+                $table->string('summary');
+                $table->tinyInteger('state')->default(0); //[ 'UNDER_REVIEW', 'ACCEPTED', 'REJECTED' ]
+                $table->timestamp('deleted_at')->nullable();
                 $table->timestamps();
             }
         );
