@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\ApiResource;
+use App\Traits\UUID;
 use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -23,7 +24,7 @@ use Symfony\Component\Routing\Exception\InvalidParameterException;;
  */
 class Article extends Model
 {
-    use HasFactory, ApiResource;
+    use HasFactory, ApiResource, UUID;
 
     private const STATES = [ 'SUBMITTED', 'UNDER_REVIEW', 'ACCEPTED', 'REJECTED' ];
 
