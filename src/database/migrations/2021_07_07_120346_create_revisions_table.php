@@ -10,6 +10,9 @@ class CreateRevisionsTable extends Migration
     {
         Schema::create('revisions', function (Blueprint $table) {
             $table->id();
+            $table->string('pdf_path');
+            $table->string('latex_path');
+            $table->dateTime('deleted_at');
             $table->timestamps();
         });
     }
