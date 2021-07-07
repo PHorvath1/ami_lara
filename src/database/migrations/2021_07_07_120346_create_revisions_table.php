@@ -12,7 +12,7 @@ class CreateRevisionsTable extends Migration
             $table->id();
             $table->string('pdf_path');
             $table->string('latex_path');
-            $table->dateTime('deleted_at');
+            $table->timestamp('deleted_at');
             $table->timestamps();
         });
     }
