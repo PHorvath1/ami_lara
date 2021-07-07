@@ -13,7 +13,7 @@ class CreateArticlesTable extends Migration
                 $table->id();
                 $table->string('name');
                 $table->string('summary');
-                $table->enum('state', [ 'SUBMITTED', 'UNDER_REVIEW', 'ACCEPTED', 'REJECTED' ]);
+                $table->tinyInteger('state'); //[ 'SUBMITTED', 'UNDER_REVIEW', 'ACCEPTED', 'REJECTED' ]
                 $table->dateTime('deleted_at');
                 $table->timestamps();
             }
