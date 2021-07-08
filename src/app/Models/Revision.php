@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
  * @property DateTime deleted_at
  * @property DateTime created_at
  * @property DateTime updated_at
+ * @property string article_id
  */
 class Revision extends Model
 {
@@ -25,6 +26,10 @@ class Revision extends Model
 
     public function comment(): Relation {
         return $this->hasMany(Comment::class, 'revision_id', 'id');
+    }
+
+    public function article(): Relation {
+        return $this->belongsTo(Article::class, 'id', 'article_id');
     }
 
 }
