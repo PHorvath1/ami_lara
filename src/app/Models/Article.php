@@ -51,7 +51,7 @@ class Article extends Model
         $this->save();
     }
 
-    public function revision(): Relation {
+    public function revisions(): Relation {
         return $this->hasMany(Revision::class, 'article_id', 'id');
     }
 

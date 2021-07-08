@@ -24,7 +24,7 @@ class Revision extends Model
 {
     use HasFactory, ApiResource;
 
-    public function comment(): Relation {
+    public function comments(): Relation {
         return $this->hasMany(Comment::class, 'revision_id', 'id');
     }
 

@@ -37,11 +37,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function article(): Relation {
+    public function articles(): Relation {
         return $this->hasMany(Article::class, 'user_id', 'id');
     }
 
-    public function comment(): Relation {
+    public function comments(): Relation {
         return $this->hasMany(Comment::class, 'user_id', 'id');
     }
 
