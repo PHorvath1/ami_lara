@@ -26,7 +26,7 @@ Table comments {
 
 Table revisions {
   id int [pk, increment]
-  article_id int
+  article_id varchar
   pdf_path varchar
   latex_path varchar
   deleted_at timestamp
