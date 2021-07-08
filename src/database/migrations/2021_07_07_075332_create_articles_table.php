@@ -12,7 +12,7 @@ class CreateArticlesTable extends Migration
             function (Blueprint $table) {
                 $table->uuid('id')->primary();
                 $table->string('name');
-                $table->string('summary');
+                $table->text('summary');
                 $table->tinyInteger('state')->default(0); //[ 'UNDER_REVIEW', 'ACCEPTED', 'REJECTED' ]
                 $table->timestamp('deleted_at')->nullable();
                 $table->timestamps();
