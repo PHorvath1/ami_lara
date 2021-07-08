@@ -22,6 +22,7 @@ use Symfony\Component\Routing\Exception\InvalidParameterException;;
  * @property DateTime deleted_at
  * @property DateTime created_at
  * @property DateTime updated_at
+ * @property string user_id
  */
 class Article extends Model
 {
@@ -52,5 +53,9 @@ class Article extends Model
 
     public function revision(): Relation {
         return $this->hasMany(Revision::class, 'article_id', 'id');
+    }
+
+    public function user(): Relation {
+        return $this->belongsTo(User::class, 'uuid', 'id');
     }
 }
