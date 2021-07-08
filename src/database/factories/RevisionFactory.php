@@ -12,7 +12,8 @@ class RevisionFactory extends Factory
     public function definition() : array
     {
         return [
-            //
+            'pdf_path' => 'pdfs/example.pdf',
+            'latex_path' => $this->faker->boolean() ? 'latex/example.tex' : ''
         ];
     }
 }
