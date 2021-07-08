@@ -6,6 +6,7 @@ use App\Traits\ApiResource;
 use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 /**
  * Class Revision
@@ -21,4 +22,9 @@ use Illuminate\Database\Eloquent\Model;
 class Revision extends Model
 {
     use HasFactory, ApiResource;
+
+    public function comment(): Relation {
+        return $this->hasMany(Comment::class, 'revision_id', 'id');
+    }
+
 }
