@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
  * @property DateTime created_at
  * @property DateTime updated_at
  * @property string user_id
+ * @property int revision_id
  */
 class Comment extends Model
 {
@@ -24,6 +25,10 @@ class Comment extends Model
 
     public function user(): Relation {
         return $this->belongsTo(User::class, 'uuid', 'id');
+    }
+
+    public function revision(): Relation {
+        return $this->belongsTo(Revision::class, 'id', 'revision_id');
     }
 
 }
