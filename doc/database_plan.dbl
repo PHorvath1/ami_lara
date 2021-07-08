@@ -1,0 +1,49 @@
+// Creating tables
+Table users as U {
+  id varchar [pk]
+  full_name varchar
+  email varchar
+  password varchar
+  remember_token varchar
+  deleted_at timestamp
+}
+
+Table articles {
+  id varchar [pk]
+  user_id varchar
+  name varchar
+  summary varchar
+  state article_state
+  deleted_at timestamp
+ }
+ 
+Table comments {
+  id int [pk, increment]
+  user_id varchar
+  revision_id int
+  content varchar
+}
+
+Table revisions {
+  id int [pk, increment]
+  article_id int
+  pdf_path varchar
+  latex_path varchar
+  deleted_at timestamp
+}
+
+// Creating references
+// > many-to-one; < one-to-many; - one-to-one
+Ref: articles.user_id > U.id
+Ref: comments.user_id > U.id
+Ref: revisions.id < comments.revision_id
+Ref: revisions.article_id > articles.id
+
+//Creating Enums
+Enum article_state {
+  SUBMITTED
+  UNDER_REVIEW
+  ACCEPTED
+  REJECTED
+}
+  
