@@ -7,6 +7,7 @@ use App\Traits\UUID;
 use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Str;
 use Symfony\Component\Routing\Exception\InvalidParameterException;;
 
@@ -47,5 +48,9 @@ class Article extends Model
 
         $this->state = $index;
         $this->save();
+    }
+
+    public function revision(): Relation {
+        return $this->hasMany(Revision::class, 'article_id', 'id');
     }
 }
