@@ -7,6 +7,7 @@ use App\Traits\UUID;
 use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Str;
 use Symfony\Component\Routing\Exception\InvalidParameterException;;
 
@@ -21,6 +22,7 @@ use Symfony\Component\Routing\Exception\InvalidParameterException;;
  * @property DateTime deleted_at
  * @property DateTime created_at
  * @property DateTime updated_at
+ * @property string user_id
  */
 class Article extends Model
 {
@@ -47,5 +49,13 @@ class Article extends Model
 
         $this->state = $index;
         $this->save();
+    }
+
+    public function revisions(): Relation {
+        return $this->hasMany(Revision::class, 'article_id', 'id');
+    }
+
+    public function user(): Relation {
+        return $this->belongsTo(User::class, 'uuid', 'id');
     }
 }
