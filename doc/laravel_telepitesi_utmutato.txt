@@ -1,0 +1,48 @@
+SZÜKSÉGES ALKALMAZÁSOK
+- Powershell 7
+- XAMPP
+- Git
+- Git Kraken
+- Node js
+- Yarn
+- PHP Storm
+- Composer
+
+Telepítési lépések
+
+1. Telepítsük a számítógépre a Powershell 7-et! (!! Nem windows powershell !!)
+
+2. Telepítsük fel az XAMPP-ot, majd adjuk hozzá a környezeti változókhoz.
+PL: C:\xampp\php és C:\xampp\php\php.exe
+
+3. Telepítsük fel a Git-et és a Git Krakent! 
+
+4. Telepítsük a Node Js legfrissebb verzióját, ha hibaüzenetet dob elepítés közben,
+ próbáljunk egyel régebbi verziót feltelepíteni.
+ 
+5. Telepítsük fel a Yarn-t, ehhez futtassuk adminisztrátorként a Powershell 7-et és az alábba parancsot futtassuk le:
+ npm install -g yarn .
+ 
+6. PS-mod telepítése az alábbi paranccsal (a 2 access denied hibaüzenetet ignorálhatjuk) :
+ Set-ExecutionPolicy Bypass -Scope Process -Force ; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072 ;Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ps-mod/ps-mod/main/install.ps1'))
+
+ indítsuk újra a powershell-t majd az alábbi parancsot üssük be
+ 
+ psmod require Laravel
+ 
+7. Telepítsük fel a PHP Stormot és az alábbi pluginokat telepítsük a listából:
+- .env files support
+- .ignore
+- Laravel
+- Laravel Idea
+- Laravel Live Templates
+- PHP Annotations
+
+8. Telepítsük a Composert a gépre!
+
+Ajánlott parancsok:
+
+lumen init  // Új Laravel projekt létrehozása (Prototype/Example)
+lumen compose  // Olyan parancs amit minden nap lekell futtatni hogy összeállítsa a Laravel projektet(complie). 
+
+ 
