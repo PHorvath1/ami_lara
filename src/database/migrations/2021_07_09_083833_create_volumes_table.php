@@ -10,6 +10,7 @@ class CreateVolumesTable extends Migration
     {
         Schema::create('volumes', function (Blueprint $table) {
             $table->id();
+            $table->year('release_year');
             $table->timestamps();
         });
     }
