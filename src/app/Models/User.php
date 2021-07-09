@@ -20,6 +20,9 @@ use Silber\Bouncer\Database\HasRolesAndAbilities;
  * @property string remember_token
  * @property string api_key
  * @property DateTime email_verified_at
+ * @property string mtmt
+ * @property string orcid
+ * @property string issn
  */
 class User extends Authenticatable
 {
