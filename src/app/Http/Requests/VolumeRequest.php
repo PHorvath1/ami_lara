@@ -2,19 +2,13 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class VolumeRequest extends FormRequest
+class VolumeRequest extends ExtendedFormRequest
 {
-    public function authorize(): bool
-    {
-        return true;
-    }
 
     public function rules(): array
     {
         return [
-            //
+            'release_year' => [ 'required' ]
         ];
     }
 }
