@@ -15,7 +15,11 @@ class ArticleRequest extends ExtendedFormRequest
             'pdf' => ['file'],
             'name' => [ 'required', 'min:10' ],
             'summary' => [ 'required', 'min:10' ],
-            'state' => [ 'required' ]
+            'state' => [ 'required' ],
+            'page_counter' => [ 'required' ],
+            'article_type' => [ 'required' ],
+            'note' => [ 'required' ]
+
         ];
     }
 
