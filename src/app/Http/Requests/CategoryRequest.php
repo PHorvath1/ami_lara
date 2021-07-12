@@ -2,19 +2,13 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class CategoryRequest extends FormRequest
+class CategoryRequest extends ExtendedFormRequest
 {
-    public function authorize(): bool
-    {
-        return true;
-    }
 
     public function rules(): array
     {
         return [
-            //
+            'name' => [ 'required' ]
         ];
     }
 }
