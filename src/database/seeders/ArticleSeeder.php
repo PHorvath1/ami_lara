@@ -13,7 +13,6 @@ class ArticleSeeder extends Seeder
         for ($i = 0; $i < 50; $i++){
             /** @var Article $article */
             $article = Article::factory()->make();
-            $article->user_id = User::random()->id;
             $article->save();
         }
     }
