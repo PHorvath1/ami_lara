@@ -5,15 +5,23 @@ Table users as U {
   email varchar
   password varchar
   remember_token varchar
+  mtmt varchar
+  orcid varchar
+  issn varchar
   deleted_at timestamp
 }
 
 Table articles {
   id varchar [pk]
-  user_id varchar
   name varchar
   summary varchar
   state article_state
+  page_count int
+  article_type varchar
+  note text
+  related_url json
+  language varchar
+  doi varchar
   deleted_at timestamp
  }
  
@@ -32,12 +40,57 @@ Table revisions {
   deleted_at timestamp
 }
 
+Table volumes {
+  id int [pk, increment]
+  description text
+  release_year year
+}
+
+Table categories {
+  id int [pk, increment]
+  name varchar
+}
+
+Table tags {
+  id int [pk, increment]
+  name varchar
+}
+
+Table user_article_pivot {
+  user_id varchar [pk]
+  article_id varchar [pk]
+}
+
+Table tag_article_pivot {
+  tag_id int [pk]
+  article_id varchar [pk]
+}
+
+Table volume_article_pivot {
+  volume_id int [pk]
+  article_id varchar [pk]
+  from_page int
+  to_page int
+}
+
+Table category_article_pivot {
+  category_id int [pk]
+  article_id varchar [pk]
+}
+
 // Creating references
 // > many-to-one; < one-to-many; - one-to-one
-Ref: articles.user_id > U.id
 Ref: comments.user_id > U.id
 Ref: revisions.id < comments.revision_id
 Ref: revisions.article_id > articles.id
+Ref: U.id < user_article_pivot.user_id
+Ref: articles.id < user_article_pivot.article_id
+Ref: tags.id < tag_article_pivot.tag_id
+Ref: articles.id < tag_article_pivot.article_id
+Ref: volumes.id < volume_article_pivot.volume_id
+Ref: articles.id < volume_article_pivot.article_id
+Ref: categories.id < category_article_pivot.category_id
+Ref: articles.id < category_article_pivot.article_id
 
 //Creating Enums
 Enum article_state {
