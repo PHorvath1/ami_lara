@@ -14,6 +14,12 @@ class CreateArticlesTable extends Migration
                 $table->string('name');
                 $table->text('summary');
                 $table->tinyInteger('state')->default(0); //[ 'UNDER_REVIEW', 'ACCEPTED', 'REJECTED' ]
+                $table->integer('page_count');
+                $table->string('article_type');
+                $table->text('note');
+                $table->json('related_url')->nullable();
+                $table->string('language');
+                $table->string('doi')->nullable();
                 $table->timestamp('deleted_at')->nullable();
                 $table->timestamps();
             }
