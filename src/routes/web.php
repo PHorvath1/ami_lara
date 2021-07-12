@@ -17,4 +17,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('users', UserController::class);
     Route::resource('articles', ArticleController::class);
+
 });
+    Route::get('test', [StaticController::class, 'test']);
