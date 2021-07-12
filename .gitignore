@@ -1,2 +1,6 @@
 
 src/resources/views/pages/test.blade.php
+.idea
+.idea/*
+.lumen
+.lumen/
