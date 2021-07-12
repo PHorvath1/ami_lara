@@ -23,6 +23,12 @@ use Symfony\Component\Routing\Exception\InvalidParameterException;;
  * @property DateTime created_at
  * @property DateTime updated_at
  * @property string user_id
+ * @property int page_count
+ * @property string article_type
+ * @property string note
+ * @property string related_url
+ * @property string language
+ * @property string doi
  */
 class Article extends Model
 {

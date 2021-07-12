@@ -14,7 +14,11 @@ class ArticleFactory extends Factory
         return [
             'name' => $this->faker->sentence(),
             'summary' => $this->faker->paragraph(),
-            'state' => $this->faker->numberBetween(0,2)
+            'state' => $this->faker->numberBetween(0,2),
+            'page_count' => $this->faker->numberBetween(10, 25),
+            'article_type' => $this->faker->word(),
+            'note' => $this->faker->text(),
+            'language' => $this->faker->boolean(80) ? 'en' : 'hu'
         ];
     }
 }
