@@ -16,9 +16,12 @@ class ArticleRequest extends ExtendedFormRequest
             'name' => [ 'required', 'min:10' ],
             'summary' => [ 'required', 'min:10' ],
             'state' => [ 'required' ],
-            'page_counter' => [ 'required' ],
+            'page_count' => [ 'required' ],
             'article_type' => [ 'required' ],
-            'note' => [ 'required' ]
+            'note' => [],
+            'related_url' => [],
+            'doi' => [],
+            'language' => []
 
         ];
     }
