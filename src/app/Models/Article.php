@@ -7,6 +7,7 @@ use App\Traits\UUID;
 use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Str;
 use Symfony\Component\Routing\Exception\InvalidParameterException;;
@@ -63,5 +64,10 @@ class Article extends Model
 
     public function user(): Relation {
         return $this->belongsTo(User::class, 'uuid', 'id');
+    }
+
+    public function volumes(): BelongsToMany
+    {
+        return $this->belongsToMany(Volume::class, 'article_volumes');
     }
 }
