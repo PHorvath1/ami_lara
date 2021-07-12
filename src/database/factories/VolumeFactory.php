@@ -12,7 +12,8 @@ class VolumeFactory extends Factory
     public function definition() : array
     {
         return [
-            'release_year' => $this->faker->year()
+            'release_year' => $this->faker->year(),
+            'description' => $this->faker->paragraph()
         ];
     }
 }

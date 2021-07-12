@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int id
  * @property int release_year
+ * @property string description
  * @property DateTime created_at
  * @property DateTime updated_at
  */
