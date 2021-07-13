@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Middleware\BouncerCheck;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Brian2694\Toastr\Facades\Toastr;
@@ -11,13 +10,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
-class CategoryController extends Controller
+class CategoryController extends GuardedController
 {
-    public function __construct()
-    {
-        $this->middleware(BouncerCheck::class);
-    }
-
     public function index(): Factory|View|Application|RedirectResponse
     {
         return view('category.index', ['categorys' => Category::all()]);
