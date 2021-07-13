@@ -10,7 +10,7 @@ class ConnectArticleCategory extends Migration
 {
     public function up(): void
     {
-        Schema::create('article_categories', function (Blueprint $table){
+        Schema::create('article_category', function (Blueprint $table){
             $table->id();
             $table->foreignIdFor(Category::class);
             $table->foreignIdFor(Article::class);
@@ -20,6 +20,6 @@ class ConnectArticleCategory extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('article');
     }
 }

@@ -10,7 +10,7 @@ class ConnectArticleTags extends Migration
 {
     public function up(): void
     {
-        Schema::create('article_tags', function (Blueprint $table) {
+        Schema::create('article_tag', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->foreignIdFor(Article::class);
@@ -20,6 +20,6 @@ class ConnectArticleTags extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('article_tags');
+        Schema::dropIfExists('article_tag');
     }
 }

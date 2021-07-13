@@ -65,21 +65,21 @@ class Article extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'user_articles');
+        return $this->belongsToMany(User::class);
     }
 
     public function volumes(): BelongsToMany
     {
-        return $this->belongsToMany(Volume::class, 'article_volumes');
+        return $this->belongsToMany(Volume::class);
     }
 
     public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(Category::class, 'article_categories');
+        return $this->belongsToMany(Category::class);
     }
 
     public function tags(): BelongsToMany
     {
-        return $this->belongsToMany(Tag::class, 'article_tags');
+        return $this->belongsToMany(Tag::class);
     }
 }

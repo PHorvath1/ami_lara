@@ -8,7 +8,7 @@ class ConnectArticleVolume extends Migration
 {
     public function up(): void
     {
-        Schema::create('article_volumes', function (Blueprint $table) {
+        Schema::create('article_volume', function (Blueprint $table) {
            $table->foreignIdFor(\App\Models\Article::class);
            $table->foreignIdFor(\App\Models\Volume::class);
            $table->integer('from_page')->default(0);
@@ -18,6 +18,6 @@ class ConnectArticleVolume extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('article_volumes');
+        Schema::dropIfExists('article_volume');
     }
 }
