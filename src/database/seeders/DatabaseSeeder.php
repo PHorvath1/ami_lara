@@ -10,11 +10,11 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserSeeder::class);
         $this->call(BouncerSeeder::class);
+        $this->call(CategorySeeder::class);
         $this->call(ArticleSeeder::class);
         $this->call(RevisionSeeder::class);
         $this->call(CommentSeeder::class);
         $this->call(VolumeSeeder::class);
-        $this->call(CategorySeeder::class);
         $this->call(VolumeArticlesSeeder::class);
         $this->call(UserArticleSeeder::class);
     }
