@@ -70,7 +70,7 @@ class Article extends Model
 
     public function volumes(): BelongsToMany
     {
-        return $this->belongsToMany(Volume::class, 'article_volumes');
+        return $this->belongsToMany(Volume::class);
     }
 
     public function categories(): BelongsToMany

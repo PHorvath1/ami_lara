@@ -24,6 +24,6 @@ class Volume extends Model
 
     public function articles(): BelongsToMany
     {
-        return $this->belongsToMany(Article::class, 'article_volumes');
+        return $this->belongsToMany(Article::class);
     }
 }
