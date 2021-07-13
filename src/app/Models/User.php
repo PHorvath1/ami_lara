@@ -7,6 +7,7 @@ use App\Traits\ApiResource;
 use App\Traits\UUID;
 use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -40,8 +41,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function articles(): Relation {
-        return $this->hasMany(Article::class, 'user_id', 'id');
+    public function articles(): BelongsToMany
+    {
+        return $this->belongsToMany(Article::class, 'user_articles');
     }
 
     public function comments(): Relation {
