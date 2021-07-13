@@ -11,14 +11,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
-class UserController extends Controller
+class UserController extends GuardedController
 {
-
-    public function __construct()
-    {
-        $this->middleware(BouncerCheck::class)->except('profile', 'update');
-    }
-
     public function index(): Factory|View|Application|RedirectResponse
     {
         return view('pages.users.index', ['users' => User::all()]);
