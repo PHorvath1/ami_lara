@@ -20,3 +20,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
     Route::get('test', [StaticController::class, 'test']);
+    Route::get('/about', [StaticController::class, 'About'])->name('about');
+    Route::get('/content', [StaticController::class, 'Content'])->name('content');
+    Route::get('/submissions', [StaticController::class, 'Submissions'])->name('submissions');
