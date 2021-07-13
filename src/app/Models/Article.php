@@ -77,4 +77,9 @@ class Article extends Model
     {
         return $this->belongsToMany(Category::class, 'article_categories');
     }
+
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class, 'article_tags');
+    }
 }
