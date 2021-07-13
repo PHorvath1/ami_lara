@@ -2,24 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Middleware\BouncerCheck;
 use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
-use App\Utils\Bouncer;
-use App\Utils\StatusCode;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
-class ArticleController extends Controller
+class ArticleController extends GuardedController
 {
-    public function __construct()
-    {
-        $this->middleware([BouncerCheck::class]);
-    }
-
     public function index(): Factory|View|Application|RedirectResponse
     {
         return view('pages.articles.index', ['articles' => Article::all()]);
