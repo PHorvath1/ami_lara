@@ -19,6 +19,6 @@ class ConnectUserArticle extends Migration
 
     public function down(): void
     {
-        \Schema::dropIfExists('user_article');
+        Schema::dropIfExists('user_article');
     }
 }
