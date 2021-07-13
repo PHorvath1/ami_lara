@@ -21,4 +21,16 @@ class StaticController extends Controller
     public function test(){
         return view('pages.test');
     }
+    public function About(): Factory|View|Application
+    {
+        return view('pages.about');
+    }
+    public function Content(): Factory|View|Application
+    {
+        return view('pages.content');
+    }
+    public function Submissions(): Factory|View|Application
+    {
+        return view('pages.submissions');
+    }
 }
