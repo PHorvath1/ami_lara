@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -9,13 +10,16 @@ class ConnectArticleCategory extends Migration
 {
     public function up(): void
     {
-        Schema::table('articles', function (Blueprint $table){
+        Schema::create('article_categories', function (Blueprint $table){
+            $table->id();
             $table->foreignIdFor(Category::class);
+            $table->foreignIdFor(Article::class);
+            $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropColumns('articles', 'category_id');
+        Schema::dropIfExists('articles');
     }
 }
