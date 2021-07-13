@@ -39,14 +39,13 @@
 --}}
 
                 <x-nav.link to="home" />
+                <x-nav.link to="content" />
+                <x-nav.link to="submissions" />
+                <x-nav.link to="about" />
                 @can('index', \App\Models\User::class)
                     <x-nav.link to="users.index">Users</x-nav.link>
                 @endcan
-                <x-nav.link to="about" />
-                @can('index', \App\Models\User::class)
-                    <x-nav.link to="users.about">About</x-nav.link>
 
-                @endcan
             </ul>
         </div>
         <div class="d-flex">
