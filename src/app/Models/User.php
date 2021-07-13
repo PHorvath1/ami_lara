@@ -43,7 +43,7 @@ class User extends Authenticatable
 
     public function articles(): BelongsToMany
     {
-        return $this->belongsToMany(Article::class, 'user_articles');
+        return $this->belongsToMany(Article::class);
     }
 
     public function comments(): Relation {

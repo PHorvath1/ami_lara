@@ -10,7 +10,7 @@ class ConnectUserArticle extends Migration
 {
     public function up(): void
     {
-        Schema::create('user_articles', function (Blueprint $table){
+        Schema::create('article_user', function (Blueprint $table){
            $table->foreignIdFor(User::class);
            $table->foreignIdFor(Article::class);
            $table->string('contribution_type')->default('author');
@@ -19,6 +19,6 @@ class ConnectUserArticle extends Migration
 
     public function down(): void
     {
-        \Schema::dropIfExists('user_articles');
+        \Schema::dropIfExists('user_article');
     }
 }
