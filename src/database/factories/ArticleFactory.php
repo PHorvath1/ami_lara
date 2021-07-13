@@ -19,8 +19,7 @@ class ArticleFactory extends Factory
             'page_count' => $this->faker->numberBetween(10, 25),
             'article_type' => $this->faker->word(),
             'note' => $this->faker->text(),
-            'language' => $this->faker->boolean(80) ? 'en' : 'hu',
-            'category_id' => Category::random()->id
+            'language' => $this->faker->boolean(80) ? 'en' : 'hu'
         ];
     }
 }

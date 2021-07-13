@@ -5,9 +5,9 @@ namespace App\Models;
 use App\Traits\ApiResource;
 use App\Traits\UUID;
 use DateTime;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Str;
@@ -30,7 +30,7 @@ use Symfony\Component\Routing\Exception\InvalidParameterException;;
  * @property string related_url
  * @property string language
  * @property string doi
- * @property Category category
+ * @property Collection categories
  */
 class Article extends Model
 {
@@ -73,8 +73,8 @@ class Article extends Model
         return $this->belongsToMany(Volume::class, 'article_volumes');
     }
 
-    public function category(): BelongsTo
+    public function categories(): BelongsToMany
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(Category::class, 'article_categories');
     }
 }
