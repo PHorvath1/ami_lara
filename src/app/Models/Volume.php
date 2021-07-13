@@ -6,6 +6,7 @@ use App\Traits\ApiResource;
 use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * Class Volume
@@ -20,4 +21,9 @@ use Illuminate\Database\Eloquent\Model;
 class Volume extends Model
 {
     use HasFactory, ApiResource;
+
+    public function articles(): BelongsToMany
+    {
+        return $this->belongsToMany(Article::class, 'article_volumes');
+    }
 }

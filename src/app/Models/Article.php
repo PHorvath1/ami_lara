@@ -65,4 +65,9 @@ class Article extends Model
     {
         return $this->belongsToMany(User::class, 'user_articles');
     }
+
+    public function volumes(): BelongsToMany
+    {
+        return $this->belongsToMany(Volume::class, 'article_volumes');
+    }
 }
