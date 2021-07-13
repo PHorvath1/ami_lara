@@ -12,6 +12,7 @@ class VolumeFactory extends Factory
     public function definition() : array
     {
         return [
+            'name' => $this->faker->boolean(90) ? $this->faker->words(2, true) : null,
             'release_year' => $this->faker->year(),
             'description' => $this->faker->paragraph()
         ];
