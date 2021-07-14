@@ -49,11 +49,6 @@
 
                 <x-nav.link class="lastlink"  to="about" />
 
-
-                @can('index', \App\Models\User::class)
-                    <x-nav.link to="users.index">Users</x-nav.link>
-                @endcan
-
             </ul>
         </div>
              <div class="d-flex">
