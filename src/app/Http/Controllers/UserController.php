@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Middleware\BouncerCheck;
+use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
@@ -11,14 +12,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
-class UserController extends Controller
+class UserController extends GuardedController
 {
-
-    public function __construct()
-    {
-        $this->middleware(BouncerCheck::class)->except('profile', 'update');
-    }
-
     public function index(): Factory|View|Application|RedirectResponse
     {
         return view('pages.users.index', ['users' => User::all()]);
@@ -29,9 +24,9 @@ class UserController extends Controller
         return view('pages.users.form');
     }
 
-    public function store(UserRequest $request): Factory|View|Application|RedirectResponse
+    public function store(UserCreateRequest $request): Factory|View|Application|RedirectResponse
     {
-        $user = User::create($request->validated());
+        $user = User::create($request->transform());
         Toastr::success('New user created');
         return redirect(route('users.show', [$user]));
     }
