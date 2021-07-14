@@ -14,24 +14,24 @@ class CategoryController extends GuardedController
 {
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return view('pages.category.index', ['categorys' => Category::all()]);
+        return view('pages.category.index', ['categories' => Category::all()]);
     }
 
     public function create(): Factory|View|Application|RedirectResponse
     {
-        return view('pages.categorys.form');
+        return view('pages.categories.form');
     }
 
     public function store(CategoryRequest $request): Factory|View|Application|RedirectResponse
     {
        $category = Category::create($request->validated());
         Toastr::success('New category created');
-        return redirect(route('categorys.show', [$category]));
+        return redirect(route('categories.show', [$category]));
     }
 
     public function show(Category $category): Factory|View|Application|RedirectResponse
     {
-        return view('pages.categorys.show', ['category' => $category]);
+        return view('pages.categories.show', ['category' => $category]);
     }
 
     public function edit(Category $category): Factory|View|Application|RedirectResponse
@@ -48,7 +48,7 @@ class CategoryController extends GuardedController
 
     public function destroy(Category $category): Factory|View|Application|RedirectResponse
     {
-        Toastr::warning("Category deleted: $category->id");
+        Toastr::warning("Category deleted: $category->name");
         $category->delete();
         return redirect(route('categories.index'));
     }
