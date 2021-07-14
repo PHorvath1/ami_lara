@@ -14,12 +14,12 @@ class CategoryController extends GuardedController
 {
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return view('category.index', ['categorys' => Category::all()]);
+        return view('pages.category.index', ['categorys' => Category::all()]);
     }
 
     public function create(): Factory|View|Application|RedirectResponse
     {
-        return view('categorys.form');
+        return view('pages.categorys.form');
     }
 
     public function store(CategoryRequest $request): Factory|View|Application|RedirectResponse
@@ -31,12 +31,12 @@ class CategoryController extends GuardedController
 
     public function show(Category $category): Factory|View|Application|RedirectResponse
     {
-        return view('categorys.show', ['category' => $category]);
+        return view('pages.categorys.show', ['category' => $category]);
     }
 
     public function edit(Category $category): Factory|View|Application|RedirectResponse
     {
-        return view('categorys.form', ['category' => $category]);
+        return view('pages.categorys.form', ['category' => $category]);
     }
 
     public function update(CategoryRequest $request, Category $category): Factory|View|Application|RedirectResponse

@@ -15,12 +15,12 @@ class VolumeController extends GuardedController
 
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return view('volume.index', ['volumes' => Volume::all()]);
+        return view('pages.volume.index', ['volumes' => Volume::all()]);
     }
 
     public function create(): Factory|View|Application|RedirectResponse
     {
-        return view('volumes.form');
+        return view('pages.volumes.form');
     }
 
     public function store(VolumeRequest $request): Factory|View|Application|RedirectResponse
@@ -32,12 +32,12 @@ class VolumeController extends GuardedController
 
     public function show(Volume $volume): Factory|View|Application|RedirectResponse
     {
-        return view('volumes.show', ['volume' => $volume]);
+        return view('pages.volumes.show', ['volume' => $volume]);
     }
 
     public function edit(Volume $volume): Factory|View|Application|RedirectResponse
     {
-        return view('volumes.form', ['volume' => $volume]);
+        return view('pages.volumes.form', ['volume' => $volume]);
     }
 
     public function update(VolumeRequest $request, Volume $volume): Factory|View|Application|RedirectResponse

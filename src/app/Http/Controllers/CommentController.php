@@ -17,12 +17,12 @@ class CommentController extends GuardedController
 
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return view('comment.index', ['comments' => Comment::all()]);
+        return view('pages.comment.index', ['comments' => Comment::all()]);
     }
 
     public function create(): Factory|View|Application|RedirectResponse
     {
-        return view('comments.form');
+        return view('pages.comments.form');
     }
 
     public function store(CommentRequest $request): Factory|View|Application|RedirectResponse
@@ -34,12 +34,12 @@ class CommentController extends GuardedController
 
     public function show(Comment $comment): Factory|View|Application|RedirectResponse
     {
-        return view('comments.show', ['comment' => $comment]);
+        return view('pages.comments.show', ['comment' => $comment]);
     }
 
     public function edit(Comment $comment): Factory|View|Application|RedirectResponse
     {
-        return view('comments.form', ['comment' => $comment]);
+        return view('pages.comments.form', ['comment' => $comment]);
     }
 
     public function update(CommentRequest $request, Comment $comment): Factory|View|Application|RedirectResponse
