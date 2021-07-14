@@ -87,7 +87,6 @@
 @endsection
 
 @push('js')
-    <script src="resources/js/Simple-Slider.js"></script>
-    <script src="resources/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/simple-slider.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
 @endpush

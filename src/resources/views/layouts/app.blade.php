@@ -33,7 +33,7 @@
         <main class="py-4">
             @yield('content')
         </main>
-        <footer class="footer mt-auto>
+        <footer class="footer mt-auto">
             <x-footer />
         </footer>
 
