@@ -15,7 +15,7 @@ class RevisionController extends GuardedController
 
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return view('pages.revision.index', ['revisions' => Revision::all()]);
+        return view('pages.revisions.index', ['revisions' => Revision::all()]);
     }
 
     public function create(): Factory|View|Application|RedirectResponse

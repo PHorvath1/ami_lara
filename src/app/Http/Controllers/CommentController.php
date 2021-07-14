@@ -17,7 +17,7 @@ class CommentController extends GuardedController
 
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return view('pages.comment.index', ['comments' => Comment::all()]);
+        return view('pages.comments.index', ['comments' => Comment::all()]);
     }
 
     public function create(): Factory|View|Application|RedirectResponse

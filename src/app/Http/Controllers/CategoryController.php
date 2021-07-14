@@ -36,20 +36,20 @@ class CategoryController extends GuardedController
 
     public function edit(Category $category): Factory|View|Application|RedirectResponse
     {
-        return view('pages.categorys.form', ['category' => $category]);
+        return view('pages.categories.form', ['category' => $category]);
     }
 
     public function update(CategoryRequest $request, Category $category): Factory|View|Application|RedirectResponse
     {
         $category->update($request->validated());
         Toastr::success('Category modified');
-        return redirect(route('categorys.show', [$category]));
+        return redirect(route('categories.show', [$category]));
     }
 
     public function destroy(Category $category): Factory|View|Application|RedirectResponse
     {
         Toastr::warning("Category deleted: $category->id");
         $category->delete();
-        return redirect(route('categorys.index'));
+        return redirect(route('categories.index'));
     }
 }

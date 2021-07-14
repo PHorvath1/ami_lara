@@ -10,15 +10,15 @@ class StaticController extends Controller
 {
     public function Welcome(): Factory|View|Application
     {
-        return view('pages.pages.welcome');
+        return view('pages.welcome');
     }
 
     public function Home(): Factory|View|Application
     {
-        return view('pages.pages.home');
+        return view('pages.home');
     }
 
     public function test(){
-        return view('pages.pages.test');
+        return view('pages.test');
     }
 }
