@@ -28,30 +28,19 @@ class ArticleRequest extends ExtendedFormRequest
 
     /**
      * Upload a file
-     * @throws EmptyRequestException $request is empty
      * @throws BadRequestHttpException if request doesn't have input named $fileInputName
      * @throws FileException if file couldn't be moved or created
      * @returns string|bool Path of uploaded file or false on fail
      */
-    public function upload(
-        ArticleRequest $request,
-        string $fileInputName,
-        string $path = '',
-        $throwErrorOnMissingFile = false
-    ): string|bool {
-        if (!$request) throw new EmptyRequestException(ArticleRequest::class, __FILE__, __LINE__, __FUNCTION__);
-        $hasFile = $request->hasFile($fileInputName);
+    public function upload(string $fileInputName, string $path = '', $throwErrorOnMissingFile = false): string|bool {
+        $hasFile = $this->hasFile($fileInputName);
 
-        if (!$hasFile && $throwErrorOnMissingFile) throw new BadRequestHttpException("Request does not have input file named $fileInputName"
-        );
+        if (!$hasFile && $throwErrorOnMissingFile) throw new BadRequestHttpException("Request does not have input file named $fileInputName");
 
         if ($hasFile) {
-            $uploadedFile = $request->file($fileInputName);
-            return $uploadedFile->move("uploads/$path",
-                                       Str::random(8) . '_' . $uploadedFile->getClientOriginalExtension()
-            )->getFilename();
+            $uploadedFile = $this->file($fileInputName);
+            return $uploadedFile->move("uploads/$path", Str::random(8) . '_' . $uploadedFile->getClientOriginalExtension())->getFilename();
         }
-
         return false;
     }
 }
