@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\BouncerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StaticController;
 use App\Http\Controllers\UserController;
@@ -17,6 +18,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('users', UserController::class);
     Route::resource('articles', ArticleController::class);
+    Route::post('/user/assignRole/{user}/{role}', [BouncerController::class, 'assignRole'])->name('user.role.assign');
+    Route::post('/user/unassignRole/{user}/{role}', [BouncerController::class, 'unassignRole'])->name('user.role.unassign');
 
 });
     Route::get('test', [StaticController::class, 'test']);
