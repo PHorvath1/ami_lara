@@ -18,8 +18,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('users', UserController::class);
     Route::resource('articles', ArticleController::class);
-    Route::post('/user/assignRole/{user}/{role}', [BouncerController::class, 'assignRole'])->name('user.role.assign');
-    Route::post('/user/unassignRole/{user}/{role}', [BouncerController::class, 'unassignRole'])->name('user.role.unassign');
+    Route::post('/auth/{user}/assign_role/{role}', [BouncerController::class, 'assign_role'])->name('user.role.assign_role');
+    Route::post('/auth/{user}/unassign_role/{role}', [BouncerController::class, 'unassign_role'])->name('user.role.unassign_role');
 
 });
     Route::get('test', [StaticController::class, 'test']);
