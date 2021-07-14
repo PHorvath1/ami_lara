@@ -18,12 +18,12 @@ class TagController extends GuardedController
 
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return view('tag.index', ['tags' => Tag::all()]);
+        return view('pages.tag.index', ['tags' => Tag::all()]);
     }
 
     public function create(): Factory|View|Application|RedirectResponse
     {
-        return view('tags.form');
+        return view('pages.tags.form');
     }
 
     public function store(TagRequest $request): Factory|View|Application|RedirectResponse
@@ -35,12 +35,12 @@ class TagController extends GuardedController
 
     public function show(Tag $tag): Factory|View|Application|RedirectResponse
     {
-        return view('tags.show', ['tag' => $tag]);
+        return view('pages.tags.show', ['tag' => $tag]);
     }
 
     public function edit(Tag $tag): Factory|View|Application|RedirectResponse
     {
-        return view('tags.form', ['tag' => $tag]);
+        return view('pages.tags.form', ['tag' => $tag]);
     }
 
     public function update(TagRequest $request, Tag $tag): Factory|View|Application|RedirectResponse

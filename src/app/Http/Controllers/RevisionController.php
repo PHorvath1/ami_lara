@@ -15,12 +15,12 @@ class RevisionController extends GuardedController
 
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return view('revision.index', ['revisions' => Revision::all()]);
+        return view('pages.revisions.index', ['revisions' => Revision::all()]);
     }
 
     public function create(): Factory|View|Application|RedirectResponse
     {
-        return view('revisions.form');
+        return view('pages.revisions.form');
     }
 
     public function store(RevisionRequest $request): Factory|View|Application|RedirectResponse
@@ -32,12 +32,12 @@ class RevisionController extends GuardedController
 
     public function show(Revision $revision): Factory|View|Application|RedirectResponse
     {
-        return view('revisions.show', ['revision' => $revision]);
+        return view('pages.revisions.show', ['revision' => $revision]);
     }
 
     public function edit(Revision $revision): Factory|View|Application|RedirectResponse
     {
-        return view('revisions.form', ['revision' => $revision]);
+        return view('pages.revisions.form', ['revision' => $revision]);
     }
 
     public function update(RevisionRequest $request, Revision $revision): Factory|View|Application|RedirectResponse
