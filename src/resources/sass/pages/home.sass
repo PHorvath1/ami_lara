@@ -40,43 +40,35 @@
 #colp2
     padding-bottom: 20px
 
-@media only screen and (max-width: 959px)
-    #card1
+@media only screen and (min-width: 0px)
+    .rowcarousel
         display: flex
         flex-direction: column
-
-        padding-right: 100px
-        padding-left: 100px
-    #card2
-        display: flex
-        flex-direction: column
-        padding-right: 100px
-        padding-left: 100px
-    #card3
-        display: flex
-        flex-direction: column
-        padding-right: 100px
-        padding-left: 100px
+        padding-right: 10px
+        padding-left: 10px
     .card
         margin-bottom: 20px
+    #nextbtn,#prevbtn
+        opacity: 0
 
-@media only screen and (min-width: 960px)
-    #card1
+@media only screen and (min-width: 600px)
+    .rowcarousel
+        display: flex
+        flex-direction: Column
+        padding-right: 10px
+        padding-left: 10px
+
+
+
+
+
+@media only screen and (min-width: 900px)
+    .rowcarousel
         display: flex
         flex-direction: row
-
-        padding-right: 100px
-        padding-left: 100px
-    #card2
-        display: flex
-        flex-direction: row
-        padding-right: 100px
-        padding-left: 100px
-    #card3
-        display: flex
-        flex-direction: row
-        padding-right: 100px
-        padding-left: 100px
-
+        padding-right: 30px
+        padding-left: 30px
     .card
         margin-bottom: 5px
+
+
