@@ -14,7 +14,7 @@ class ArticleController extends GuardedController
 {
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return view('pages.articles.index', ['articles' => Article::all()]);
+        return view('pages.articles.index', ['articles' => Article::paginate(6)]);
     }
 
     public function create(): Factory|View|Application|RedirectResponse
