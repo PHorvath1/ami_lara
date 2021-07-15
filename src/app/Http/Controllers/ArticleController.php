@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
+use App\Models\Revision;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -25,6 +26,9 @@ class ArticleController extends GuardedController
     public function store(ArticleRequest $request): Factory|View|Application|RedirectResponse
     {
         $article = Article::create($request->validated());
+        $pdf = $request->upload('pdf', 'uploads/articles');
+        $latex = $request->upload('latex', 'uploads/articles');
+        Revision::create(['pdf_path' => $pdf, 'latex_path' => $latex]);
         Toastr::success('New article created');
         return redirect(route('articles.show', [$article]));
     }
@@ -42,6 +46,9 @@ class ArticleController extends GuardedController
     public function update(ArticleRequest $request, Article $article): Factory|View|Application|RedirectResponse
     {
         $article->update($request->validated());
+        $pdf = $request->upload('pdf', 'uploads/articles');
+        $latex = $request->upload('latex', 'uploads/articles');
+        Revision::where('article_id', operatorOrEqualsValue: $article->id)->update(['pdf_path' => $pdf, 'latex_path' => $latex]);
         Toastr::success('Article modified');
         return redirect(route('articles.show', [$article]));
     }
