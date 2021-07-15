@@ -1,5 +1,5 @@
-import 'bootstrap'
-
+//import 'bootstrap'
+window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');
 window._ = require('lodash')
 window.$ = window.jQuery = require('jquery')
 window.axios = require('axios')
