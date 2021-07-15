@@ -1,12 +1,8 @@
-
-
 @extends('layouts.app')
-
-
 
 @section('content')
     <main style="padding-top: 0px;margin-top: -34px;">
-        <div class="container border rounded" style="background: #D3D3D3;">
+        <div class="container-fluid" style="background: #FBFAFA;">
             <div class="col" style="width: 100%;">
                 <div class="row">
                     <div class="col" style="width: 100%;padding-right: 0px;padding-left: 0px;">
