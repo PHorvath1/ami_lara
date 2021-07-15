@@ -8,7 +8,7 @@
     * @var \App\Models\Article $article
     */
     @endphp
-   <div class="container-fluid p-4" style="background: #FBFAFA">
+   <div class="container-fluid p-4" id="container_color">
        <div class="card text-center">
            <div class="card-header">
                <h3>Name: {{ $volume->name }}</h3>
@@ -37,7 +37,7 @@
                     @foreach ($articles as $article)
                         <div class="col-4 col-md-4">
                             <div class="card m-3">
-                                <div class="card-body p-5 mx-auto" style="background: rgb(249, 250, 177)">
+                                <div class="card-body p-5 mx-auto" id="card_color">
                                     <h4 class="card-title">{{ $article->name }}</h4>
                                     <h6 class="text-muted card-subtitle mb-2">by: Andrea Bodonyi<br></h6>
                                     <p class="card-text"><em>Pages: 5–19</em><br></p>
@@ -50,11 +50,11 @@
                 </div>
             </div>
        </div>
-       <!-- Add Pagination -->
-       <div class="swiper-pagination"></div>
+       <!-- Add Pagination
+       <div class="swiper-pagination"></div> -->
        <!-- Add Arrows -->
-       <div class="swiper-button-next"></div>
-       <div class="swiper-button-prev"></div>
+        <!--<div class="swiper-button-next"></div>-->
+               <!-- <div class="swiper-button-prev"></div>-->
             </div>
         </div>
    </div>
