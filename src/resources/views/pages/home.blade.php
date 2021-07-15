@@ -29,29 +29,29 @@
                     <div id="latestCarousel" class="carousel slide" data-bs-ride="carousel">
                         <div id="carouselwrap" class="carousel-inner">
                             <div class="carousel-item active">
-                                <div id="card1" class="row">
+                                <div  class="rowcarousel">
                                     <x-cards.latest-article class="col mx-2 " id="cc1"  />
                                     <x-cards.latest-article class="col mx-2" id="cc2" />
                                 </div>
                             </div>
                             <div  class="carousel-item">
-                                <div id="card2" class="row">
+                                <div  class="rowcarousel">
                                     <x-cards.latest-article class="col mx-2 " />
                                     <x-cards.latest-article class="col mx-2 "  />
                                 </div>
                             </div>
                             <div  class="carousel-item">
-                                <div id="card3" class="row ">
+                                <div  class="rowcarousel">
                                     <x-cards.latest-article class="col mx-2 " />
                                     <x-cards.latest-article class="col mx-2 " />
                                 </div>
                             </div>
                         </div>
-                        <button class="carousel-control-prev p-0 m-0" type="button" data-bs-target="#latestCarousel" data-bs-slide="prev">
+                        <button id="prevbtn" class="carousel-control-prev p-0 m-0" type="button" data-bs-target="#latestCarousel" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#latestCarousel" data-bs-slide="next">
+                        <button id="nextbtn" class="carousel-control-next" type="button" data-bs-target="#latestCarousel" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
