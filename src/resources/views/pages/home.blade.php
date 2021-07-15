@@ -3,7 +3,7 @@
 @section('content')
     <main style="padding-top: 0px;margin-top: -34px;">
         <div id="containerhome" class="container-fluid" >
-            <div class="col" id="colwrap" ">
+            <div class="col" id="colwrap" >
                 <div class="row">
                     <div class="col" id="coltitel" >
                         <p class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" id="ptitel"><strong>Annales Mathematicae et Informaticae&nbsp;53&nbsp;(2021)</strong><br><br></p>
@@ -25,25 +25,25 @@
                         <p>Tibor Tómács<br></p>
                     </div>
                 </div>
-                <div class="container m-1 mb-3 m-lg-3">
+                <div id="cardwrap" class="container">
                     <div id="latestCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
+                        <div id="carouselwrap" class="carousel-inner">
                             <div class="carousel-item active">
-                                <div class="row p-3">
-                                    <x-cards.latest-article class="col mx-2" />
-                                    <x-cards.latest-article class="col mx-2" />
+                                <div id="card1" class="row">
+                                    <x-cards.latest-article class="col mx-2 " id="cc1"  />
+                                    <x-cards.latest-article class="col mx-2" id="cc2" />
                                 </div>
                             </div>
-                            <div class="carousel-item">
-                                <div class="row p-3">
-                                    <x-cards.latest-article class="col mx-2" />
-                                    <x-cards.latest-article class="col mx-2" />
+                            <div  class="carousel-item">
+                                <div id="card2" class="row">
+                                    <x-cards.latest-article class="col mx-2 " />
+                                    <x-cards.latest-article class="col mx-2 "  />
                                 </div>
                             </div>
-                            <div class="carousel-item">
-                                <div class="row p-3">
-                                    <x-cards.latest-article class="col mx-2" />
-                                    <x-cards.latest-article class="col mx-2" />
+                            <div  class="carousel-item">
+                                <div id="card3" class="row ">
+                                    <x-cards.latest-article class="col mx-2 " />
+                                    <x-cards.latest-article class="col mx-2 " />
                                 </div>
                             </div>
                         </div>
