@@ -8,7 +8,7 @@
         <div class="wrapper row">
             <div class="col-auto col-lg-3"></div>
             <div class="card col-12 col-lg-6">
-                <div class="card-header">
+                <div class="card-header" id="article_card_header">
                     <h4>{{$article ? 'Edit' : 'Create'}} Article Form</h4>
                 </div>
                 <div class="card-body">
@@ -16,13 +16,59 @@
                             :method="$article ? 'put' : 'post'">
                         <x-form.input name="name"
                                       class="my-3"
-                                      placeholder="Some Name"
+                                      placeholder="Name of your article"
                                       :value="old('name') ?? $article->name ?? ''"
                                       :required="true">
-                            Full name
+                            Name
+                        </x-form.input>
+                        <x-form.input name="summary"
+                                      type="textarea"
+                                      class="my-3"
+                                      placeholder="A short description of your article"
+                                      :value="old('summary') ?? $article->summary ?? ''"
+                                      :required="true">
+                            Summary
                         </x-form.input>
 
                         <x-divider/>
+
+                        <x-form.input name="article_type"
+                                      class="my-3"
+                                      placeholder="Type of the article"
+                                      :value="old('article_type') ?? $article->article_type ?? ''"
+                                      :required="true">
+                            Type
+                        </x-form.input>
+
+                        <x-form.input name="note"
+                                      class="my-3"
+                                      placeholder="Note"
+                                      :value="old('note') ?? $article->note ?? ''"
+                                      :required="false">
+                            Note
+                        </x-form.input>
+
+                        <x-divider/>
+
+                        <x-form.input type="file"
+                                      name="pdf_file"
+                                      class="my-3"
+                                      placeholder="Select a file to upload..."
+                                      accept=".pdf"
+                                      :value="old('note') ?? $article->note ?? ''"
+                                      :required="true">
+                            Upload PDF file
+                        </x-form.input>
+
+                        <x-form.input type="file"
+                                      name="latex_file"
+                                      class="my-3"
+                                      placeholder="Select a file to upload..."
+                                      multiple
+                                      :value="old('note') ?? $article->note ?? ''"
+                                      :required="false">
+                            Upload LaTeX files
+                        </x-form.input>
 
                         <x-form.submit/>
                     </x-form>
