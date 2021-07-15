@@ -25,54 +25,41 @@
                         <p>Tibor Tómács<br></p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="simple-slider">
-                            <div class="swiper-container">
-                                <div class="d-md-flex swiper-wrapper" style="margin-bottom: 10px;height: 450px;">
-                                    <div class="d-flex d-sm-flex d-md-flex d-xl-flex justify-content-md-center align-items-md-center justify-content-xl-center align-items-xl-center swiper-slide" style="margin-bottom: 40px;height: auto;">
-                                        <div class="d-flex d-xl-flex align-items-center justify-content-md-center justify-content-xl-center align-items-xl-center justify-content-xxl-center align-items-xxl-center" style="width: 75%;height: 80%;">
-                                            <div class="card" style="height: auto;width: 70%;">
-                                                <div class="card-body" style="height: auto;background: rgb(249, 250, 177);">
-                                                    <h4 class="card-title" style="height: auto;font-size: 30px;text-align: center;margin-bottom: 15px;margin-top: 5px;">Title</h4>
-                                                    <h6 class="text-muted card-subtitle mb-2" style="height: auto;font-size: 20px;text-align: center;margin-top: 5px;margin-bottom: 10px;">by: Andrea Bodonyi<br></h6>
-                                                    <p class="card-text" style="height: auto;font-size: 18px;text-align: center;font-style: italic;margin-top: 5px;margin-bottom: 10px;"><em>Pages: 5–19</em><br></p>
-                                                    <p class="card-text" style="height: auto;font-size: 20px;text-align: center;margin-bottom: 10px;margin-top: 5px;">DOI:&nbsp;10.33039/ami.2021.02.001<br></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex d-sm-flex d-md-flex d-xl-flex justify-content-md-center align-items-md-center justify-content-xl-center align-items-xl-center swiper-slide" style="margin-bottom: 40px;height: auto;">
-                                        <div class="d-flex d-xl-flex align-items-center justify-content-md-center justify-content-xl-center align-items-xl-center justify-content-xxl-center align-items-xxl-center" style="width: 75%;height: 80%;">
-                                            <div class="card" style="height: auto;width: 70%;">
-                                                <div class="card-body" style="height: auto;background: rgb(249, 250, 177);">
-                                                    <h4 class="card-title" style="height: auto;font-size: 30px;text-align: center;margin-bottom: 15px;margin-top: 5px;">Title</h4>
-                                                    <h6 class="text-muted card-subtitle mb-2" style="height: auto;font-size: 20px;text-align: center;margin-top: 5px;margin-bottom: 10px;">by: Andrea Bodonyi<br></h6>
-                                                    <p class="card-text" style="height: auto;font-size: 18px;text-align: center;font-style: italic;margin-top: 5px;margin-bottom: 10px;"><em>Pages: 5–19</em><br></p>
-                                                    <p class="card-text" style="height: auto;font-size: 20px;text-align: center;margin-bottom: 10px;margin-top: 5px;">DOI:&nbsp;10.33039/ami.2021.02.001<br></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex d-sm-flex d-md-flex d-xl-flex justify-content-md-center align-items-md-center justify-content-xl-center align-items-xl-center swiper-slide" style="margin-bottom: 40px;height: auto;">
-                                        <div class="d-flex d-xl-flex align-items-center justify-content-md-center justify-content-xl-center align-items-xl-center justify-content-xxl-center align-items-xxl-center" style="width: 75%;height: 80%;">
-                                            <div class="card" style="height: auto;width: 70%;">
-                                                <div class="card-body" style="height: auto;background: rgb(249, 250, 177);">
-                                                    <h4 class="card-title" style="height: auto;font-size: 30px;text-align: center;margin-bottom: 15px;margin-top: 5px;">Title</h4>
-                                                    <h6 class="text-muted card-subtitle mb-2" style="height: auto;font-size: 20px;text-align: center;margin-top: 5px;margin-bottom: 10px;">by: Andrea Bodonyi<br></h6>
-                                                    <p class="card-text" style="height: auto;font-size: 18px;text-align: center;font-style: italic;margin-top: 5px;margin-bottom: 10px;"><em>Pages: 5–19</em><br></p>
-                                                    <p class="card-text" style="height: auto;font-size: 20px;text-align: center;margin-bottom: 10px;margin-top: 5px;">DOI:&nbsp;10.33039/ami.2021.02.001<br></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                <div class="container m-1 mb-3 m-lg-3">
+                    <div id="latestCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row p-3">
+                                    <x-cards.latest-article class="col mx-2" />
+                                    <x-cards.latest-article class="col mx-2" />
                                 </div>
-                                <div class="swiper-pagination"></div>
-                                <div class="swiper-button-prev"></div>
-                                <div class="swiper-button-next"></div>
                             </div>
-
+                            <div class="carousel-item">
+                                <div class="row p-3">
+                                    <x-cards.latest-article class="col mx-2" />
+                                    <x-cards.latest-article class="col mx-2" />
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row p-3">
+                                    <x-cards.latest-article class="col mx-2" />
+                                    <x-cards.latest-article class="col mx-2" />
+                                </div>
+                            </div>
                         </div>
+                        <button class="carousel-control-prev p-0 m-0" type="button" data-bs-target="#latestCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#latestCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <div class="">
+                        <div id="spacer" class="mb-2"></div>
+                        <button class="btn ami-yellow mx-2" onclick="prevContent()">&lt;</button>
+                        <button class="btn ami-yellow mx-2 float-end" onclick="nextContent()">&gt;</button>
                     </div>
                 </div>
             </div>
@@ -83,6 +70,21 @@
 @endsection
 
 @push('js')
-    <script src="{{ asset('js/simple-slider.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
+    <script>
+        let carousel
+
+        document.addEventListener("DOMContentLoaded", function(){
+            const myCarousel = document.querySelector('#latestCarousel')
+            carousel = new bootstrap.Carousel(myCarousel, {interval: 99999})
+        });
+
+        function nextContent() {
+            carousel.next()
+        }
+
+        function prevContent() {
+            carousel.prev()
+        }
+
+    </script>
 @endpush
