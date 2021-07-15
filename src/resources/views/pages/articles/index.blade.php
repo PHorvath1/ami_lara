@@ -5,22 +5,31 @@
     {{--    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>--}}
 @endpush
 
-@push('css')
-    {!! \App\Datatable\Datatable::css() !!}
-@endpush
-
 @section('content')
     <div class="container">
         <div class="wrapper">
-            <x-table.datatable
-                id="article_data"
-                class="table-responsive"
-                :for="$articles"
-                :as="['ID', 'Name', 'Created At']"
-                :view="true"
-                :delete="true"
-                :edit="true"
-            />
+            <div>
+                {{ $articles->render() }}
+            </div>
+            @foreach($articles as $a)
+                <div class="card ami-yellow m-2">
+                    <div class="article_header_color">
+                        <h5 class="card-title article-card-header">{{$a->name}}</h5>
+                        @foreach($a->users as $author)
+                            <span class="article-card-header text-muted">| {{$author->name}} |</span>
+                        @endforeach
+                        <h6 class="card-subtitle article-card-header mb-2 text-muted">{{$a->created_at}}</h6>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{$a->summary}}</p>
+                        <p class="card-text">{{$a->language}}</p>
+                        <p class="card-text text-muted">{{$a->doi}}</p>
+                    </div>
+                </div>
+            @endforeach
+            <div>
+                {{ $articles->render() }}
+            </div>
         </div>
     </div>
 @endsection

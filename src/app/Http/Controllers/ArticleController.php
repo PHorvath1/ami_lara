@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
+use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -14,7 +15,7 @@ class ArticleController extends GuardedController
 {
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return view('pages.articles.index', ['articles' => Article::all()]);
+        return view('pages.articles.index', ['articles' => Article::paginate(6)]);
     }
 
     public function create(): Factory|View|Application|RedirectResponse
