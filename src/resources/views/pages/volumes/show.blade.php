@@ -50,7 +50,7 @@
                                     <h6 class="text-muted card-subtitle mb-2">by: {{ $author_text }}<br></h6>
                                     <p class="card-text"><em>Pages: 5–19 {{ $article->page_count }}</em><br></p>
                                     <p class="card-text">DOI:&nbsp;{{ $article->doi }}<br></p>
-                                    <p class="card-title">Note: {{ $article->summary }}</p>
+                                    <p class="card-text">Note: {{ $article->summary }}</p>
                                 </div>
                             </div>
                         </div>
@@ -58,11 +58,11 @@
                 </div>
             </div>
        </div>
-       <!-- Add Pagination
-       <div class="swiper-pagination"></div> -->
+       <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
        <!-- Add Arrows -->
-        <!--<div class="swiper-button-next"></div>-->
-               <!-- <div class="swiper-button-prev"></div>-->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
             </div>
         </div>
    </div>
