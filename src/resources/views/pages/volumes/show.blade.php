@@ -35,14 +35,22 @@
             <div class="swiper-slide">
                 <div class="row px-4">
                     @foreach ($articles as $article)
+                        @php
+                            /**
+                            * @var App\Models\Article $article
+                            * @var \Illuminate\Database\Eloquent\Collection $authors
+                            */
+                            $authors=$article->users;
+                            $author_text=$authors->map(fn(\App\Models\User $user) => $user->name)->implode(', ');
+                        @endphp
                         <div class="col-4 col-md-4">
                             <div class="card m-3">
                                 <div class="card-body p-5 mx-auto" id="card_color">
                                     <h4 class="card-title">{{ $article->name }}</h4>
-                                    <h6 class="text-muted card-subtitle mb-2">by: Andrea Bodonyi<br></h6>
-                                    <p class="card-text"><em>Pages: 5–19</em><br></p>
-                                    <p class="card-text">DOI:&nbsp;10.33039/ami.2021.02.001<br></p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, amet consequuntur corporis culpa cum dolores eius, eum ex id ipsam nisi nostrum obcaecati optio placeat praesentium suscipit tempore vel vero.</p>
+                                    <h6 class="text-muted card-subtitle mb-2">by: {{ $author_text }}<br></h6>
+                                    <p class="card-text"><em>Pages: 5–19 {{ $article->page_count }}</em><br></p>
+                                    <p class="card-text">DOI:&nbsp;{{ $article->doi }}<br></p>
+                                    <p class="card-title">Note: {{ $article->summary }}</p>
                                 </div>
                             </div>
                         </div>
