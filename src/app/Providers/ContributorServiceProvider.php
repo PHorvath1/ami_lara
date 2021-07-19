@@ -19,8 +19,8 @@ class ContributorServiceProvider extends ServiceProvider
      */
     public static function attachAll(array $contributions, Article $article): void {
         foreach ($contributions as $contribution) {
-            $contributor = Str::of($contribution)->before( ':')->trim()->lower();
-            $contribution_type = Str::of($contribution)->after( ':')->trim()->lower();
+            $contributor = Str::of($contribution)->before( '::')->trim()->lower();
+            $contribution_type = Str::of($contribution)->after( '::')->trim()->lower();
             $user = User::where('email', $contributor)->first();
             abort_if(is_null($user), 404, "Unknown user $contributor.");
             $article->users()->attach($user, ['contribution_type' => $contribution_type]);
