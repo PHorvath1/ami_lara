@@ -49,7 +49,7 @@ class ArticleController extends GuardedController
         $article->update($request->validated());
         $pdf = $request->upload('pdf', 'uploads/articles');
         $latex = $request->upload('latex', 'uploads/articles');
-        Revision::where('article_id', operatorOrEqualsValue: $article->id)->update(['pdf_path' => $pdf, 'latex_path' => $latex]);
+        Revision::create(['pdf_path' => $pdf, 'latex_path' => $latex]);
         Toastr::success('Article modified');
         return redirect(route('articles.show', [$article]));
     }
