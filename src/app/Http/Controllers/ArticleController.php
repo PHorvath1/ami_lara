@@ -36,11 +36,11 @@ class ArticleController extends GuardedController
         $tags = $article->tags();
         $authors = $article->users();
         $pdf = $request->upload('pdf', 'uploads/articles');
-        $tex = $request->upload('tex', 'uploads/articles');
+        $latex = $request->upload('latex', 'uploads/articles');
         CategoryServiceProvider::attachAll($category, $article);
         TagServiceProvider::attachAll($tags, $article);
         ContributorServiceProvider::attachAll($authors, $article);
-        Revision::create(['pdf_path' => $pdf, 'latex_path' => $tex, 'article_id' => $article->id]);
+        Revision::create(['pdf_path' => $pdf, 'latex_path' => $latex, 'article_id' => $article->id]);
         $request->except(['categories', 'tags', 'users']);
         Toastr::success('New article created');
         return redirect(route('articles.show', [$article]));
@@ -59,6 +59,9 @@ class ArticleController extends GuardedController
     public function update(ArticleRequest $request, Article $article): Factory|View|Application|RedirectResponse
     {
         $article->update($request->validated());
+        $pdf = $request->upload('pdf', 'uploads/articles');
+        $latex = $request->upload('latex', 'uploads/articles');
+        Revision::where('article_id', operatorOrEqualsValue: $article->id)->update(['pdf_path' => $pdf, 'latex_path' => $latex]);
         Toastr::success('Article modified');
         return redirect(route('articles.show', [$article]));
     }
