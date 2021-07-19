@@ -11,5 +11,3 @@
         @endauth
     </ul>
 </div>
-
-{{--<button class="btn btn-primary d-flex d-sm-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-xl-center align-items-xl-center" type="button" style="background: rgba(13,110,253,0);border-color: rgba(255,255,255,0);border-right-color: rgba(13,110,253,0);width: 40px;height: 40px;margin-left: 2.5px;"><i class="fas fa-user" style="margin: 5px;margin-left: 10px;margin-right: 10px;color: var(--bs-dark);"></i></button>--}}

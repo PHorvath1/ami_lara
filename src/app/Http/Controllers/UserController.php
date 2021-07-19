@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\User\NameContains;
+use App\Filters\UserFilter;
 use App\Http\Middleware\BouncerCheck;
+use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
@@ -15,7 +18,7 @@ class UserController extends GuardedController
 {
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return view('pages.users.index', ['users' => User::all()]);
+        return view('pages.users.index')->with('users', User::filterWith(UserFilter::class)->through('name', 'created_gt')->paginate(2));
     }
 
     public function create(): Factory|View|Application|RedirectResponse
@@ -23,9 +26,9 @@ class UserController extends GuardedController
         return view('pages.users.form');
     }
 
-    public function store(UserRequest $request): Factory|View|Application|RedirectResponse
+    public function store(UserCreateRequest $request): Factory|View|Application|RedirectResponse
     {
-        $user = User::create($request->validated());
+        $user = User::create($request->transform());
         Toastr::success('New user created');
         return redirect(route('users.show', [$user]));
     }
