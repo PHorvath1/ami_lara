@@ -32,7 +32,7 @@ class VolumeController extends GuardedController
 
     public function show(Volume $volume): Factory|View|Application|RedirectResponse
     {
-        return view('pages.volumes.show', ['volume' => $volume, 'articles' => $volume->articles()->paginate(6)]);
+        return view('pages.volumes.show', ['volume' => $volume, 'articles' => $volume->articles()->paginate(3)]);
     }
 
     public function edit(Volume $volume): Factory|View|Application|RedirectResponse

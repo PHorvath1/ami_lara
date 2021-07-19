@@ -29,34 +29,42 @@
                 <hr>
             </div>
        </div>
+       <div>
+           {{ $articles->render() }}
+       </div>
        <div class="row">
-            <div class="swiper-container">
-       <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <div class="row px-4">
-                    @foreach ($articles as $article)
-                        <div class="col-4 col-md-4">
-                            <div class="card m-3">
-                                <div class="card-body p-5 mx-auto" id="card_color">
-                                    <h4 class="card-title">{{ $article->name }}</h4>
-                                    <h6 class="text-muted card-subtitle mb-2">by: Andrea Bodonyi<br></h6>
-                                    <p class="card-text"><em>Pages: 5–19</em><br></p>
-                                    <p class="card-text">DOI:&nbsp;10.33039/ami.2021.02.001<br></p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, amet consequuntur corporis culpa cum dolores eius, eum ex id ipsam nisi nostrum obcaecati optio placeat praesentium suscipit tempore vel vero.</p>
-                                </div>
+           <div class="row px-4">
+                @foreach ($articles as $article)
+                    @php
+                        /**
+                        * @var App\Models\Article $article
+                        * @var \Illuminate\Database\Eloquent\Collection $authors
+                        * @var App\Models\Volume $volume
+                        */
+                        $authors=$article->users;
+                        $author_text=$authors->map(fn(\App\Models\User $user) => $user->name)->implode(', ');
+                        $pivot = null;
+                        foreach ($volume->articles as $temp_article){
+                            if($temp_article->id = $article->id){
+                                    $pivot = $temp_article->pivot;
+                                    //dd($pivot);
+                                    break;
+                            }
+                        }
+                    @endphp
+                    <div class="col-4 col-md-4">
+                        <div class="card m-3">
+                            <div class="card-body p-5 mx-auto" id="card_color">
+                                <h4 class="card-title">{{ $article->name }}</h4>
+                                <h6 class="text-muted card-subtitle mb-2">by: {{ $author_text }}<br></h6>
+                                <p class="card-text"><em>Pages: {{ $pivot->from_page. " - ". $pivot->to_page }}</em><br></p>
+                                <p class="card-text">DOI:&nbsp;{{ $article->doi }}<br></p>
+                                <p class="card-text">Summary: {{ $article->summary }}</p>
                             </div>
                         </div>
-                    @endforeach
-                </div>
-            </div>
+                    </div>
+                @endforeach
+           </div>
        </div>
-       <!-- Add Pagination
-       <div class="swiper-pagination"></div> -->
-       <!-- Add Arrows -->
-        <!--<div class="swiper-button-next"></div>-->
-               <!-- <div class="swiper-button-prev"></div>-->
-            </div>
-        </div>
    </div>
-
 @endsection
