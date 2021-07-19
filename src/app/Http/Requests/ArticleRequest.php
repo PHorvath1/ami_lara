@@ -22,7 +22,7 @@ class ArticleRequest extends ExtendedFormRequest
             'doi' => [],
             'language' => [ 'required' ],
             'authors' => [ 'required' ],
-            'category' => [ 'required' ],
+            'categories' => [ 'required' ],
             'tags' => [],
             'latex' => []
 
