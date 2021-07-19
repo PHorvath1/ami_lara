@@ -23,7 +23,7 @@ class ArticleRequest extends ExtendedFormRequest
             'language' => [ 'required' ],
             'authors' => [ 'required' ],
             'category' => [ 'required' ],
-            'tags' => [ 'required' ],
+            'tags' => [],
             'latex' => []
 
         ];
