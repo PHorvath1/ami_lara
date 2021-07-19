@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\User\NameContains;
+use App\Filters\UserFilter;
 use App\Http\Middleware\BouncerCheck;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserRequest;
@@ -16,7 +18,7 @@ class UserController extends GuardedController
 {
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return view('pages.users.index', ['users' => User::all()]);
+        return view('pages.users.index')->with('users', User::filterWith(UserFilter::class)->through('name', 'created_gt')->paginate(2));
     }
 
     public function create(): Factory|View|Application|RedirectResponse

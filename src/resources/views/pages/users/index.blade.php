@@ -11,6 +11,8 @@
 
 @section('content')
     <div class="container">
+        <a href="{{ $users->nextUrl() }}">Next</a>
+{{--        TODO: CREATE NEW CLASS FOR EXTENDED PAGINATOR--}}
         <div class="wrapper">
             <x-table.datatable
                 id="user_data"
