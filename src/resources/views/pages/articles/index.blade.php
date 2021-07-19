@@ -12,11 +12,11 @@
                 {{ $articles->render() }}
             </div>
             @foreach($articles as $a)
-                <div class="card ami-yellow m-2">
+                <a href="{{route('articles.show',$a)}}" class="text-decoration-none text-dark"><div class="card ami-yellow m-2">
                     <div class="article_header_color">
                         <h5 class="card-title article-card-header">{{$a->name}}</h5>
                         @foreach($a->users as $author)
-                            <span class="article-card-header text-muted">| {{$author->name}} |</span>
+                            <span class="article-card-header text-muted">{{$author->name}} </span>
                         @endforeach
                         <h6 class="card-subtitle article-card-header mb-2 text-muted">{{$a->created_at}}</h6>
                     </div>
@@ -25,7 +25,7 @@
                         <p class="card-text">{{$a->language}}</p>
                         <p class="card-text text-muted">{{$a->doi}}</p>
                     </div>
-                </div>
+                    </div></a>
             @endforeach
             <div>
                 {{ $articles->render() }}
