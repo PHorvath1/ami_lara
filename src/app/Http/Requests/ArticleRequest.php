@@ -12,16 +12,19 @@ class ArticleRequest extends ExtendedFormRequest
     public function rules(): array
     {
         return [
-            'pdf' => ['file'],
+            'pdf' => ['file', 'required'],
             'name' => [ 'required', 'min:10' ],
             'summary' => [ 'required', 'min:10' ],
-            'state' => [ 'required' ],
             'page_count' => [ 'required' ],
             'article_type' => [ 'required' ],
             'note' => [],
             'related_url' => [],
             'doi' => [],
-            'language' => []
+            'language' => [ 'required' ],
+            'authors' => [ 'required' ],
+            'category' => [ 'required' ],
+            'tags' => [ 'required' ],
+            'latex' => []
 
         ];
     }
