@@ -39,18 +39,27 @@
                             /**
                             * @var App\Models\Article $article
                             * @var \Illuminate\Database\Eloquent\Collection $authors
+                            * @var App\Models\Volume $volume
                             */
                             $authors=$article->users;
                             $author_text=$authors->map(fn(\App\Models\User $user) => $user->name)->implode(', ');
+                            $pivot = null;
+                            foreach ($volume->articles as $temp_article){
+                                if($temp_article->id = $article->id){
+                                        $pivot = $temp_article->pivot;
+                                        //dd($volume);
+                                        break;
+                                }
+                            }
                         @endphp
                         <div class="col-4 col-md-4">
                             <div class="card m-3">
                                 <div class="card-body p-5 mx-auto" id="card_color">
                                     <h4 class="card-title">{{ $article->name }}</h4>
                                     <h6 class="text-muted card-subtitle mb-2">by: {{ $author_text }}<br></h6>
-                                    <p class="card-text"><em>Pages: 5–19 {{ $article->page_count }}</em><br></p>
+                                    <p class="card-text"><em>Pages: {{ $pivot->from_page. " - ". $pivot->to_page }}</em><br></p>
                                     <p class="card-text">DOI:&nbsp;{{ $article->doi }}<br></p>
-                                    <p class="card-text">Note: {{ $article->summary }}</p>
+                                    <p class="card-text">Summary: {{ $article->summary }}</p>
                                 </div>
                             </div>
                         </div>
