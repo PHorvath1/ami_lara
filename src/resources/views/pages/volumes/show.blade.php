@@ -29,11 +29,11 @@
                 <hr>
             </div>
        </div>
+       <div>
+           {{ $articles->render() }}
+       </div>
        <div class="row">
-            <div class="swiper-container">
-       <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <div class="row px-4">
+               <div class="row px-4">
                     @foreach ($articles as $article)
                         @php
                             /**
@@ -47,7 +47,7 @@
                             foreach ($volume->articles as $temp_article){
                                 if($temp_article->id = $article->id){
                                         $pivot = $temp_article->pivot;
-                                        //dd($volume);
+                                        //dd($pivot);
                                         break;
                                 }
                             }
@@ -64,16 +64,15 @@
                             </div>
                         </div>
                     @endforeach
-                </div>
-            </div>
+
+               </div>
        </div>
-       <!-- Add Pagination -->
+       <!-- Add Pagination
     <div class="swiper-pagination"></div>
-       <!-- Add Arrows -->
+       <--Add Arrows
     <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-            </div>
-        </div>
+    <div class="swiper-button-prev"></div>-->
+
    </div>
 
 @endsection
