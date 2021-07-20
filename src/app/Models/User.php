@@ -41,11 +41,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /** Defines a many-to-many relationship between users and articles
+     * @return BelongsToMany The type of the relationship
+     */
     public function articles(): BelongsToMany
     {
         return $this->belongsToMany(Article::class);
     }
 
+    /** Defines a one-to-many relationship between users and comments
+     * @return BelongsToMany The type of the relationship
+     */
     public function comments(): Relation {
         return $this->hasMany(Comment::class, 'user_id', 'id');
     }
