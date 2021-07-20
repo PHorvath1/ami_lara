@@ -31,6 +31,7 @@ use Symfony\Component\Routing\Exception\InvalidParameterException;;
  * @property string language
  * @property string doi
  * @property Collection categories
+ * @property Collection users
  */
 class Article extends Model
 {
