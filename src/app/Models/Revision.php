@@ -6,7 +6,8 @@ use App\Traits\ApiResource;
 use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Revision
@@ -24,11 +25,17 @@ class Revision extends Model
 {
     use HasFactory, ApiResource;
 
-    public function comments(): Relation {
+    /** Defines a one-to-many relationship between revisions and comments
+     * @return HasMany The type of the relationship
+     */
+    public function comments(): HasMany {
         return $this->hasMany(Comment::class, 'revision_id', 'id');
     }
 
-    public function article(): Relation {
+    /** Defines an inverse one-to-many relationship between revisions and users
+     * @return BelongsTo The type of the relationship
+     */
+    public function article(): BelongsTo {
         return $this->belongsTo(Article::class, 'id', 'article_id');
     }
 
