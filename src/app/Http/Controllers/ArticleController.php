@@ -31,17 +31,20 @@ class ArticleController extends GuardedController
 
     public function store(ArticleRequest $request): Factory|View|Application|RedirectResponse
     {
-        $article = Article::create($request->validated());
-        $category = $article->categories();
-        $tags = $article->tags();
-        $authors = $article->users();
+        $rq = $request->validated();
+        $rqe = $request->except(['categories', 'tags', 'authors']);
+        $article = Article::create($rqe);
+
+        $categories = $rq['categories']->explode(',');
+        $tags = $rq['tags']->explode(',');
+        $authors = $rq['authors']->explode(',');
         $pdf = $request->upload('pdf', 'uploads/articles');
         $latex = $request->upload('latex', 'uploads/articles');
-        CategoryServiceProvider::attachAll($category, $article);
+
+        CategoryServiceProvider::attachAll($categories, $article);
         TagServiceProvider::attachAll($tags, $article);
         ContributorServiceProvider::attachAll($authors, $article);
         Revision::create(['pdf_path' => $pdf, 'latex_path' => $latex, 'article_id' => $article->id]);
-        $request->except(['categories', 'tags', 'users']);
         Toastr::success('New article created');
         return redirect(route('articles.show', [$article]));
     }
