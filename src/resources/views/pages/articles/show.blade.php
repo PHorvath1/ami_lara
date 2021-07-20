@@ -8,12 +8,12 @@
 
 @section('content')
     <div class="container-fluid p-4" id="container_color">
-        <div class="card text-center">
-            <div class="card-header">
-                <h3>Name: {{ $article->name }}</h3>
+        <div id="cardtextbc" class="card text-center">
+            <div id="articletitel" class="card-header">
+                <h3 >Name: {{ $article->name }}</h3>
             </div>
             <div class="card-body">
-                <h4>Summary: {{ $article->summary }}</h4>
+                <h4 class="lefty">Summary: {{ $article->summary }}</h4>
             </div>
             <div class="articleshowcol">
                 <div class="articleshowrow" id="row_rnd">
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <h4>Note: {{ $article->note }}</h4>
+                <h4 class="lefty">Note: {{ $article->note }}</h4>
             </div>
             <div class="articleshowcol2">
                 <div class="articleshowrow" id="row_rnd">
@@ -40,15 +40,9 @@
                     <h4>Related url: {{ $article->related_url }}</h4>
                 </div>
         </div>
-            <tr>
+            <div class="pdfdownload">
+                <button id="pdfdownloadbtn" class="btn btn-danger" type="button">Download pdf</button>
+            </div>
 
-                <td>
-                    <x-button.magic class="btn-danger" :route="route('articles.destroy', [$article])"
-                                    confirm="Are you sure? This can not be undone!">Delete
-                    </x-button.magic>
-                </td>
-            </tr>
-            </tbody>
-        </table>
     </div>
 @endsection
