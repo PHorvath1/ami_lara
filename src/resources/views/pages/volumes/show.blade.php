@@ -8,6 +8,7 @@
     * @var \App\Models\Article $article
     */
     @endphp
+
    <div class="container-fluid p-4" id="container_color">
        <div class="card text-center">
            <div class="card-header">
@@ -18,7 +19,7 @@
                <h6 class="card-text">Release year<{{ $volume->release_year }}></h6>
            </div>
            <div class="card-footer text-muted">
-               2 days ago
+               x days ago
            </div>
        </div>
        <hr>
@@ -47,7 +48,6 @@
                         foreach ($volume->articles as $temp_article){
                             if($temp_article->id = $article->id){
                                     $pivot = $temp_article->pivot;
-                                    //dd($pivot);
                                     break;
                             }
                         }
