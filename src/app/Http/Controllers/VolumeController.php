@@ -15,7 +15,7 @@ class VolumeController extends GuardedController
 
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return view('pages.volumes.index', ['volumes' => Volume::latest()->paginate(5)]);
+        return view('pages.volumes.index', ['volumes' => Volume::latest()->paginate(10)]);
     }
 
     public function create(): Factory|View|Application|RedirectResponse
