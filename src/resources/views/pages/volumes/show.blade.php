@@ -19,7 +19,7 @@
                <h6 class="card-text">Release year<{{ $volume->release_year }}></h6>
            </div>
            <div class="card-footer text-muted">
-               x days ago
+               {{$volume->created_at->diffForHumans()}}
            </div>
        </div>
        <hr>

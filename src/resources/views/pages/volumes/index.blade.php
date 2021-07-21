@@ -12,11 +12,14 @@
     <div class="container">
         <div class="row justify-content-start">
             <div class="col-3">
-                <h6>Browse volumes or latest articles: </h6>
+                <h6><em>Browse volumes or latest articles: </em></h6>
             </div>
         </div>
         <hr>
         <div class="row">
+            <div>
+                {{ $volumes->render() }}
+            </div>
             @foreach($volumes as $v)
                 <div class="col-sm col-md-5 mx-auto">
                     <a href="{{route('volumes.show',$v)}}" class="text-decoration-none text-dark">
@@ -26,7 +29,7 @@
                             </div>
                             <div class="card-body">
                                 <p class="card-text">{{$v->description}}</p>
-                                <p class="card-text"><br>Vol: {{$v->id}}. ({{$v->release_year}})</p>
+                                <em><p class="card-text"><br>Vol: {{$v->id}}. ({{$v->release_year}})</p></em>
                             </div>
                         </div>
                     </a>
