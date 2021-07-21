@@ -6,6 +6,7 @@ use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
 use App\Models\Revision;
 use App\Models\User;
+use App\Models\Comment;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -36,7 +37,7 @@ class ArticleController extends GuardedController
 
     public function show(Article $article): Factory|View|Application|RedirectResponse
     {
-        return view('pages.articles.show', ['article' => $article]);
+        return view('pages.articles.show', ['article' => $article, 'revisions' => Revision::all(), 'users' => User::all()]);
     }
 
     public function edit(Article $article): Factory|View|Application|RedirectResponse
