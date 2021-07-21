@@ -27,3 +27,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('test', [StaticController::class, 'test']);
     Route::get('/about', [StaticController::class, 'about'])->name('about');
     Route::get('/submissions', [StaticController::class, 'submissions'])->name('submissions');
+
