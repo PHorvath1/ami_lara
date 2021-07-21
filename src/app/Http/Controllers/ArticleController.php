@@ -19,16 +19,29 @@ use Illuminate\Http\RedirectResponse;
 
 class ArticleController extends GuardedController
 {
+    /**
+     * Redirects the user to the article listing view
+     * @return Factory|View|Application|RedirectResponse
+     */
     public function index(): Factory|View|Application|RedirectResponse
     {
         return view('pages.articles.index', ['articles' => Article::paginate(6)]);
     }
 
+    /**
+     * Redirects the user to the create article form
+     * @return Factory|View|Application|RedirectResponse
+     */
     public function create(): Factory|View|Application|RedirectResponse
     {
         return view('pages.articles.form');
     }
 
+    /**
+     * Creates a new article and a revision with the file uploads
+     * @param ArticleRequest $request The article's data
+     * @return Factory|View|Application|RedirectResponse
+     */
     public function store(ArticleRequest $request): Factory|View|Application|RedirectResponse
     {
         $rq = $request->validated();
@@ -49,16 +62,32 @@ class ArticleController extends GuardedController
         return redirect(route('articles.show', [$article]));
     }
 
+    /**
+     * Redirects the user to the article showing view
+     * @param Article $article The article data
+     * @return Factory|View|Application|RedirectResponse
+     */
     public function show(Article $article): Factory|View|Application|RedirectResponse
     {
         return view('pages.articles.show', ['article' => $article]);
     }
 
+    /**
+     * Redirects the user to the article editing form
+     * @param Article $article The article data
+     * @return Factory|View|Application|RedirectResponse
+     */
     public function edit(Article $article): Factory|View|Application|RedirectResponse
     {
         return view('pages.articles.form', ['article' => $article]);
     }
 
+    /**
+     * Updates the article and creates a new revision with the updated files
+     * @param ArticleRequest $request New article data
+     * @param Article $article Existing article data
+     * @return Factory|View|Application|RedirectResponse
+     */
     public function update(ArticleRequest $request, Article $article): Factory|View|Application|RedirectResponse
     {
         $article->update($request->validated());
@@ -69,6 +98,11 @@ class ArticleController extends GuardedController
         return redirect(route('articles.show', [$article]));
     }
 
+    /**
+     * Removes an article from the database
+     * @param Article $article The article data
+     * @return Factory|View|Application|RedirectResponse
+     */
     public function destroy(Article $article): Factory|View|Application|RedirectResponse
     {
         Toastr::warning("Article deleted: $article->id");
