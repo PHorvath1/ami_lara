@@ -26,16 +26,25 @@ class Volume extends Model
 
     protected $appends = ['name'];
 
+    /** Defines a many-to-many relationship between volumes and articles
+     * @return BelongsToMany The type of the relationship
+     */
     public function articles(): BelongsToMany
     {
         return $this->belongsToMany(Article::class);
     }
 
+    /** Returns the name of the volume
+     * @return string
+     */
     public function getNameAttribute(): string
     {
         return $this->name_str ?? "#$this->id";
     }
 
+    /** Sets the name of the volume
+     * @param $value
+     */
     public function setNameAttribute($value)
     {
         $this->name_str = $value;
