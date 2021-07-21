@@ -20,6 +20,9 @@ class Category extends Model
 {
     use HasFactory, ApiResource;
 
+    /** Defines a many-to-many relationship between categories and articles
+     * @return BelongsToMany The type of the relationship
+     */
     public function articles(): BelongsToMany
     {
         return $this->belongsToMany(Article::class);

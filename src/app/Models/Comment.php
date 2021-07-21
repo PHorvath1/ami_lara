@@ -6,7 +6,7 @@ use App\Traits\ApiResource;
 use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Class Comment
@@ -23,11 +23,17 @@ class Comment extends Model
 {
     use HasFactory, ApiResource;
 
-    public function user(): Relation {
+    /** Defines an inverse one-to-many relationship between comments and users
+     * @return BelongsTo The type of the relationship
+     */
+    public function user(): BelongsTo {
         return $this->belongsTo(User::class, 'uuid', 'id');
     }
 
-    public function revision(): Relation {
+    /** Defines an inverse one-to-many relationship between comments and revisions
+     * @return BelongsTo The type of the relationship
+     */
+    public function revision(): BelongsTo {
         return $this->belongsTo(Revision::class, 'id', 'revision_id');
     }
 

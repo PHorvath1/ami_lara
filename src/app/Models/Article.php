@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Str;
 use Symfony\Component\Routing\Exception\InvalidParameterException;;
 
@@ -31,6 +31,7 @@ use Symfony\Component\Routing\Exception\InvalidParameterException;;
  * @property string language
  * @property string doi
  * @property Collection categories
+ * @property Collection users
  */
 class Article extends Model
 {
@@ -40,6 +41,9 @@ class Article extends Model
 
     protected $appends = ['stateText'];
 
+    /** Returns the state of the article.
+     * @return string The state of the article, or UNKNOWN if not in STATES.
+     */
     public function getStateTextAttribute(){
         return $this->state > count(self::STATES) || $this->state < 0
             ? 'UNKNOWN'
@@ -47,7 +51,14 @@ class Article extends Model
 
     }
 
-    /**
+    /** Defines a one-to-many relationship between articles and revisions
+     * @return HasMany The type of the relationship
+     */
+    public function revisions(): HasMany {
+        return $this->hasMany(Revision::class, 'article_id', 'id');
+    }
+
+    /** Set the state of the article
      * @throws InvalidParameterException If state text is not found in STATES
      */
     public function setStateTextAttribute($value){
@@ -59,25 +70,33 @@ class Article extends Model
         $this->save();
     }
 
-    public function revisions(): Relation {
-        return $this->hasMany(Revision::class, 'article_id', 'id');
-    }
-
+    /** Defines a many-to-many relationship between articles and users
+     * @return BelongsToMany The type of the relationship
+     */
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
     }
 
+    /** Defines a many-to-many relationship between articles and volumes
+     * @return BelongsToMany The type of the relationship
+     */
     public function volumes(): BelongsToMany
     {
         return $this->belongsToMany(Volume::class);
     }
 
+    /** Defines a many-to-many relationship between articles and categories
+     * @return BelongsToMany The type of the relationship
+     */
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);
     }
 
+    /** Defines a many-to-many relationship between articles and tags
+     * @return BelongsToMany The type of the relationship
+     */
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
