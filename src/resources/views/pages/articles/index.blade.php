@@ -9,7 +9,8 @@
     <div class="container">
         <div class="wrapper">
             <div>
-                <form class="d-lg-flex me-auto justify-content-lg-start search-form float-lg-end" target="_self">
+                {{ $articles->links() }}
+                <form class="d-lg-flex me-auto justify-content-lg-start search-form" target="_self">
                     <div class="d-flex justify-content-lg-end"><input class="border rounded form-control search-field" type="search" id="search-field" name="search" style="background: white;width: 230px;">
                         <button id="searchbtn" class="btn btn-primary d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" type="button"><i class="fas fa-search"></i></button></div>
                     <div class="dropdown">
@@ -44,7 +45,7 @@
                     </div></a>
             @endforeach
             <div>
-                {{ $articles->render() }}
+                {{ $articles->links() }}
             </div>
         </div>
     </div>
