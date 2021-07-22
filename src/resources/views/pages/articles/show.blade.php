@@ -73,7 +73,7 @@
             <div class="col">
                 <div class="row">
                     <div class="comment">
-                        <form method="post" action="{{route('user.comment',$article)}}">
+                        <form method="post" action="{{route('comment.store',$article)}}">
                             @csrf
                             <input type="hidden" name="user_id" value="{{Auth::id()}}"/>
                             <input type="hidden" name="revision_id" value="{{$article->revisions->last()->id}}"/>

@@ -21,7 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', UserController::class);
     Route::resource('articles', ArticleController::class);
     Route::resource('volumes', VolumeController::class);
-    Route::post('articles/{article}', [CommentController::class, 'store']) -> name('user.comment');
+    Route::post('articles/{article}', [CommentController::class, 'store']) -> name('comment.store');
     Route::post('/auth/{user}/assign_role/{role}', [BouncerController::class, 'assign_role'])->name('user.role.assign_role');
     Route::post('/auth/{user}/unassign_role/{role}', [BouncerController::class, 'unassign_role'])->name('user.role.unassign_role');
 
