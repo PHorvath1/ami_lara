@@ -54,7 +54,7 @@ class ArticleController extends GuardedController
     public function show(Article $article): Factory|View|Application|RedirectResponse
     {
         //return view('pages.articles.show', ['article' => $article, 'revisions' => Revision::all(), 'users' => User::all()]);
-        return view('pages.articles.show', ['article' => $article, 'users' => User::all()]);
+        return view('pages.articles.show', [ 'article' => $article ]);
     }
 
     public function edit(Article $article): Factory|View|Application|RedirectResponse

@@ -60,7 +60,7 @@
                     @if($r->article_id === $article->id)
                         @foreach($r->comments as $comment)
                             <div class="row_comment">
-                                <div>{{$users->find($comment->user_id)->name }}</div>
+                                <div>{{ $comment->user->name }}</div>
                                 <div class="text-muted">{{$comment->created_at}}</div>
                                 <div>{{$comment->content}}</div>
                                 <div class="row_comment_border"></div>
