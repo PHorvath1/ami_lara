@@ -23,6 +23,8 @@ class Comment extends Model
 {
     use HasFactory, ApiResource;
 
+    protected $fillable = ['content', 'user_id', 'revision_id'];
+
     /** Defines an inverse one-to-many relationship between comments and users
      * @return BelongsTo The type of the relationship
      */
