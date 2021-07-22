@@ -37,11 +37,11 @@ class ArticleController extends GuardedController
         $rqe = $request->except(['categories', 'tags', 'authors']);
         $article = Article::create($rqe);
 
-        $categories = $rq['categories']->explode(',');
-        $tags = $rq['tags']->explode(',');
-        $authors = $rq['authors']->explode(',');
-        $pdf = $request->upload('pdf', 'uploads/articles');
-        $latex = $request->upload('latex', 'uploads/articles');
+        $categories = explode(',', $rq['categories']);
+        $tags = explode(',', $rq['tags'] ?? '');
+        $authors = explode(',', $rq['authors']);
+        $pdf = $request->upload('pdf', 'articles');
+        $latex = $request->upload('latex', 'articles');
 
         CategoryServiceProvider::attachAll($categories, $article);
         TagServiceProvider::attachAll($tags, $article);
@@ -64,11 +64,20 @@ class ArticleController extends GuardedController
 
     public function update(ArticleRequest $request, Article $article): Factory|View|Application|RedirectResponse
     {
-        $article->update($request->validated());
+        $rq = $request->validated();
+        $rqe = $request->except(['categories', 'tags', 'authors']);
+        $article->update($rqe);
+        $categories = explode(',', $rq['categories']);
+        $tags = explode(',', $rq['tags'] ?? '');
+        $authors = explode(',', $rq['authors']);
         $pdf = $request->upload('pdf', 'uploads/articles');
         $latex = $request->upload('latex', 'uploads/articles');
-        Revision::create(['pdf_path' => $pdf, 'latex_path' => $latex]);
-        Toastr::success('Article modified');
+
+        CategoryServiceProvider::attachAll($categories, $article);
+        TagServiceProvider::attachAll($tags, $article);
+        ContributorServiceProvider::attachAll($authors, $article);
+        Revision::create(['pdf_path' => $pdf, 'latex_path' => $latex, 'article_id' => $article->id]);
+        Toastr::success('Article successfully updated');
         return redirect(route('articles.show', [$article]));
     }
 
