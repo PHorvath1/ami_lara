@@ -29,14 +29,14 @@ class Revision extends Model
      * @return HasMany The type of the relationship
      */
     public function comments(): HasMany {
-        return $this->hasMany(Comment::class, 'revision_id', 'id');
+        return $this->hasMany(Comment::class);
     }
 
     /** Defines an inverse one-to-many relationship between revisions and users
      * @return BelongsTo The type of the relationship
      */
     public function article(): BelongsTo {
-        return $this->belongsTo(Article::class, 'id', 'article_id');
+        return $this->belongsTo(Article::class);
     }
 
 }
