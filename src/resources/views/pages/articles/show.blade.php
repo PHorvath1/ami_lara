@@ -56,7 +56,7 @@
                         </form>
                     </div>
                 </div>
-                @foreach($revisions as $r)
+                @foreach($article->revisions as $r)
                     @if($r->article_id === $article->id)
                         @foreach($r->comments as $comment)
                             <div class="row_comment">
