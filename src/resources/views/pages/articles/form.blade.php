@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-body">
                         <x-form :to="$article ? route('articles.update', [$article]) : route('articles.store')"
-                                :method="$article ? 'put' : 'post'">
+                                :method="$article ? 'put' : 'post'" :allowFile="true">
                             <x-form.input name="name"
                                           class="my-3"
                                           placeholder="Name of your article"
@@ -51,27 +51,69 @@
 
                             <x-divider/>
 
-                            <x-form.input type="file"
-                                          name="pdf_file"
+                            <x-form.input name="page_count"
                                           class="my-3"
-                                          placeholder="Select a file to upload..."
-                                          accept=".pdf"
-                                          :value="old('note') ?? $article->note ?? ''"
+                                          placeholder="Number of pages"
+                                          :value="old('page_count') ?? $article->page_count ?? ''"
+                                          :required="true">
+                                Page count
+                            </x-form.input>
+
+                            <x-form.input name="language"
+                                          class="my-3"
+                                          placeholder="Language"
+                                          :value="old('language') ?? $article->language ?? ''"
+                                          :required="true">
+                                Language
+                            </x-form.input>
+
+                            <x-divider/>
+
+                            <x-form.input name="categories"
+                                          class="my-3"
+                                          placeholder="Categories"
+                                          :value="old('categories') ?? $article->categories ?? ''"
+                                          :required="true">
+                                Categories
+                            </x-form.input>
+
+                            <x-form.input name="authors"
+                                          class="my-3"
+                                          placeholder="Ex. user@test.com::Author"
+                                          :value="old('authors') ?? $article->authors ?? ''"
+                                          :required="true">
+                                Contributors
+                            </x-form.input>
+
+                            <x-form.input name="tags"
+                                          class="my-3"
+                                          placeholder="Ex. IoT"
+                                          :value="old('tags') ?? $article->tags ?? ''"
+                                          :required="false">
+                                Tags
+                            </x-form.input>
+
+                            <x-divider/>
+
+                            <x-form.input type="file"
+                                          name="pdf"
+                                          class="my-3"
+                                          :value="old('pdf') ?? $article->pdf ?? ''"
                                           :required="true">
                                 Upload PDF file
                             </x-form.input>
 
                             <x-form.input type="file"
-                                          name="latex_file"
+                                          name="latex"
                                           class="my-3"
-                                          placeholder="Select a file to upload..."
                                           multiple
-                                          :value="old('note') ?? $article->note ?? ''"
+                                          :value="old('latex') ?? $article->latex ?? ''"
                                           :required="false">
                                 Upload LaTeX files
                             </x-form.input>
 
                             <x-form.submit/>
+
                         </x-form>
                     </div>
                 </div>
