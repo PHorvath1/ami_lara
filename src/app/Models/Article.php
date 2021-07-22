@@ -55,7 +55,7 @@ class Article extends Model
      * @return HasMany The type of the relationship
      */
     public function revisions(): HasMany {
-        return $this->hasMany(Revision::class, 'article_id', 'id');
+        return $this->hasMany(Revision::class);
     }
 
     /** Set the state of the article
