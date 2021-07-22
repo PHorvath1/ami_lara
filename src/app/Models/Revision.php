@@ -25,6 +25,8 @@ class Revision extends Model
 {
     use HasFactory, ApiResource;
 
+    protected $fillable = ['pdf_path', 'latex_path', 'article_id'];
+
     /** Defines a one-to-many relationship between revisions and comments
      * @return HasMany The type of the relationship
      */
