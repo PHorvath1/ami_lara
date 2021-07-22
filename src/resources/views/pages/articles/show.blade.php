@@ -73,23 +73,24 @@
             <div class="col">
                 <div class="row">
                     <div class="comment">
-                        <form>
-                            <textarea id="title" type="text "rows="2" cols="60" placeholder="Write a comment......"></textarea>
-                            <input type="submit" value="Post" onclick="insert()" style="width:100px;" />
+                        <form method="post" action="{{route('comment.store',$article)}}">
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{Auth::id()}}"/>
+                            <input type="hidden" name="revision_id" value="{{$article->revisions->last()->id}}"/>
+                            <textarea name="content" id="title" type="text "rows="2" cols="60" placeholder="Write a comment......"></textarea>
+                            <input type="submit" value="Post"/>
                         </form>
                     </div>
                 </div>
                 @foreach($article->revisions as $r)
-                    @if($r->article_id === $article->id)
-                        @foreach($r->comments as $comment)
-                            <div class="row_comment">
-                                <div>{{ $comment->user->name }}</div>
-                                <div class="text-muted">{{$comment->created_at}}</div>
-                                <div>{{$comment->content}}</div>
-                                <div class="row_comment_border"></div>
-                            </div>
-                        @endforeach
-                    @endif
+                    @foreach($r->comments()->latest()->get() as $comment)
+                        <div class="row_comment">
+                            <div>{{ $comment->user->name }}</div>
+                            <div class="text-muted">{{$comment->created_at}}</div>
+                            <div>{{$comment->content}}</div>
+                            <div class="row_comment_border"></div>
+                        </div>
+                    @endforeach
                 @endforeach
             </div>
         </div>
