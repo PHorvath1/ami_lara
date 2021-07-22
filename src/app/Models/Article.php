@@ -37,7 +37,7 @@ class Article extends Model
 {
     use HasFactory, ApiResource, UUID;
 
-    protected $fillable = ['name', 'summary', 'page_count', 'article_type', 'note', 'language', 'categories', 'users'];
+    protected $fillable = ['name', 'summary', 'page_count', 'article_type', 'note', 'language', 'users'];
 
     private const STATES = [ 'UNDER_REVIEW', 'ACCEPTED', 'REJECTED' ];
 
