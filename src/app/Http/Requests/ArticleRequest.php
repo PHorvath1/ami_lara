@@ -12,7 +12,7 @@ class ArticleRequest extends ExtendedFormRequest
     public function rules(): array
     {
         return [
-            'pdf' => ['file', 'required'],
+            'pdf' => [ 'required' ],
             'name' => [ 'required', 'min:10' ],
             'summary' => [ 'required', 'min:10' ],
             'page_count' => [ 'required' ],
