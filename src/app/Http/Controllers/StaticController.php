@@ -49,6 +49,6 @@ class StaticController extends Controller
      */
     public function submissions(): Factory|View|Application
     {
-        return view('pages.submissions');
+        return view('pages.articles.form');
     }
 }

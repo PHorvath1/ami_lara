@@ -20,6 +20,8 @@ class Category extends Model
 {
     use HasFactory, ApiResource;
 
+    protected $fillable = ['name'];
+
     /** Defines a many-to-many relationship between categories and articles
      * @return BelongsToMany The type of the relationship
      */

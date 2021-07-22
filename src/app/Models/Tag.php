@@ -17,6 +17,8 @@ class Tag extends Model
 {
     use HasFactory, ApiResource;
 
+    protected $fillable = ['name'];
+
     /** Defines a many-to-many relationship between tags and articles
      * @return BelongsToMany The type of the relationship
      */

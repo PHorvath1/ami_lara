@@ -12,7 +12,7 @@ class ArticleRequest extends ExtendedFormRequest
     public function rules(): array
     {
         return [
-            'pdf' => ['file', 'required'],
+            'pdf' => [ 'required' ],
             'name' => [ 'required', 'min:10' ],
             'summary' => [ 'required', 'min:10' ],
             'page_count' => [ 'required' ],
@@ -42,7 +42,7 @@ class ArticleRequest extends ExtendedFormRequest
 
         if ($hasFile) {
             $uploadedFile = $this->file($fileInputName);
-            return $uploadedFile->move("uploads/$path", Str::random(8) . '_' . $uploadedFile->getClientOriginalExtension())->getFilename();
+            return $uploadedFile->move("uploads/$path", Str::random(8) . '.' . $uploadedFile->getClientOriginalExtension())->getFilename();
         }
         return false;
     }
