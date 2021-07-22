@@ -13,7 +13,7 @@ use Illuminate\Http\RedirectResponse;
 class CategoryController extends GuardedController
 {
     /**
-     * Redirects the user to the category listing view
+     * Shows the category listing view
      * @return Factory|View|Application|RedirectResponse
      */
     public function index(): Factory|View|Application|RedirectResponse
@@ -22,7 +22,7 @@ class CategoryController extends GuardedController
     }
 
     /**
-     * Redirects the user to the category create form
+     * Shows the category create form
      * @return Factory|View|Application|RedirectResponse
      */
     public function create(): Factory|View|Application|RedirectResponse
@@ -43,7 +43,7 @@ class CategoryController extends GuardedController
     }
 
     /**
-     * Redirects the user to the show category view
+     * Shows the category show view
      * @param Category $category
      * @return Factory|View|Application|RedirectResponse
      */
@@ -53,7 +53,7 @@ class CategoryController extends GuardedController
     }
 
     /**
-     * Redirects the user to the edit category form
+     * Shows the edit category form
      * @param Category $category The updated category data
      * @return Factory|View|Application|RedirectResponse
      */

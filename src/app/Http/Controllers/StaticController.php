@@ -9,7 +9,7 @@ use Illuminate\Contracts\View\View;
 class StaticController extends Controller
 {
     /**
-     * Redirects the user to the home page
+     * Shows the home page
      * @return Factory|View|Application
      */
     public function home(): Factory|View|Application
@@ -18,7 +18,7 @@ class StaticController extends Controller
     }
 
     /**
-     * Redirects the user to the test page
+     * Shows the test page
      * @return Application|Factory|View
      */
     public function test(){
@@ -26,7 +26,7 @@ class StaticController extends Controller
     }
 
     /**
-     * Redirects the user to the about page
+     * Shows the about page
      * @return Application|Factory|View
      */
     public function about(): Factory|View|Application
@@ -35,7 +35,7 @@ class StaticController extends Controller
     }
 
     /**
-     * Redirects the user to the content page
+     * Shows the content page
      * @return Application|Factory|View
      */
     public function content(): Factory|View|Application
@@ -44,7 +44,7 @@ class StaticController extends Controller
     }
 
     /**
-     * Redirects the user to the submissions page
+     * Shows the submissions page
      * @return Application|Factory|View
      */
     public function submissions(): Factory|View|Application

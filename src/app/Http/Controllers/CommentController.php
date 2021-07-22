@@ -15,7 +15,7 @@ use Illuminate\Http\RedirectResponse;
 class CommentController extends GuardedController
 {
     /**
-     * Redirects the user to the comment listing view
+     * Shows the comment listing view
      * @return Factory|View|Application|RedirectResponse
      */
     public function index(): Factory|View|Application|RedirectResponse
@@ -24,7 +24,7 @@ class CommentController extends GuardedController
     }
 
     /**
-     * Redirects the user to the comment create form
+     * Shows the comment create form
      * @return Factory|View|Application|RedirectResponse
      */
     public function create(): Factory|View|Application|RedirectResponse
@@ -45,7 +45,7 @@ class CommentController extends GuardedController
     }
 
     /**
-     * Redirects the user to the comment show view
+     * Shows the comment show view
      * @param Comment $comment
      * @return Factory|View|Application|RedirectResponse
      */
@@ -55,7 +55,7 @@ class CommentController extends GuardedController
     }
 
     /**
-     * Redirects the user to the comment editor form
+     * Shows the comment editor form
      * @param Comment $comment
      * @return Factory|View|Application|RedirectResponse
      */

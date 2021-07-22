@@ -17,7 +17,7 @@ use Illuminate\Http\RedirectResponse;
 class UserController extends GuardedController
 {
     /**
-     * Redirects the user to the user listing page
+     * Shows the user listing page
      * @return Factory|View|Application|RedirectResponse
      */
     public function index(): Factory|View|Application|RedirectResponse
@@ -26,7 +26,7 @@ class UserController extends GuardedController
     }
 
     /**
-     * Redirects the user to the user create form
+     * Shows the user create form
      * @return Factory|View|Application|RedirectResponse
      */
     public function create(): Factory|View|Application|RedirectResponse
@@ -47,7 +47,7 @@ class UserController extends GuardedController
     }
 
     /**
-     * Redirects the user to the show user page
+     * Shows the show user page
      * @param User $user User data
      * @return Factory|View|Application|RedirectResponse
      */
@@ -57,7 +57,7 @@ class UserController extends GuardedController
     }
 
     /**
-     * Redirects the user to the user editor form
+     * Shows the user editor form
      * @param User $user
      * @return Factory|View|Application|RedirectResponse
      */

@@ -14,7 +14,7 @@ class VolumeController extends GuardedController
 {
 
     /**
-     * Redirects the user to the volume listing page
+     * Shows the volume listing page
      * @return Factory|View|Application|RedirectResponse
      */
     public function index(): Factory|View|Application|RedirectResponse
@@ -23,7 +23,7 @@ class VolumeController extends GuardedController
     }
 
     /**
-     * Redirects the user to the volume create form
+     * Shows the volume create form
      * @return Factory|View|Application|RedirectResponse
      */
     public function create(): Factory|View|Application|RedirectResponse
@@ -44,7 +44,7 @@ class VolumeController extends GuardedController
     }
 
     /**
-     * Redirects the user to the volume show page
+     * Shows the volume show page
      * @param Volume $volume
      * @return Factory|View|Application|RedirectResponse
      */
@@ -54,7 +54,7 @@ class VolumeController extends GuardedController
     }
 
     /**
-     * Redirects the user to the volume editor form
+     * Shows the volume editor form
      * @param Volume $volume
      * @return Factory|View|Application|RedirectResponse
      */

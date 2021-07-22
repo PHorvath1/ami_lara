@@ -20,7 +20,7 @@ use Illuminate\Http\RedirectResponse;
 class ArticleController extends GuardedController
 {
     /**
-     * Redirects the user to the article listing view
+     * Shows the article listing view
      * @return Factory|View|Application|RedirectResponse
      */
     public function index(): Factory|View|Application|RedirectResponse
@@ -29,7 +29,7 @@ class ArticleController extends GuardedController
     }
 
     /**
-     * Redirects the user to the create article form
+     * Shows the create article form
      * @return Factory|View|Application|RedirectResponse
      */
     public function create(): Factory|View|Application|RedirectResponse
@@ -63,7 +63,7 @@ class ArticleController extends GuardedController
     }
 
     /**
-     * Redirects the user to the article showing view
+     * Shows the article showing view
      * @param Article $article The article data
      * @return Factory|View|Application|RedirectResponse
      */
@@ -73,7 +73,7 @@ class ArticleController extends GuardedController
     }
 
     /**
-     * Redirects the user to the article editing form
+     * Shows the article editing form
      * @param Article $article The article data
      * @return Factory|View|Application|RedirectResponse
      */

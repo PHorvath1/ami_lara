@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class ProfileController extends Controller
 {
     /**
-     * Redirects the user to it's profile page
+     * Shows the user their profile page
      * @return Factory|View|Application|RedirectResponse
      */
     public function profile(): Factory|View|Application|RedirectResponse
@@ -20,7 +20,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Redirects the user to it's profile editor form
+     * Shows the user their profile editor form
      * @return Factory|View|Application|RedirectResponse
      */
     public function editProfile(): Factory|View|Application|RedirectResponse

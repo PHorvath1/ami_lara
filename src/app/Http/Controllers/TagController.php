@@ -17,7 +17,7 @@ class TagController extends GuardedController
 {
 
     /**
-     * Redirects the user to the tag listing page
+     * Shows the tag listing page
      * @return Factory|View|Application|RedirectResponse
      */
     public function index(): Factory|View|Application|RedirectResponse
@@ -26,7 +26,7 @@ class TagController extends GuardedController
     }
 
     /**
-     * Redirects the user to the tag create form
+     * Shows the tag create form
      * @return Factory|View|Application|RedirectResponse
      */
     public function create(): Factory|View|Application|RedirectResponse
@@ -47,7 +47,7 @@ class TagController extends GuardedController
     }
 
     /**
-     * Redirects the user to the tag show page
+     * Shows the tag show page
      * @param Tag $tag Tag data
      * @return Factory|View|Application|RedirectResponse
      */
@@ -57,7 +57,7 @@ class TagController extends GuardedController
     }
 
     /**
-     * Redirects the user to the tag editor form
+     * Shows the tag editor form
      * @param Tag $tag Tag data
      * @return Factory|View|Application|RedirectResponse
      */

@@ -13,7 +13,7 @@ use Illuminate\Http\RedirectResponse;
 class RevisionController extends GuardedController
 {
     /**
-     * Redirects the user to the revision listing page
+     * Shows the revision listing page
      * @return Factory|View|Application|RedirectResponse
      */
     public function index(): Factory|View|Application|RedirectResponse
@@ -22,7 +22,7 @@ class RevisionController extends GuardedController
     }
 
     /**
-     * Redirects the user to the revision create form
+     * Shows the revision create form
      * @return Factory|View|Application|RedirectResponse
      */
     public function create(): Factory|View|Application|RedirectResponse
@@ -43,7 +43,7 @@ class RevisionController extends GuardedController
     }
 
     /**
-     * Redirects the user to the show revision view
+     * Shows the revision show view
      * @param Revision $revision Revision data
      * @return Factory|View|Application|RedirectResponse
      */
@@ -53,7 +53,7 @@ class RevisionController extends GuardedController
     }
 
     /**
-     * Redirects the user to the revision editor form
+     * Shows the revision editor form
      * @param Revision $revision Revision data
      * @return Factory|View|Application|RedirectResponse
      */
