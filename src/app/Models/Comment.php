@@ -27,14 +27,14 @@ class Comment extends Model
      * @return BelongsTo The type of the relationship
      */
     public function user(): BelongsTo {
-        return $this->belongsTo(User::class, 'uuid', 'id');
+        return $this->belongsTo(User::class);
     }
 
     /** Defines an inverse one-to-many relationship between comments and revisions
      * @return BelongsTo The type of the relationship
      */
     public function revision(): BelongsTo {
-        return $this->belongsTo(Revision::class, 'id', 'revision_id');
+        return $this->belongsTo(Revision::class);
     }
 
 }
