@@ -43,9 +43,32 @@
             <div class="pdfdownload">
                 <button id="pdfdownloadbtn" class="btn btn-danger" type="button">Download pdf</button>
             </div>
-        @can('see-revisions')
-        @endcan
-    </div>
+        @php
+            $authors=$article->users;
+            $contains = false;
+            foreach ($authors as $author) {
+                if ($author->id === Auth::user()->id) {
+                    $contains = true;
+                    break;
+                }
+            }
+            @endphp
+            @if(\App\Utils\Bouncer::can('edit', $article) || $contains)
+                <tr>
+                    <td>
+                        <x-button.magic class="btn-warning"
+                                        :route="route('articles.edit', [$article])">
+                            Edit
+                        </x-button.magic>
+                    </td>
+                    <td>
+                        <x-button.magic class="btn-danger" :route="route('articles.destroy', [$article])"
+                                        confirm="Are you sure? This can not be undone!">Delete
+                        </x-button.magic>
+                    </td>
+                </tr>
+            @endif
+            </div>
         <div class="container-fluid p-4" id="comm_container_c">
             <div class="col">
                 <div class="row">

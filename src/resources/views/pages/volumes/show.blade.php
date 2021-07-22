@@ -54,13 +54,15 @@
                     @endphp
                     <div class="col-4 col-md-4">
                         <div class="card m-3">
-                            <div class="card-body p-5 mx-auto" id="card_color">
-                                <h4 class="card-title">{{ $article->name }}</h4>
-                                <h6 class="text-muted card-subtitle mb-2">by: {{ $author_text }}<br></h6>
-                                <p class="card-text"><em>Pages: {{ $pivot->from_page }} - {{$pivot->to_page }}</em><br></p>
-                                <p class="card-text">DOI:&nbsp;{{ $article->doi }}<br></p>
-                                <p class="card-text">Summary: {{ $article->summary }}</p>
-                            </div>
+                            <a href="{{route('articles.show', $article->id)}}" class="text-decoration-none text-dark">
+                                <div class="card-body p-5 mx-auto" id="card_color">
+                                    <h4 class="card-title"> {{ $article->name }}</h4>
+                                    <h6 class="text-muted card-subtitle mb-2">by: {{ $author_text }}<br></h6>
+                                    <p class="card-text"><em>Pages: {{ $pivot->from_page }} - {{$pivot->to_page }}</em><br></p>
+                                    <p class="card-text">DOI:&nbsp;{{ $article->doi }}<br></p>
+                                    <p class="card-text">Summary: {{ $article->summary }}</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 @endforeach
