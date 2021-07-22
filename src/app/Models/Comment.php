@@ -26,17 +26,17 @@ class Comment extends Model
 {
     use HasFactory, ApiResource;
 
-    private const review = [ 'DECLINED', 'REQUEST CHANGES', 'APPROVED' ];
+    private const REVIEWS = [ 'DECLINED', 'REQUEST CHANGES', 'APPROVED' ];
 
     public function getReviewTextAttribute(){
-        return $this->review_num > count(self::review) || $this->review_num < 0
+        return $this->review_num > count(self::REVIEWS) || $this->review_num < 0
             ? 'UNKNOWN'
-            : self::review[$this->review_num];
+            : self::REVIEWS[$this->review_num];
     }
 
     public function setReviewTextAttribute($value){
         $value = Str::of($value)->upper();
-        $index = array_search($value, self::review, false);
+        $index = array_search($value, self::REVIEWS, false);
         if ($index < 0) throw new InvalidParameterException('Unknown State');
         $this->review_num = $index;
         $this->save();
