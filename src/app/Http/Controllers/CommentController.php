@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CommentRequest;
+use App\Models\Article;
 use App\Models\Comment;
 use App\Utils\Bouncer;
 use App\Utils\StatusCode;
+use Illuminate\Support\Facades\Auth;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -25,11 +27,12 @@ class CommentController extends GuardedController
         return view('pages.comments.form');
     }
 
-    public function store(CommentRequest $request): Factory|View|Application|RedirectResponse
+    public function store(CommentRequest $request, Article $article): Factory|View|Application|RedirectResponse
     {
-       $comment = Comment::create($request->validated());
+        $rq = $request->validated();
+        $comment = Comment::create($rq);
         Toastr::success('New comment created');
-        return redirect(route('comments.show', [$comment]));
+        return redirect(route('articles.show', [$article]));
     }
 
     public function show(Comment $comment): Factory|View|Application|RedirectResponse
