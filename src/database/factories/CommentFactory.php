@@ -13,7 +13,7 @@ class CommentFactory extends Factory
     {
         return [
             'content' => $this->faker->paragraph(),
-            'review_num' => $this->faker->numberBetween(0,2)
+            'review_num' => $this->faker->numberBetween(0,3)
         ];
     }
 }
