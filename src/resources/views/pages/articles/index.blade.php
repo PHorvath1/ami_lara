@@ -57,6 +57,9 @@
             $('input[name="date-search"]').daterangepicker({
                 opens: 'left'
             });
+            $("div.daterangepicker").click( function(e) {
+                e.stopPropagation();
+            });
         });
     </script>
 @endsection
