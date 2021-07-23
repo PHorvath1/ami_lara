@@ -12,16 +12,29 @@ use Illuminate\Http\RedirectResponse;
 
 class CategoryController extends GuardedController
 {
+    /**
+     * Shows the category listing view
+     * @return Factory|View|Application|RedirectResponse
+     */
     public function index(): Factory|View|Application|RedirectResponse
     {
         return view('pages.category.index', ['categories' => Category::all()]);
     }
 
+    /**
+     * Shows the category create form
+     * @return Factory|View|Application|RedirectResponse
+     */
     public function create(): Factory|View|Application|RedirectResponse
     {
         return view('pages.categories.form');
     }
 
+    /**
+     * Creates a category
+     * @param CategoryRequest $request The create form data
+     * @return Factory|View|Application|RedirectResponse
+     */
     public function store(CategoryRequest $request): Factory|View|Application|RedirectResponse
     {
        $category = Category::create($request->validated());
@@ -29,16 +42,32 @@ class CategoryController extends GuardedController
         return redirect(route('categories.show', [$category]));
     }
 
+    /**
+     * Shows the category show view
+     * @param Category $category
+     * @return Factory|View|Application|RedirectResponse
+     */
     public function show(Category $category): Factory|View|Application|RedirectResponse
     {
         return view('pages.categories.show', ['category' => $category]);
     }
 
+    /**
+     * Shows the edit category form
+     * @param Category $category The updated category data
+     * @return Factory|View|Application|RedirectResponse
+     */
     public function edit(Category $category): Factory|View|Application|RedirectResponse
     {
         return view('pages.categories.form', ['category' => $category]);
     }
 
+    /**
+     * Updates the category, then shows it to the user
+     * @param CategoryRequest $request The updated category data
+     * @param Category $category The existing data
+     * @return Factory|View|Application|RedirectResponse
+     */
     public function update(CategoryRequest $request, Category $category): Factory|View|Application|RedirectResponse
     {
         $category->update($request->validated());
@@ -46,6 +75,11 @@ class CategoryController extends GuardedController
         return redirect(route('categories.show', [$category]));
     }
 
+    /**
+     * Removes a category from the database
+     * @param Category $category A category to remove
+     * @return Factory|View|Application|RedirectResponse
+     */
     public function destroy(Category $category): Factory|View|Application|RedirectResponse
     {
         Toastr::warning("Category deleted: $category->name");
