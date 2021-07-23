@@ -18,13 +18,13 @@
                     <div class="dropdown">
                         <button class="btn rounded dropdown-toggle btn-advanced-search" id="btn-advanced-search" type="button" data-bs-toggle="dropdown" aria-expanded="false">Advanced search</button>
                         <ul class="dropdown-menu advanced-search-dropdown" aria-labelledby="btn-advanced-search">
-                            <li><label for="author" class="m-1">Contributor:</label>
-                            <input type="text" id="author" class="dropdown-item" name="contributor-search" placeholder="Contributor"></li>
-                            <li><label for="date" class="m-1">Date:</label>
+                            <li class="mx-3"><label for="contributor" class="m-1">Contributor:</label>
+                            <input type="text" id="contributor" class="dropdown-item" name="contributor-search" placeholder="Contributor"></li>
+                            <li class="mx-3"><label for="date" class="m-1">Date:</label>
                             <input type="text" id="date" class="dropdown-item" name="date-search" value="01/01/2020 - 01/01/2020"></li>
-                            <li><label for="category" class="m-1">Categories:</label>
+                            <li class="mx-3"><label for="category" class="m-1">Categories:</label>
                             <input type="text" id="category" class="dropdown-item" name="category-search" placeholder="Categories"></li>
-                            <li><button class="btn btn-primary rounded float-lg-end" name="btn-filter" type="submit">Filter search</button></li>
+                            <li class="mx-3"><button class="btn btn-primary rounded float-lg-end" name="btn-filter" type="submit">Filter search</button></li>
                         </ul>
                     </div>
                 </form>
