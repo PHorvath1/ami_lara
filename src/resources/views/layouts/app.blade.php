@@ -31,7 +31,7 @@
         <x-navbar />
         <x-header />
 
-        <main class="py-4">
+        <main class="main">
             @yield('content')
         </main>
         <footer class="footer mt-auto">
