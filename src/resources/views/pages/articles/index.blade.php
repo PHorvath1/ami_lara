@@ -24,7 +24,7 @@
                             <input type="text" id="date" class="dropdown-item" name="date-search" value="01/01/2020 - 01/01/2020"></li>
                             <li class="mx-3"><label for="category" class="m-1">Categories:</label>
                             <input type="text" id="category" class="dropdown-item" name="category-search" placeholder="Categories"></li>
-                            <li class="mx-3"><button class="btn btn-primary rounded float-lg-end" name="btn-filter" type="submit">Filter search</button></li>
+                            <li class="mx-3 my-2"><button class="btn btn-primary rounded float-lg-end" name="btn-filter" type="submit">Filter search</button></li>
                         </ul>
                     </div>
                 </form>
