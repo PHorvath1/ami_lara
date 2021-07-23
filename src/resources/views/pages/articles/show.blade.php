@@ -85,7 +85,7 @@
                             <input type="hidden" name="user_id" value="{{Auth::id()}}"/>
                             <input type="hidden" name="revision_id" value="{{$article->revisions->last()->id}}"/>
                             <textarea name="content" id="title" type="text "rows="2" cols="60" placeholder="Write a comment......"></textarea>
-                            <input type="submit" value="Post"/>
+                            <input class="commentbtn" type="submit" value="Post"/>
 
                         </form>
                     </div>
