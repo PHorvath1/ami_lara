@@ -14,21 +14,34 @@
             <div>
                 <form class="d-lg-flex me-auto justify-content-lg-start search-form float-lg-end" target="_self">
                     <div class="d-flex justify-content-lg-end"><input class="border rounded form-control search-field" type="search" id="search-field" name="search" style="background: white;width: 230px;">
-                        <button id="searchbtn" class="btn btn-primary d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" type="button"><i class="fas fa-search"></i></button></div>
-                    <div class="dropdown">
-                        <button class="btn rounded dropdown-toggle btn-advanced-search" id="btn-advanced-search" type="button" data-bs-toggle="dropdown" aria-expanded="false">Advanced search</button>
-                        <ul class="dropdown-menu advanced-search-dropdown" aria-labelledby="btn-advanced-search">
-                            <li class="mx-3"><label for="contributor" class="m-1">Contributor:</label>
-                            <input type="text" id="contributor" class="dropdown-item" name="contributor-search" placeholder="Contributor"></li>
-                            <li class="mx-3"><label for="date" class="m-1">Date:</label>
-                            <input type="text" id="date" class="dropdown-item" name="date-search" value="01/01/2020 - 01/01/2020"></li>
-                            <li class="mx-3"><label for="category" class="m-1">Categories:</label>
-                            <input type="text" id="category" class="dropdown-item" name="category-search" placeholder="Categories"></li>
-                            <li class="mx-3 my-2"><button class="btn btn-primary rounded float-lg-end" name="btn-filter" type="submit">Filter search</button></li>
-                        </ul>
+                        <button id="searchbtn" class="btn btn-primary d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" type="button"><i class="fas fa-search"></i></button>
+                        <button class="btn rounded btn-advanced-search" id="btn-advanced-search" type="button" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="collapse">Advanced search</button>
                     </div>
                 </form>
                 {{ $articles->links() }}
+            </div>
+            <div class="collapse" id="searchCollapse">
+                <form target="_self">
+                    <div class="mb-3 form-floating">
+                        <input type="text" class="form-control" id="contributor" name="contributor-search" placeholder="Contributor">
+                        <label for="contributor">Contributor:</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input type="text" class="form-control" id="date" name="date-search" value="01/01/2020 - 01/01/2020">
+                        <label for="date">Date:</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input type="text" class="form-control" id="category" name="category-search" placeholder="Categories">
+                        <label for="category">Categories:</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input type="text" class="form-control" id="tag" name="tag-search" placeholder="Tags">
+                        <label for="tag">Tags:</label>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary rounded" type="submit">Filter search</button>
+                    </div>
+                </form>
             </div>
             @foreach($articles as $a)
                 <a href="{{route('articles.show',$a)}}" class="text-decoration-none text-dark"><div class="card ami-yellow m-2">
