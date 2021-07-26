@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
+@push('css')
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+@endpush
+
 @push('pre-js')
     {{--    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>--}}
     {{--    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>--}}
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 @endpush
 
 @section('content')
@@ -22,23 +24,39 @@
             </div>
             <div class="collapse" id="searchCollapse">
                 <form target="_self">
-                    <div class="mb-3 form-floating">
-                        <input type="text" class="form-control" id="contributor" name="contributor-search" placeholder="Contributor">
-                        <label for="contributor">Contributor:</label>
+                    <div class="row m-2 align-items-center">
+                        <div class="col-2">
+                            <label for="contributor">Contributor:</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" id="contributor" name="contributor-search" placeholder="Contributor">
+                        </div>
                     </div>
-                    <div class="mb-3 form-floating">
-                        <input type="text" class="form-control" id="date" name="date-search" value="01/01/2020 - 01/01/2020">
-                        <label for="date">Date:</label>
+                    <div class="row m-2 align-items-center">
+                        <div class="col-2">
+                            <label for="date">Date:</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" id="date" name="date-search" value="01/01/2020 - 01/01/2020">
+                        </div>
                     </div>
-                    <div class="mb-3 form-floating">
-                        <input type="text" class="form-control" id="category" name="category-search" placeholder="Categories">
-                        <label for="category">Categories:</label>
+                    <div class="row m-2 align-items-center">
+                        <div class="col-2">
+                            <label for="category">Categories:</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" id="category" name="category-search" placeholder="Categories">
+                        </div>
                     </div>
-                    <div class="mb-3 form-floating">
-                        <input type="text" class="form-control" id="tag" name="tag-search" placeholder="Tags">
-                        <label for="tag">Tags:</label>
+                    <div class="row m-2 align-items-center">
+                        <div class="col-2">
+                            <label for="tag">Tags:</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" id="tag" name="tag-search" placeholder="Tags">
+                        </div>
                     </div>
-                    <div class="mb-3">
+                    <div class="m-2">
                         <button class="btn btn-primary rounded" type="submit">Filter search</button>
                     </div>
                 </form>
