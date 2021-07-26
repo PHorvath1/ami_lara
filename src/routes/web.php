@@ -31,3 +31,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/about', [StaticController::class, 'about'])->name('about');
     Route::get('/submissions', [StaticController::class, 'submissions'])->name('submissions');
 
+
+Auth::routes();
+
+Route::get('/home', function() {
+    return view('home');
+})->name('home')->middleware('auth');
