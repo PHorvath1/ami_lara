@@ -9,9 +9,13 @@ use Storage;
 
 class DownloadFileController extends Controller
 {
+    /**
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
     public function download($fileName)
     {
-       $file=Storage::disk('public')->get($fileName);
-       return (new Response($file, 200))->header('Content-Type', 'pdf');
+        $path = 'uploads/articles/'.$fileName;
+        $header = ['Content-Type: application/pdf'];
+        return response()->file($path, $header);
     }
 }
