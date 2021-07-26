@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use PhpParser\Node\Expr\Array_;
 use Str;
 use Symfony\Component\Routing\Exception\InvalidParameterException;;
 
@@ -42,6 +43,14 @@ class Article extends Model
     private const STATES = [ 'UNDER_REVIEW', 'ACCEPTED', 'REJECTED' ];
 
     protected $appends = ['stateText'];
+
+    /**
+     * Gets the available states
+     * @return string[] The states
+     */
+    public function getStates(): array{
+        return self::STATES;
+    }
 
     /** Returns the state of the article.
      * @return string The state of the article, or UNKNOWN if not in STATES.
@@ -77,7 +86,7 @@ class Article extends Model
      */
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot('contribution_type');
     }
 
     /** Defines a many-to-many relationship between articles and volumes
