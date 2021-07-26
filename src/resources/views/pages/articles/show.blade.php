@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="pdfdownload">
-                <form method="get" action="{{$article->revisions->last()->pdf_path}}">
+                <form method="get" action="{{route('download', $article->revisions->last()->pdf_path)}}">
                     <button  id="pdfdownloadbtn" class="btn-danger">
                         Download pdf
                     </button >
