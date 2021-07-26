@@ -101,8 +101,8 @@ class ArticleController extends GuardedController
         $tags = explode(',', $rq['tags'] ?? '');
         $authors = explode(',', $rq['authors']);
         if ($request->has('pdf') || $request->has('latex')) {
-            $pdf = $request->upload('pdf', 'uploads/articles');
-            $latex = $request->upload('latex', 'uploads/articles');
+            $pdf = $request->upload('pdf', 'articles');
+            $latex = $request->upload('latex', 'articles');
             Revision::create(['pdf_path' => $pdf, 'latex_path' => $latex, 'article_id' => $article->id]);
         }
 
