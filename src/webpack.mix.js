@@ -2,20 +2,15 @@ const mix = require('laravel-mix');
 const glob = require('glob');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel application. By default, we are compiling the Sass
- | file for the application as well as bundling up all the JS files.
- |
- */
+//<editor-fold desc="Pattern matching for globify function">
+const files = pattern => glob.sync(pattern, { cwd: 'resources/sass' });
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
-    .sourceMaps();
+const globify = (pattern, out, mixFunctionName) => {
+    files(pattern).forEach((path) => {
+        mix[mixFunctionName](`resources/sass/${path}`, out);
+    })
+};
+//</editor-fold>
 
 mix.webpackConfig({
     plugins: [
