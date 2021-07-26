@@ -15,6 +15,19 @@
                     <div class="card-body">
                         <x-form :to="$article ? route('articles.update', [$article]) : route('articles.store')"
                                 :method="$article ? 'put' : 'post'" :allowFile="true">
+
+                            @if ($article != null)
+                                <label for="state">State</label>
+                                <select id="state"
+                                          name="state"
+                                          class="my-6"
+                                          required>
+                                    @foreach($article->getStates() as $state)
+                                        <option value="{{$state}}">{{$state}}</option>
+                                    @endforeach
+                                </select>
+                            @endif
+
                             <x-form.input name="name"
                                           class="my-3"
                                           placeholder="Name of your article"
@@ -69,26 +82,46 @@
 
                             <x-divider/>
 
+                                @php
+                                    $categoryString = implode(', ', $article
+                                        ->categories
+                                        ->map( fn(\App\Models\Category $category) => $category->name )
+                                        ->toArray())
+                                @endphp
                             <x-form.input name="categories"
                                           class="my-3"
                                           placeholder="Categories"
-                                          :value="old('categories') ?? $article->categories ?? ''"
+                                          :value="old('categories') ?? $categoryString ?? ''"
                                           :required="true">
                                 Categories
                             </x-form.input>
 
+                                @php
+                                    $userString = "";
+                                    $pivot = null;
+                                    foreach ($article->users as $user)
+                                        $userString .= $user->email . '::' . $user->pivot->contribution_type . ', ';
+
+                                    $userString = trim($userString, ', ');
+                                @endphp
                             <x-form.input name="authors"
                                           class="my-3"
                                           placeholder="Ex. user@test.com::Author"
-                                          :value="old('authors') ?? $article->authors ?? ''"
+                                          :value="old('authors') ?? $userString ?? ''"
                                           :required="true">
                                 Contributors
                             </x-form.input>
 
+                                @php
+                                    $tagString = implode(', ', $article
+                                        ->tags
+                                        ->map( fn(\App\Models\Tag $tag) => $tag->name )
+                                        ->toArray())
+                                @endphp
                             <x-form.input name="tags"
                                           class="my-3"
                                           placeholder="Ex. IoT"
-                                          :value="old('tags') ?? $article->tags ?? ''"
+                                          :value="old('tags') ?? $tagString ?? ''"
                                           :required="false">
                                 Tags
                             </x-form.input>
@@ -99,7 +132,7 @@
                                           name="pdf"
                                           class="my-3"
                                           :value="old('pdf') ?? $article->pdf ?? ''"
-                                          :required="true">
+                                          :required="$article===null">
                                 Upload PDF file
                             </x-form.input>
 
