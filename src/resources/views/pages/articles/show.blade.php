@@ -3,6 +3,7 @@
 @php
     /**
     * @var \App\Models\Article $article
+    * @var \App\Models\Revision $revision
     */
 @endphp
 
@@ -44,7 +45,11 @@
                 </div>
             </div>
             <div class="pdfdownload">
-                <button id="pdfdownloadbtn" class="btn btn-danger" type="button">Download pdf</button>
+                <form method="get" action="{{$article->revisions->last()->pdf_path}}">
+                    <button  id="pdfdownloadbtn" class="btn-danger">
+                        Download pdf
+                    </button >
+                </form>
                 <div class="rightfloat">
                     @php
                         $authors=$article->users;
