@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
-class ArticleRequest extends ExtendedFormRequest
+class ArticleCreateRequest extends ExtendedFormRequest
 {
     public function rules(): array
     {
