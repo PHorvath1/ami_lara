@@ -32,13 +32,15 @@
                             <h5 class="aboutcardheader">Contact</h5>
                         </div>
                         <div class="cardbodycontatct">
-                            <p class="aboutcardtxt">Eszterházy Károly University</p>
-                            <p class="aboutcardtxt">Institute of Mathematics and Informatics</p>
-                            <p class="aboutcardtxt">H-3300 Eger, Leányka u. 4</p>
-                            <p class="aboutcardtxt">Hungary</p>
-                            <p class="aboutcardtxt">Tel/Fax: +36-36-520478</p>
-                            <a class="aboutcardhref" href="https://mailhide.io/e/zoXKu">E-mail</a>
-                            <p class="aboutcardtxt"> </p>
+                            <p class="aboutcardtxtc">Eszterházy Károly University</p>
+                            <p class="aboutcardtxtc">Institute of Mathematics and Informatics</p>
+                            <p class="aboutcardtxtc">H-3300 Eger, Leányka u. 4</p>
+                            <p class="aboutcardtxtc">Hungary</p>
+                            <p class="aboutcardtxtc">Tel/Fax: +36-36-520478</p>
+                            <div class="aboutcardhref">
+                            <a  href="https://mailhide.io/e/zoXKu">E-mail</a>
+                            </div>
+
 
                         </div>
                     </div>
@@ -50,29 +52,54 @@
             <div class="row">
                 <div class="col">
                     <div class="row">
+
                         <div class="col">
-                            <img id="imh" src="{{ asset('img/footer/mh.png') }}">
-                            <br>
-                            <a class="imgname" href="https://hoffmannmiklos.uni-eszterhazy.hu/en">Miklós Hoffmann</a>
-                            <h5 class="imgtitel">(Editor-in-Chief)</h5>
+                            <div class="card">
+                                <img id="imh" src="{{ asset('img/footer/mh.png') }}">
+                                <div class="eoffice">
+                                   <a class="imgname" href="https://hoffmannmiklos.uni-eszterhazy.hu/en">Miklós Hoffmann</a>
+                                </div>
+                                <div class="eofficedesc">
+                                    <h5 class="imgtitel">(Editor-in-Chief)</h5>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="col">
-                            <img id="itj" src="{{ asset('img/footer/tj.png') }}">
-                            <br>
-                            <a class="imgname" href="http://juhasztibor.uni-eger.hu/">Tibor Juhász</a>
-                            <h5 class="imgtitel">(Managing Editor)</h5>
+                            <div class="card">
+                                <img id="itj" src="{{ asset('img/footer/tj.png') }}">
+                                <div class="eoffice">
+                                    <a class="imgname" href="http://juhasztibor.uni-eger.hu/">Tibor Juhász</a>
+                                </div>
+                                <div class="eofficedesc">
+                                    <h5 class="imgtitel">(Managing Editor)</h5>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="col">
-                            <img id="igk" src="{{ asset('img/footer/gk.png') }}">
-                            <br>
-                            <a class="imgname" href="https://sites.google.com/site/gkovasz/">Gergely Kovásznai</a>
-                            <h5 class="imgtitel">(Managing Editor)</h5>
+                            <div class="card">
+                                <img id="igk" src="{{ asset('img/footer/gk.png') }}">
+                                <div class="eoffice">
+                                    <a class="imgname" href="https://sites.google.com/site/gkovasz/">Gergely Kovásznai</a>
+                                </div>
+                                <div class="eofficedesc">
+                                    <h5 class="imgtitel">(Managing Editor)</h5>
+                                </div>
+                            </div>
                         </div>
+
+
                         <div class="col">
-                            <img id="itt" src="{{ asset('img/footer/tt.png') }}">
-                            <br>
-                            <a class="imgname" href="https://tomacstibor.uni-eszterhazy.hu/">Tibor Tómács</a>
-                            <h5 class="imgtitel">(Technical Editor)</h5>
+                            <div class="card">
+                                <img id="itt" src="{{ asset('img/footer/tt.png') }}">
+                                <div class="eoffice">
+                                    <a class="imgname" href="https://tomacstibor.uni-eszterhazy.hu/">Tibor Tómács</a>
+                                </div>
+                                <div class="eofficedesc">
+                                    <h5 class="imgtitel">(Technical Editor)</h5>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -120,12 +147,122 @@
                         </div>
 
 
+                        <div class="coldirectrow">
+                            <div class="card">
+                                <div class="eboardheader">
+                                    <a href="http://users.iit.uni-miskolc.hu/~kovacs/">László Kovács</a>
+                                </div>
+                                <div class="eboarddesc">
+                                    <p class="eboarddescp">Department of Informatics, University of Miskolc, Miskolc, Hungary</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="coldirectrow">
+                            <div class="card">
+                                <div class="eboardheader">
+                                    <a href="http://people.inf.elte.hu/kozma/eng/index_eng.html">László Kozma</a>
+                                </div>
+                                <div class="eboarddesc">
+                                    <p class="eboarddescp">Department of Software Technology and Methodology, Eötvös Loránd University, Budapest, Hungary</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="coldirectrow">
+                            <div class="card">
+                                <div class="eboardheader">
+                                    <a class="borderfade" href="http://liptai.ektf.hu/">Kálmán Liptai</a>
+                                </div>
+                                <div class="eboarddesc">
+                                    <p class="eboarddescp">Institute of Mathematics and Informatics, Eszterházy Károly University, Eger, Hungary</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="coldirectrow">
+                            <div class="card">
+                                <div class="eboardheader">
+                                    <a href="http://www.matmor.unam.mx/index.php?option=com_content&task=view&id=52&Itemid=62">Florian Luca</a>
+                                </div>
+                                <div class="eboarddesc">
+                                    <p class="eboarddescp">Instituto de Matemáticas, Universidad Nacional Autonoma de México, Michoacán, Mexico</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="coldirectrow">
+                            <div class="card">
+                                <div class="eboardheader">
+                                    <a href="http://oldwww.unibas.it/utenti/mastroianni/index.html">Giuseppe Mastroianni</a>
+                                </div>
+                                <div class="eboarddesc">
+                                    <p class="eboarddescp">Department of Mathematics and Computer Sciences, University of Basilicata, Potenza, Italy</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="coldirectrow">
+                            <div class="card">
+                                <div class="eboardheader">
+                                    <a href="http://aries.ektf.hu/~matyas">Ferenc Mátyás</a>
+                                </div>
+                                <div class="eboarddesc">
+                                    <p class="eboarddescp">Institute of Mathematics and Informatics, Eszterházy Károly University, Eger, Hungary</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="coldirectrow">
+                            <div class="card">
+                                <div class="eboardheader">
+                                    <a href="http://math.unideb.hu/pinter-akos/">Ákos Pintér</a>
+                                </div>
+                                <div class="eboarddesc">
+                                    <p class="eboarddescp">Institute of Mathematics, University of Debrecen, Debrecen, Hungary</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="coldirectrow">
+                            <div class="card">
+                                <div class="eboardheader">
+                                    <a href="http://www.uni-miskolc.hu/~matronto/go/main.php">Miklós Rontó</a>
+                                </div>
+                                <div class="eboarddesc">
+                                    <p class="eboarddescp">Department of Analysis, University of Miskolc, Miskolc, Hungary</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="coldirectrow">
+                            <div class="card">
+                                <div class="eboardheader">
+                                    <a href="http://matematika.emk.uni-sopron.hu/dr-szalay-laszlo">László Szalay</a>
+                                </div>
+                                <div class="eboarddesc">
+                                    <p class="eboarddescp">Institute of Mathematics, University of Sopron, Sopron, Hungary</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="coldirectrow">
+                            <div class="card">
+                                <div class="eboardheader">
+                                    <a href="http://irh.inf.unideb.hu/user/jsztrik/">János Sztrik</a>
+                                </div>
+                                <div class="eboarddesc">
+                                    <p class="eboarddescp">Department of Informatics Systems and Networks, University of Debrecen, Debrecen, Hungary</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="coldirectrow">
+                            <div class="card">
+                                <div class="eboardheader">
+                                    <a href="https://science.uottawa.ca/mathstat/en/people/walsh-gary-0">Gary Walsh</a>
+                                </div>
+                                <div class="eboarddesc">
+                                    <p class="eboarddescp">Department of Mathematics and Statistics, University of Ottawa, Ottawa, Ontario, Canada</p>
+                                </div>
+                            </div>
+                        </div>
+
+
 
                     </div>
                 </div>
             </div>
         </div>
 
-
-    </div>
 @endsection
