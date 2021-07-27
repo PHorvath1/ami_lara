@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ArticleRequest;
+use App\Http\Requests\ArticleCreateRequest;
+use App\Http\Requests\ArticleEditRequest;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Revision;
@@ -41,10 +42,10 @@ class ArticleController extends GuardedController
 
     /**
      * Creates a new article and a revision with the file uploads
-     * @param ArticleRequest $request The article's data
+     * @param ArticleCreateRequest $request The article's data
      * @return Factory|View|Application|RedirectResponse
      */
-    public function store(ArticleRequest $request): Factory|View|Application|RedirectResponse
+    public function store(ArticleCreateRequest $request): Factory|View|Application|RedirectResponse
     {
         $rq = $request->validated();
         $rqe = $request->except(['categories', 'tags', 'authors']);
@@ -71,7 +72,6 @@ class ArticleController extends GuardedController
      */
     public function show(Article $article): Factory|View|Application|RedirectResponse
     {
-        //return view('pages.articles.show', ['article' => $article, 'revisions' => Revision::all(), 'users' => User::all()]);
         return view('pages.articles.show', [ 'article' => $article ]);
     }
 
@@ -87,25 +87,29 @@ class ArticleController extends GuardedController
 
     /**
      * Updates the article and creates a new revision with the updated files
-     * @param ArticleRequest $request New article data
+     * @param ArticleEditRequest $request New article data
      * @param Article $article Existing article data
      * @return Factory|View|Application|RedirectResponse
      */
-    public function update(ArticleRequest $request, Article $article): Factory|View|Application|RedirectResponse
+    public function update(ArticleEditRequest $request, Article $article): Factory|View|Application|RedirectResponse
     {
         $rq = $request->validated();
         $rqe = $request->except(['categories', 'tags', 'authors']);
         $article->update($rqe);
+        $article->setStateTextAttribute($rq['state']);
         $categories = explode(',', $rq['categories']);
         $tags = explode(',', $rq['tags'] ?? '');
         $authors = explode(',', $rq['authors']);
-        $pdf = $request->upload('pdf', 'uploads/articles');
-        $latex = $request->upload('latex', 'uploads/articles');
+        if ($request->has('pdf') || $request->has('latex')) {
+            $pdf = $request->upload('pdf', 'articles');
+            $latex = $request->upload('latex', 'articles');
+            Revision::create(['pdf_path' => $pdf, 'latex_path' => $latex, 'article_id' => $article->id]);
+        }
+
 
         CategoryServiceProvider::attachAll($categories, $article);
         TagServiceProvider::attachAll($tags, $article);
         ContributorServiceProvider::attachAll($authors, $article);
-        Revision::create(['pdf_path' => $pdf, 'latex_path' => $latex, 'article_id' => $article->id]);
         Toastr::success('Article successfully updated');
         return redirect(route('articles.show', [$article]));
     }

@@ -1,18 +1,19 @@
 <?php
 
+
 namespace App\Http\Requests;
 
-use App\Exceptions\EmptyRequestException;
+
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
-class ArticleRequest extends ExtendedFormRequest
+class ArticleEditRequest extends ExtendedFormRequest
 {
     public function rules(): array
     {
         return [
-            'pdf' => [ 'required' ],
+            'pdf' => [],
             'name' => [ 'required', 'min:10' ],
             'summary' => [ 'required', 'min:10' ],
             'page_count' => [ 'required' ],
@@ -20,6 +21,7 @@ class ArticleRequest extends ExtendedFormRequest
             'note' => [],
             'related_url' => [],
             'doi' => [],
+            'state' => [],
             'language' => [ 'required' ],
             'authors' => [ 'required' ],
             'categories' => [ 'required' ],
