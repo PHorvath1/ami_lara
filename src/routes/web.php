@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\StaticAdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BouncerController;
 use App\Http\Controllers\CommentController;
@@ -26,6 +27,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/auth/{user}/assign_role/{role}', [BouncerController::class, 'assign_role'])->name('user.role.assign_role');
     Route::post('/auth/{user}/unassign_role/{role}', [BouncerController::class, 'unassign_role'])->name('user.role.unassign_role');
     Route::get('/download/{fileName}', [DownloadFileController::class, 'download'])->name('download');
+
+    Route::group(['prefix' => 'admin'], function (){
+        Route::get('/test', [StaticAdminController::class, 'test']);
+    });
 });
     Route::get('test', [StaticController::class, 'test']);
     Route::get('/about', [StaticController::class, 'about'])->name('about');
