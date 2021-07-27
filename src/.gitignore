@@ -15,3 +15,5 @@ yarn-error.log
 .idea/*
 .lumen
 .lumen/
+/public/vendor/
+/public/vendor/*
