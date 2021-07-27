@@ -5,3 +5,5 @@ src/resources/views/pages/test.blade.php
 .lumen
 .lumen/
 src/public/mix-manifest.json
+
+src/resources/lang/vendor/
