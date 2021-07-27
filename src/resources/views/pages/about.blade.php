@@ -53,9 +53,9 @@
                 <div class="col">
                     <div class="row">
 
-                        <div class="col">
-                            <div class="card">
-                                <img id="imh" src="{{ asset('img/footer/mh.png') }}">
+                        <div class="colof">
+                            <div id="imh" class="card">
+                                <img  src="{{ asset('img/about/mh.jpg') }}">
                                 <div class="eoffice">
                                    <a class="imgname" href="https://hoffmannmiklos.uni-eszterhazy.hu/en">Miklós Hoffmann</a>
                                 </div>
@@ -65,9 +65,9 @@
                             </div>
                         </div>
 
-                        <div class="col">
-                            <div class="card">
-                                <img id="itj" src="{{ asset('img/footer/tj.png') }}">
+                        <div class="colof">
+                            <div id="itj" class="card">
+                                <img  src="{{ asset('img/about/tj.jpg') }}">
                                 <div class="eoffice">
                                     <a class="imgname" href="http://juhasztibor.uni-eger.hu/">Tibor Juhász</a>
                                 </div>
@@ -77,9 +77,9 @@
                             </div>
                         </div>
 
-                        <div class="col">
-                            <div class="card">
-                                <img id="igk" src="{{ asset('img/footer/gk.png') }}">
+                        <div class="colof">
+                            <div id="igk" class="card">
+                                <img  src="{{ asset('img/about/gk.png') }}">
                                 <div class="eoffice">
                                     <a class="imgname" href="https://sites.google.com/site/gkovasz/">Gergely Kovásznai</a>
                                 </div>
@@ -90,9 +90,9 @@
                         </div>
 
 
-                        <div class="col">
-                            <div class="card">
-                                <img id="itt" src="{{ asset('img/footer/tt.png') }}">
+                        <div class="colof">
+                            <div id="itt" class="card">
+                                <img id="ittkep" src="{{ asset('img/about/tt.png') }}">
                                 <div class="eoffice">
                                     <a class="imgname" href="https://tomacstibor.uni-eszterhazy.hu/">Tibor Tómács</a>
                                 </div>
@@ -105,7 +105,7 @@
                     <div class="row">
 
                         <div class="col">
-                            <div class="card">
+                            <div id="firstebord" class="card">
                                 <div class="eboardheader">
                                     <a href="https://inf.unideb.hu/hu/node/1025">Sándor Bácsó</a>
                                 </div>
