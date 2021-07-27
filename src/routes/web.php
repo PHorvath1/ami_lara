@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BouncerController;
 use App\Http\Controllers\CommentController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\VolumeController;
 use App\Http\Controllers\DownloadFileController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Controllers\Admin;
 
 Route::get('/', [StaticController::class, 'home'])->name('root');
 
@@ -31,9 +33,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/about', [StaticController::class, 'about'])->name('about');
     Route::get('/submissions', [StaticController::class, 'submissions'])->name('submissions');
 
-
-Auth::routes();
-
-Route::get('/home', function() {
-    return view('home');
-})->name('home')->middleware('auth');
+    Route::get('admin/dashboard', [AdminController::class, 'dashboard']);
