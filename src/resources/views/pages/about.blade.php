@@ -26,8 +26,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card">
+                <div id="contactcard" class="col">
+                    <div  class="card">
                         <div class="aboutcardheadercontact">
                             <h5 class="aboutcardheader">Contact</h5>
                         </div>
