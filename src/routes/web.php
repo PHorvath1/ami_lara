@@ -26,14 +26,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/auth/{user}/assign_role/{role}', [BouncerController::class, 'assign_role'])->name('user.role.assign_role');
     Route::post('/auth/{user}/unassign_role/{role}', [BouncerController::class, 'unassign_role'])->name('user.role.unassign_role');
     Route::get('/download/{fileName}', [DownloadFileController::class, 'download'])->name('download');
+
+    Route::resource('/admin/users', App\Http\Controllers\Admin\UserAdminController::class);
 });
     Route::get('test', [StaticController::class, 'test']);
     Route::get('/about', [StaticController::class, 'about'])->name('about');
     Route::get('/submissions', [StaticController::class, 'submissions'])->name('submissions');
-
-
-Auth::routes();
-
-Route::get('/home', function() {
-    return view('home');
-})->name('home')->middleware('auth');
