@@ -45,13 +45,11 @@
                 </div>
             </div>
             <div class="pdfdownload">
-                @if ($article->revisions->last()->pdf_path != null)
-                    <form method="get" action="{{route('download', $article->revisions->last()->pdf_path)}}" target="_blank">
-                        <button  id="pdfdownloadbtn" class="btn-danger">
-                            Download pdf
-                        </button >
-                    </form>
-                @endif
+                <form method="get" action="{{route('download', $article->revisions->last()->pdf_path)}}" target="_blank">
+                    <button  id="pdfdownloadbtn" class="btn-danger">
+                        Download pdf
+                    </button >
+                </form>
                 <div class="rightfloat">
                     @php
                         $authors=$article->users;
