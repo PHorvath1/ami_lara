@@ -13,20 +13,14 @@
 @section('content')
     <div class="container">
         <div class="wrapper">
-            <div>
+            <div class="d-inline-block advanced-searchbar-width">
                 <form class="d-lg-flex me-auto justify-content-lg-start search-form float-lg-end" target="_self">
                     <div class="d-flex justify-content-lg-end"><input class="border rounded form-control search-field" type="text" id="search-field" name="name">
                         <button id="searchbtn" class="btn btn-primary d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" type="submit"><i class="fas fa-search"></i></button>
                         <button class="btn rounded btn-advanced-search" id="btn-advanced-search" type="button" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="collapse">Advanced search</button>
                     </div>
                 </form>
-                @if ($articles->count() === 6)
-                    {{ $articles->links() }}
-                @else
-                    <div class="d-block p-3 text-light">
-                        -
-                    </div>
-                @endif
+                {{ $articles->links() }}
             </div>
             <div class="collapse" id="searchCollapse">
                 <form target="_self">
