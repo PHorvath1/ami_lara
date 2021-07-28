@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/download/{fileName}', [DownloadFileController::class, 'download'])->name('download');
 
     Route::group(['prefix' => 'admin'], function (){
-        Route::get('/test', [StaticAdminController::class, 'test']);
+        Route::get('/dashboard', [StaticAdminController::class, 'dashboard']);
     });
 });
     Route::get('test', [StaticController::class, 'test']);

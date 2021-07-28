@@ -10,8 +10,8 @@ use Illuminate\Http\Request;
 
 class StaticAdminController extends Controller
 {
-    public function test(): Factory|View|Application
+    public function dashboard(): Factory|View|Application
     {
-        return view('pages.admin.example');
+        return view('pages.admin.dashboard');
     }
 }
