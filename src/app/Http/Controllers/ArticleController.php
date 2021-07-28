@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\ArticleFilter;
 use App\Http\Requests\ArticleCreateRequest;
 use App\Http\Requests\ArticleEditRequest;
 use App\Models\Article;
@@ -28,7 +29,7 @@ class ArticleController extends GuardedController
      */
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return view('pages.articles.index', ['articles' => Article::paginate(6)]);
+        return view('pages.articles.index')->with('articles', Article::filterWith(ArticleFilter::class)->through('name', 'contributor', 'date', 'categories', 'tags')->paginate(6));
     }
 
     /**

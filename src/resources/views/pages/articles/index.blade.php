@@ -13,10 +13,10 @@
 @section('content')
     <div class="container">
         <div class="wrapper">
-            <div>
+            <div class="d-inline-block advanced-searchbar-width">
                 <form class="d-lg-flex me-auto justify-content-lg-start search-form float-lg-end" target="_self">
-                    <div class="d-flex justify-content-lg-end"><input class="border rounded form-control search-field" type="search" id="search-field" name="search" style="background: white;width: 230px;">
-                        <button id="searchbtn" class="btn btn-primary d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" type="button"><i class="fas fa-search"></i></button>
+                    <div class="d-flex justify-content-lg-end"><input class="border rounded form-control search-field" type="text" id="search-field" name="name">
+                        <button id="searchbtn" class="btn btn-primary d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" type="submit"><i class="fas fa-search"></i></button>
                         <button class="btn rounded btn-advanced-search" id="btn-advanced-search" type="button" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="collapse">Advanced search</button>
                     </div>
                 </form>
@@ -29,7 +29,7 @@
                             <label for="contributor">Contributor:</label>
                         </div>
                         <div class="col-4">
-                            <input type="text" id="contributor" name="contributor-search" placeholder="Contributor">
+                            <input type="text" id="contributor" name="contributor" placeholder="Contributor">
                         </div>
                     </div>
                     <div class="row m-2 align-items-center">
@@ -37,7 +37,7 @@
                             <label for="date">Date:</label>
                         </div>
                         <div class="col-4">
-                            <input type="text" id="date" name="date-search" value="01/01/2020 - 01/01/2020">
+                            <input type="text" id="date" name="date" value="{{date('Y-m-d')}}">
                         </div>
                     </div>
                     <div class="row m-2 align-items-center">
@@ -45,7 +45,7 @@
                             <label for="category">Categories:</label>
                         </div>
                         <div class="col-4">
-                            <input type="text" id="category" name="category-search" placeholder="Categories">
+                            <input type="text" id="category" name="categories" placeholder="Categories">
                         </div>
                     </div>
                     <div class="row m-2 align-items-center">
@@ -53,7 +53,7 @@
                             <label for="tag">Tags:</label>
                         </div>
                         <div class="col-4">
-                            <input type="text" id="tag" name="tag-search" placeholder="Tags">
+                            <input type="text" id="tag" name="tags" placeholder="Tags">
                         </div>
                     </div>
                     <div class="m-2">
@@ -85,10 +85,13 @@
 
     <script>
         $(function() {
-            $('input[name="date-search"]').daterangepicker({
-                opens: 'left'
-            });
-            $("div.daterangepicker").click( function(e) {
+            $('input[name="date"]').daterangepicker({
+                timePicker: true,
+                opens: 'left',
+                locale: {
+                    format: 'YYYY/MM/DD hh:mm:ss'
+                }
+            }).click( function(e) {
                 e.stopPropagation();
             });
         });
