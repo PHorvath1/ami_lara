@@ -26,14 +26,14 @@ class ArticleFilter extends Filter
     }
 
     public function categories(Builder $query) : Builder {
-        if (request('category') == '') {
+        if (request('category') == null) {
             return $query;
         }
         return $query->where('categories', 'LIKE', '%'.request('category').'%');
     }
 
     public function tags(Builder $query) : Builder {
-        if (request('tag') == '') {
+        if (request('tag') == null) {
             return $query;
         }
         return $query->where('tags', 'LIKE', '%'.request('tag').'%');
