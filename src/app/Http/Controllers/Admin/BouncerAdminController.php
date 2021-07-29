@@ -20,10 +20,10 @@ class BouncerAdminController extends Controller
     }
 
     public function assignAbility(BouncerAssignAbilityRequest $request){
-        Role::where('name', $request->validated()['role_name'])->first()->allow($request->validated()['ability_name'], '\App\Models' . $validated['entity']);
+        Role::where('name', $request->validated()['role_name'])->first()->allow($request->validated()['ability_name'], '\App\Models' . $request->validated()['entity']);
     }
 
      public function unassignAbility(BouncerAssignAbilityRequest $request){
-         Role::where('name', $request->validated()['role_name'])->first()->disallow($request->validated()['ability_name'], '\App\Models' . $validated['entity']);
+         Role::where('name', $request->validated()['role_name'])->first()->disallow($request->validated()['ability_name'], '\App\Models' . $request->validated()['entity']);
      }
 }
