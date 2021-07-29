@@ -87,9 +87,10 @@
         $(function() {
             $('input[name="date"]').daterangepicker({
                 timePicker: true,
+                timePicker24Hour: true,
                 opens: 'left',
                 locale: {
-                    format: 'YYYY/MM/DD hh:mm:ss'
+                    format: 'YYYY/MM/DD H:mm:ss'
                 }
             }).click( function(e) {
                 e.stopPropagation();
