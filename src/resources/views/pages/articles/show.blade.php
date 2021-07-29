@@ -89,6 +89,17 @@
                             @csrf
                             <input type="hidden" name="user_id" value="{{Auth::id()}}"/>
                             <input type="hidden" name="revision_id" value="{{$article->revisions->last()->id}}"/>
+                            <div class="d-inline-block mb-3">
+                                <label for="state">State</label>
+                                <select id="review"
+                                        name="review"
+                                        class="w-25"
+                                        required>
+                                    @foreach($article->revisions->last()->comments->last()->getReviews() as $review)
+                                        <option value="{{$review}}">{{$review}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <textarea name="content" id="title" type="text "rows="2" cols="60" placeholder="Write a comment......"></textarea>
                             <input class="commentbtn" type="submit" value="Post"/>
 
