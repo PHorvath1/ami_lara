@@ -22,6 +22,7 @@
                                           name="state"
                                           class="my-6"
                                           required>
+                                    <option value="{{$article->state}}" selected hidden>{{$article->getStateTextAttribute()}}</option>
                                     @foreach($article->getStates() as $state)
                                         <option value="{{$state}}">{{$state}}</option>
                                     @endforeach
