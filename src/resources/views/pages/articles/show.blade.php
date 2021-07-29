@@ -90,7 +90,7 @@
                             <input type="hidden" name="user_id" value="{{Auth::id()}}"/>
                             <input type="hidden" name="revision_id" value="{{$article->revisions->last()->id}}"/>
                             <div class="d-inline-block mb-3">
-                                <label for="state">State</label>
+                                <label for="feedback">Feedback:</label>
                                 <select id="review"
                                         name="review"
                                         class="w-25"
