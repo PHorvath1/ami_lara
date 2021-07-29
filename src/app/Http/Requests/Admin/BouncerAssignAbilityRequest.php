@@ -3,11 +3,9 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
-
-class BouncerAssignRoleRequest extends FormRequest
+class BouncerAssignAbilityRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -17,8 +15,9 @@ class BouncerAssignRoleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => ['required', Rule::unique('users', 'id')],
-            'role_name' => ['required', Str::snake('string')]
+            'role_name'  => ['required',  Rule::unique('roles', 'name')],
+            'ability_name' => ['required'],
+            'entity' => ['required']
         ];
     }
 }
