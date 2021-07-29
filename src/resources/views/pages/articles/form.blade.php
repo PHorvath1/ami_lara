@@ -83,10 +83,9 @@
                             <x-divider/>
 
                                 @php
-                                    $categoryString = implode(', ', $article
-                                        ->categories
+                                    $categoryString = implode(', ', $article?->categories
                                         ->map( fn(\App\Models\Category $category) => $category->name )
-                                        ->toArray())
+                                        ->toArray() ?? [])
                                 @endphp
                             <x-form.input name="categories"
                                           class="my-3"
@@ -99,7 +98,7 @@
                                 @php
                                     $userString = "";
                                     $pivot = null;
-                                    foreach ($article->users as $user)
+                                    foreach (($article?->users ?? []) as $user)
                                         $userString .= $user->email . '::' . $user->pivot->contribution_type . ', ';
 
                                     $userString = trim($userString, ', ');
@@ -114,9 +113,9 @@
 
                                 @php
                                     $tagString = implode(', ', $article
-                                        ->tags
+                                        ?->tags
                                         ->map( fn(\App\Models\Tag $tag) => $tag->name )
-                                        ->toArray())
+                                        ->toArray() ?? [])
                                 @endphp
                             <x-form.input name="tags"
                                           class="my-3"
