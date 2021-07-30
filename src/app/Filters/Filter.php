@@ -16,9 +16,9 @@ abstract class Filter
     public function through(...$filters): Filter
     {
         foreach ($filters as $filter) {
-            if (request()->has($filter)) {
-                $this->builder = $this->$filter($this->builder);
-            }
+            if (empty(request($filter, ''))) continue;
+
+            $this->builder = $this->$filter($this->builder);
         }
         return $this;
     }

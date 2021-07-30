@@ -20,7 +20,7 @@
                         <button class="btn rounded btn-advanced-search" id="btn-advanced-search" type="button" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="collapse">Advanced search</button>
                     </div>
                 </form>
-                {{ $articles->links() }}
+                {{ $articles->appends(request()->except('page'))->links() }}
             </div>
             <div class="collapse" id="searchCollapse">
                 <form target="_self">
@@ -78,7 +78,7 @@
                     </div></a>
             @endforeach
             <div>
-                {{ $articles->links() }}
+                {{ $articles->appends(request()->except('page'))->links() }}
             </div>
         </div>
     </div>
@@ -87,9 +87,10 @@
         $(function() {
             $('input[name="date"]').daterangepicker({
                 timePicker: true,
+                timePicker24Hour: true,
                 opens: 'left',
                 locale: {
-                    format: 'YYYY/MM/DD hh:mm:ss'
+                    format: 'YYYY/MM/DD H:mm:ss'
                 }
             }).click( function(e) {
                 e.stopPropagation();
