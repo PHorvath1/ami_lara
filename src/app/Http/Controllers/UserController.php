@@ -22,7 +22,8 @@ class UserController extends GuardedController
      */
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return view('pages.users.index')->with('users', User::filterWith(UserFilter::class)->through('name', 'created_gt')->paginate(2));
+        return redirect(route('admin.users.index'));
+        //return view('pages.users.index')->with('users', User::filterWith(UserFilter::class)->through('name', 'created_gt')->get());
     }
 
     /**
