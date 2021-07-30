@@ -6,7 +6,7 @@
 
                 <x-nav.link class="notlastlink" to="home"  />
 
-                <x-nav.link class="notlastlink" is="" directLink="">Browse</x-nav.link>
+                <x-nav.link class="notlastlink" to="content">Browse</x-nav.link>
 
                 <x-nav.link class="notlastlink"  to="submissions" />
 
