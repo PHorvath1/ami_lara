@@ -2,16 +2,11 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ExtendedFormRequest;
 use Illuminate\Validation\Rule;
 
-class BouncerAssignAbilityRequest extends FormRequest
+class BouncerAssignAbilityRequest extends ExtendedFormRequest
 {
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function rules(): array
     {
         return [
