@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\StaticAdminController;
+use App\Http\Controllers\admin\VolumeAdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BouncerController;
 use App\Http\Controllers\CommentController;
@@ -30,6 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'admin'], function (){
         Route::get('/dashboard', [StaticAdminController::class, 'dashboard']);
+        Route::get('/volumes', [VolumeAdminController::class, 'index']);
     });
 });
     Route::get('test', [StaticController::class, 'test']);
