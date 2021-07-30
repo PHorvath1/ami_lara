@@ -39,7 +39,7 @@
                         <li>
                             <span class="text">{{$article->name}}</span>
                             <small class="badge badge-success"><i class="far fa-clock"></i>
-                                {{$article->created_at->diffForHumans() }}
+                                {{$article->created_at->diffForHumans()}}
                                 {{-- TODO: Fix carbon parse --}}
                             </small>
                         </li>

@@ -8,8 +8,8 @@
         <div class="wrapped row">
             <div class="col-auto col-lg-3"></div>
             <div class="col 12 col-lg-6">
-                <div class="card" id="article_card">
-                    <div class="card-header" id="article_card_header">
+                <div class="card" id="form_body">
+                    <div class="card-header" id="form_header">
                         <h4>{{$article ? 'Edit' : 'Create'}} Article Form</h4>
                     </div>
                     <div class="card-body">
