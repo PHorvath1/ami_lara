@@ -21,20 +21,19 @@ class ArticleFilter extends Filter
 
     public function date(Builder $query) : Builder {
         $dates = explode('-',request('date'));
-        $date_min = date('Y-m-d H:i:s', strtotime($dates[0]));
-        $date_max = date('Y-m-d H:i:s', strtotime($dates[1]));
-        return $query->whereBetween('created_at', [$date_min, $date_max]);
+        return $query->where('created_at', '>=', $dates[0])
+            ->where('created_at', '<=', $dates[1]);
     }
 
     public function categories(Builder $query) : Builder {
-        if (request('category') == '') {
+        if (empty(request('category'))) {
             return $query;
         }
         return $query->where('categories', 'LIKE', '%'.request('category').'%');
     }
 
     public function tags(Builder $query) : Builder {
-        if (request('tag') == '') {
+        if (empty(request('tag'))) {
             return $query;
         }
         return $query->where('tags', 'LIKE', '%'.request('tag').'%');

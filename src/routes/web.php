@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\StaticAdminController;
 use App\Http\Controllers\Admin\UserAdminController;
+use App\Http\Controllers\admin\VolumeAdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BouncerController;
 use App\Http\Controllers\CommentController;
@@ -19,6 +20,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin:'], function (){
         Route::get('/dashboard', [StaticAdminController::class, 'dashboard']);
         Route::resource('users', UserAdminController::class);
+        Route::get('/volumes', [VolumeAdminController::class, 'index']);
     });
 
     Route::get('/home', [StaticController::class, 'home'])->name('home');
@@ -34,9 +36,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/auth/{user}/unassign_role/{role}', [BouncerController::class, 'unassign_role'])->name('user.role.unassign_role');
     Route::get('/download/{fileName}', [DownloadFileController::class, 'download'])->name('download');
 
-
 });
     Route::get('test', [StaticController::class, 'test']);
     Route::get('/about', [StaticController::class, 'about'])->name('about');
     Route::get('/submissions', [StaticController::class, 'submissions'])->name('submissions');
+    Route::get('/content', [StaticController::class, 'content'])->name('content');
 

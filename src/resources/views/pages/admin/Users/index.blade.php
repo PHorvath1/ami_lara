@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
 @push('pre-js')
 {{--    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>--}}
@@ -11,7 +11,7 @@
 
 @section('content')
     <div class="container">
-        <a href="{{ $users->nextUrl() }}">Next</a>
+        {{-- <a href="{{ $users->nextUrl() }}">Next</a> --}}
 {{--        TODO: CREATE NEW CLASS FOR EXTENDED PAGINATOR--}}
         <div class="wrapper">
             <x-table.datatable

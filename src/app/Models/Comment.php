@@ -30,6 +30,10 @@ class Comment extends Model
 
     private const REVIEWS = ['NOT SPECIFIED', 'DECLINED', 'REQUEST CHANGES', 'APPROVED' ];
 
+    public static function getReviews(): array{
+        return self::REVIEWS;
+    }
+
     public function getReviewTextAttribute(){
         return $this->review_num > count(self::REVIEWS) || $this->review_num < 0
             ? 'UNKNOWN'
