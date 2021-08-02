@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\GuardedController;
+use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Utils\Bouncer;
@@ -20,29 +21,29 @@ class UserAdminController extends GuardedController
 
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return view('user.index', ['users' => User::all()]);
+        return view('pages.admin.users.index', ['users' => User::all()]);
     }
 
     public function create(): Factory|View|Application|RedirectResponse
     {
-        return view('users.form');
+        return view('pages.admin.users.form');
     }
 
-    public function store(UserRequest $request): Factory|View|Application|RedirectResponse
+    public function store(UserCreateRequest $request): Factory|View|Application|RedirectResponse
     {
        $user = User::create($request->validated());
         Toastr::success('New user created');
-        return redirect(route('users.show', [$user]));
+        return redirect(route('admin:users.show', [$user]));
     }
 
     public function show(User $user): Factory|View|Application|RedirectResponse
     {
-        return view('users.show', ['user' => $user]);
+        return view('pages.admin.users.show', ['user' => $user]);
     }
 
     public function edit(User $user): Factory|View|Application|RedirectResponse
     {
-        return view('users.form', ['user' => $user]);
+        return view('pages.admin.users.form', ['user' => $user]);
     }
 
     public function update(UserRequest $request, User $user): Factory|View|Application|RedirectResponse
@@ -51,7 +52,7 @@ class UserAdminController extends GuardedController
         $user->save();
 
         Toastr::success('User modified');
-        return redirect(route('users.show', [$user]));
+        return redirect(route('admin:users.show', [$user]));
     }
 
     public function destroy(User $user): Factory|View|Application|RedirectResponse
@@ -59,6 +60,6 @@ class UserAdminController extends GuardedController
 
         Toastr::warning("User deleted: $user->id");
         $user->delete();
-        return redirect(route('users.index'));
+        return redirect(route('admin:users.index'));
     }
 }

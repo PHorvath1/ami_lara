@@ -16,6 +16,11 @@ use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 Route::get('/', [StaticController::class, 'home'])->name('root');
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::group(['prefix' => 'admin', 'as' => 'admin:'], function (){
+        Route::get('/dashboard', [StaticAdminController::class, 'dashboard']);
+        Route::resource('users', UserAdminController::class);
+    });
+
     Route::get('/home', [StaticController::class, 'home'])->name('home');
     Route::get('/profile', [ProfileController::class, 'profile'])->name('user.profile');
     Route::get('/profile/edit', [ProfileController::class, 'editProfile'])->name('user.profile.edit');
@@ -29,10 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/auth/{user}/unassign_role/{role}', [BouncerController::class, 'unassign_role'])->name('user.role.unassign_role');
     Route::get('/download/{fileName}', [DownloadFileController::class, 'download'])->name('download');
 
-    Route::group(['prefix' => 'admin'], function (){
-        Route::get('/dashboard', [StaticAdminController::class, 'dashboard']);
-        Route::resource('users', UserAdminController::class);
-    });
+
 });
     Route::get('test', [StaticController::class, 'test']);
     Route::get('/about', [StaticController::class, 'about'])->name('about');
