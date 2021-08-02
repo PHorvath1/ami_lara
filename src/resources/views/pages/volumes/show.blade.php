@@ -9,7 +9,7 @@
     */
     @endphp
 
-   <div class="container-fluid p-4" id="container_color">
+   <div class="container-fluid p-4 volume_container_color">
        <div class="card text-center">
            <div class="card-header">
                <h3>Name: {{ $volume->name }}</h3>
@@ -55,7 +55,7 @@
                     <div class="col-4 col-md-4">
                         <div class="card m-3">
                             <a href="{{route('articles.show', $article->id)}}" class="text-decoration-none text-dark">
-                                <div class="card-body p-5 mx-auto" id="card_color">
+                                <div class="card-body p-5 mx-auto card_color">
                                     <h4 class="card-title"> {{ $article->name }}</h4>
                                     <h6 class="text-muted card-subtitle mb-2">by: {{ $author_text }}<br></h6>
                                     <p class="card-text"><em>Pages: {{ $pivot->from_page }} - {{$pivot->to_page }}</em><br></p>
