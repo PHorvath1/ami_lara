@@ -26,7 +26,8 @@
                     <h5>Page count: {{ $article->page_count }}</h5>
                 </div>
                 <div class="articleshowrow row_rnd">
-                    <h5>State: {{ $article->state }}</h5>
+                    <h5>State: {{ $article->stateText }}</h5>
+
                 </div>
             </div>
             <div class="card-bodywrap">

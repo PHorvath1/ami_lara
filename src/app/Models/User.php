@@ -6,6 +6,7 @@ use App\Traits\ApiKey;
 use App\Traits\ApiResource;
 use App\Traits\UUID;
 use DateTime;
+use Hash;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -54,6 +55,12 @@ class User extends Authenticatable
      */
     public function comments(): Relation {
         return $this->hasMany(Comment::class);
+    }
+
+    public function setPasswordAttribute(string $param){
+        if( strlen($param) == 60 && preg_match('/^\$2y\$/', $param ))
+            return;
+        $this->attributes['password'] = Hash::make($param);
     }
 
 }

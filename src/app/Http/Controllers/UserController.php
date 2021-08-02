@@ -42,7 +42,7 @@ class UserController extends GuardedController
      */
     public function store(UserCreateRequest $request): Factory|View|Application|RedirectResponse
     {
-        $user = User::create($request->transform());
+        $user = User::create($request->validated());
         Toastr::success('New user created');
         return redirect(route('users.show', [$user]));
     }
