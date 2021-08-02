@@ -28,8 +28,8 @@
                                 </div>
                             </li>
                         </a>
-                        <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
+                        <a href="#" class="btn btn-warning">Edit</a>
+                        <a href="#" class="btn btn-danger">Delete</a>
                     </div>
                     <hr>
                 @endforeach
