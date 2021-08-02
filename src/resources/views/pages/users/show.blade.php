@@ -5,7 +5,7 @@
 
 
        <div class="colgrid">
-           <div id="profrow" class="row">
+           <div class="row profrow">
                <h3 class="h3title">{{ $user->name }}</h3>
                <span class="spanbold">
                    Email:
@@ -16,8 +16,8 @@
                    <p class="cleantext">{{ $user->created_at }}</p>
                </span>
            </div>
-           <div id="topmarginrowgrid" class="rowgrid">
-               <div id="rowgridcolor" class="rowgrid">
+           <div class="rowgrid topmarginrowgrid">
+               <div class="rowgrid rowgridcolor">
                    <h3 class="h3title">Roles:</h3>
                </div>
                <div class="row">

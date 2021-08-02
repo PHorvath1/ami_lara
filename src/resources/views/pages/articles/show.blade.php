@@ -10,23 +10,24 @@
 @section('content')
     <div class="container-fluid p-4" id="container_color">
 
-        <div id="cardtextbc" class="card text-center">
-            <div id="articletitel" class="card-header">
-                <h4 >Name: {{ $article->name }}</h4>
+        <div class="card text-center" id="cardtextbc">
+            <div class="card-header articletitle">
+                <h4>Title: {{ $article->name }}</h4>
             </div>
             <div class="card-bodywrap">
                 <h5 class="closer">Summary:</h5>
                 <p class="lefty"> {{ $article->summary }}</p>
             </div>
             <div class="articleshowcol">
-                <div class="articleshowrow" id="row_rnd">
+                <div class="articleshowrow row_rnd">
                     <h5>Article type: {{ $article->article_type }}</h5>
                 </div>
-                <div class="articleshowrow" id="row_btw">
+                <div class="articleshowrow row_btw">
                     <h5>Page count: {{ $article->page_count }}</h5>
                 </div>
-                <div class="articleshowrow" id="row_rnd">
+                <div class="articleshowrow row_rnd">
                     <h5>State: {{ $article->stateText }}</h5>
+
                 </div>
             </div>
             <div class="card-bodywrap">
@@ -34,13 +35,13 @@
                 <p class="lefty"> {{ $article->note }}</p>
             </div>
             <div class="articleshowcol2">
-                <div class="articleshowrow" id="row_rnd">
+                <div class="articleshowrow row_rnd">
                     <h5>Lang: {{ $article->language }}</h5>
                 </div>
-                <div class="articleshowrow" id="row_btw">
+                <div class="articleshowrow row_btw">
                     <h5>DOI: {{ $article->doi }}</h5>
                 </div>
-                <div class="articleshowrow" id="row_rnd">
+                <div class="articleshowrow row_rnd">
                     <h5>Related url: {{ $article->related_url }}</h5>
                 </div>
             </div>
