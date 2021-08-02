@@ -2,6 +2,8 @@
     use App\Datatable\Button;
     use App\Datatable\Buttons\Collection;
     use App\Datatable\Datatable;
+    $prefix = $prefix ?? '';
+    $suffix = $suffix ?? '';
 @endphp
 
 <table class="{{ $class ?? '' }}" id="{{ $id ?? '' }}">
@@ -21,7 +23,7 @@
             @endforeach
             @if($operations ?? true)
                 @php /** @var \Illuminate\Database\Eloquent\Model $item */ @endphp
-                    <x-table.operations :item="$item" :route="$item->getTable()" :view="$view ?? false" :edit="$edit ?? false" :delete="$delete ?? false" />
+                    <x-table.operations :item="$item" :route="$prefix . $item->getTable() . $suffix" :view="$view ?? false" :edit="$edit ?? false" :delete="$delete ?? false" />
             @endisset
         </tr>
     @endforeach

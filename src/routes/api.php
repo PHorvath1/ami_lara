@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\api\v1\ApiUserController;
+//use App\Http\Controllers\api\v1\ApiUserController;
 use App\Http\Middleware\ApiToken;
 use Illuminate\Support\Facades\Route;
 
@@ -14,13 +14,3 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
-
-Route::name('api.')->group(function () {
-    Route::resource('users', ApiUserController::class)->middleware(ApiToken::class);
-
-
-});

@@ -12,7 +12,9 @@ class UserCreateRequest extends ExtendedFormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'email', Rule::unique('users', 'email')]
+            'name' => ['required'],
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'password' => ['required']
         ];
     }
 
