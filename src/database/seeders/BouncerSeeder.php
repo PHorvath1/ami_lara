@@ -19,7 +19,7 @@ class BouncerSeeder extends Seeder
         $admin = User::where('email', 'editor@test.com')->first();
         $admin->assign('editor');
 
-        $admin = User::where('email', 'tech@test.com')->first();
+        $admin = User::where('email', 'technical@test.com')->first();
         $admin->assign('technical-editor');
     }
 }
