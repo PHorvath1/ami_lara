@@ -1,0 +1,89 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use App\Http\Requests\{{ model }}Request;
+use {{ rootNamespace }}Http\Controllers\Controller;
+use App\Utils\Bouncer;
+use App\Utils\StatusCode;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+
+class {{ class }} extends Controller
+{
+
+    public function index(): Factory|View|Application|RedirectResponse
+    {
+        if(!Bouncer::can('index', {{ model }}::class)){
+                    abort(StatusCode::FORBIDDEN);
+        }
+
+        return view('{{ modelVariable }}.index', ['{{ modelVariable }}s' => {{ model }}::all()]);
+    }
+
+    public function create(): Factory|View|Application|RedirectResponse
+    {
+         if(!Bouncer::can('create', {{ model }}::class)){
+            abort(StatusCode::FORBIDDEN);
+         }
+
+        return view('{{ modelVariable }}s.form');
+    }
+
+    public function store({{ model }}Request $request): Factory|View|Application|RedirectResponse
+    {
+        if(!Bouncer::can('create', {{ model }}::class)){
+           abort(StatusCode::FORBIDDEN);
+        }
+
+       ${{ modelVariable }} = {{ model }}::create($request->validated());
+        Toastr::success('New {{ modelVariable }} created');
+        return redirect(route('{{ modelVariable }}s.show', [${{ modelVariable }}]));
+    }
+
+    public function show({{ model }} ${{ modelVariable }}): Factory|View|Application|RedirectResponse
+    {
+        if(!Bouncer::can('view', {{ model }}::class)){
+            abort(StatusCode::FORBIDDEN);
+        }
+        return view('{{ modelVariable }}s.show', ['{{ modelVariable }}' => ${{ modelVariable }}]);
+    }
+
+    public function edit({{ model }} ${{ modelVariable }}): Factory|View|Application|RedirectResponse
+    {
+        if(!Bouncer::can('edit', {{ model }}::class)){
+            abort(StatusCode::FORBIDDEN);
+        }
+
+        return view('{{ modelVariable }}s.form', ['{{ modelVariable }}' => ${{ modelVariable }}]);
+    }
+
+    public function update({{ model }}Request $request, {{ model }} ${{ modelVariable }}): Factory|View|Application|RedirectResponse
+    {
+        if(!Bouncer::can('edit', {{ model }}::class)){
+            abort(StatusCode::FORBIDDEN);
+        }
+
+        ${{ modelVariable }}->update($request->validated());
+        ${{ modelVariable }}->save();
+
+        Toastr::success('{{ model }} modified');
+        return redirect(route('{{ modelVariable }}s.show', [${{ modelVariable }}]));
+    }
+
+    public function destroy({{ model }} ${{ modelVariable }}): Factory|View|Application|RedirectResponse
+    {
+        if(!Bouncer::can('delete', {{ model }}::class)){
+           abort(StatusCode::FORBIDDEN);
+        }
+
+        Toastr::warning("{{ model }} deleted: ${{ modelVariable }}->id");
+        ${{ modelVariable }}->delete();
+        return redirect(route('{{ modelVariable }}s.index'));
+    }
+}
