@@ -5,43 +5,49 @@ Table users as U {
   email varchar
   password varchar
   remember_token varchar
-  mtmt varchar
-  orcid varchar
-  issn varchar
-  deleted_at timestamp
+  appointed_as_reviewer int [default: 0]
+  accepted_reviewer int [default: 0]
+  completed_review int [default: 0]
+  deleted_at timestamp [default: null]
 }
 
 Table articles {
   id varchar [pk]
-  name varchar
-  summary varchar
+  user_id varchar // corresponding
+  editor_id varchar [default: null]
+  title varchar
+  abstract text
   state article_state
-  page_count int
-  article_type varchar
-  note text
-  related_url json
-  language varchar
-  doi varchar
-  deleted_at timestamp
+  page_count int [default: null]
+  note text [default: null]
+  language varchar [default: 'en']
+  doi varchar [default: null]
+  source text [default: null]
+  type_id int
+  latex_path varchar [default: null]
+  deleted_at timestamp [default: null]
  }
  
-Table comments {
+Table reviews {
   id int [pk, increment]
   user_id varchar
   revision_id int
-  content varchar
+  state tinyint [default: 0] 
+  // 0: WAITING, 1: DECLINED, 2: ACCEPTED, 3: NOT SPECIFIED, 4: REJECTED, 5: REQUEST, 6: APPROVED
+  content text
 }
 
 Table revisions {
   id int [pk, increment]
   article_id varchar
+  note text
   pdf_path varchar
-  latex_path varchar
-  deleted_at timestamp
+  deleted_at timestamp [default: null]
 }
 
 Table volumes {
   id int [pk, increment]
+  title varchar [default: null]
   description text
   release_year year
 }
@@ -51,46 +57,36 @@ Table categories {
   name varchar
 }
 
-Table tags {
-  id int [pk, increment]
+Table types {
+  id int [pk]
   name varchar
+  active boolean [default: 1]
 }
 
-Table user_article_pivot {
-  user_id varchar [pk]
-  article_id varchar [pk]
-}
-
-Table tag_article_pivot {
-  tag_id int [pk]
-  article_id varchar [pk]
-}
-
-Table volume_article_pivot {
+Table volume_article {
   volume_id int [pk]
   article_id varchar [pk]
   from_page int
   to_page int
 }
 
-Table category_article_pivot {
+Table category_article {
   category_id int [pk]
   article_id varchar [pk]
 }
 
 // Creating references
 // > many-to-one; < one-to-many; - one-to-one
-Ref: comments.user_id > U.id
-Ref: revisions.id < comments.revision_id
+Ref: reviews.user_id > U.id
+Ref: revisions.id < reviews.revision_id
 Ref: revisions.article_id > articles.id
-Ref: U.id < user_article_pivot.user_id
-Ref: articles.id < user_article_pivot.article_id
-Ref: tags.id < tag_article_pivot.tag_id
-Ref: articles.id < tag_article_pivot.article_id
-Ref: volumes.id < volume_article_pivot.volume_id
-Ref: articles.id < volume_article_pivot.article_id
-Ref: categories.id < category_article_pivot.category_id
-Ref: articles.id < category_article_pivot.article_id
+Ref: volumes.id < volume_article.volume_id
+Ref: articles.id < volume_article.article_id
+Ref: categories.id < category_article.category_id
+Ref: articles.id < category_article.article_id
+Ref: articles.type_id > types.id
+Ref: articles.user_id - users.id
+Ref: articles.editor_id - users.id
 
 //Creating Enums
 Enum article_state {
@@ -99,4 +95,3 @@ Enum article_state {
   ACCEPTED
   REJECTED
 }
-  
