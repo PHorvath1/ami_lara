@@ -11,6 +11,12 @@ use Route;
 
 class BouncerCheck
 {
+    /**
+     * Checks if the user has permission to execute a function in the current model
+     * @param Request $request
+     * @param Closure $next
+     * @return mixed
+     */
     public function handle(Request $request, Closure $next)
     {
         $routeName = Str::of(Route::getCurrentRoute()->getName() ?? '');
