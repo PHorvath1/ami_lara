@@ -21,7 +21,7 @@ class CreateArticlesTable extends Migration
             $table->string('doi')->default(null);
             $table->text('source')->default(null);
             $table->id('type_id');
-            $table->string('latex_path');
+            $table->string('latex_path')->default(null);
             $table->timestamp('deleted_at')->default(null);
             $table->timestamps();
         });
