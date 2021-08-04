@@ -42,6 +42,9 @@ class Revision extends Model
         return $this->belongsTo(Article::class);
     }
 
+    /** Defines a many-to-many relationship between revisions and users
+     * @return BelongsToMany The type of the relationship
+     */
     public function users(): BelongsToMany {
         return $this->belongsToMany(User::class)->withPivot(['state', 'content']);
     }

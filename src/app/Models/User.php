@@ -36,6 +36,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Defines a many-to-many relationship between users and revisions
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function reviews() {
         return $this->belongsToMany(Revision::class)->withPivot(['state', 'content']);
     }
