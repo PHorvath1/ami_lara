@@ -10,19 +10,18 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->uuid('id');
-            $table->uuid('user_id')->default(null);
-            $table->uuid('editor_id')->default(null);
+            $table->uuid('editor_id')->nullable()->default(null);
             $table->string('title');
             $table->text('abstract');
             $table->tinyInteger('state');
-            $table->integer('page_count')->default(null);
-            $table->text('note')->default(null);
+            $table->integer('page_count')->nullable()->default(null);
+            $table->text('note')->nullable()->default(null);
             $table->string('language')->default('en');
-            $table->string('doi')->default(null);
-            $table->text('source')->default(null);
+            $table->string('doi')->nullable()->default(null);
+            $table->text('source')->nullable()->default(null);
             $table->id('type_id');
-            $table->string('latex_path')->default(null);
-            $table->timestamp('deleted_at')->default(null);
+            $table->string('latex_path')->nullable()->default(null);
+            $table->timestamp('deleted_at')->nullable()->default(null);
             $table->timestamps();
         });
     }
