@@ -34,7 +34,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property int type_id
  * @property string latex_path
  * @property Collection categories
- * @property User user
  * @property User editor
  * @property Type type
  */
@@ -42,7 +41,7 @@ class Article extends Model
 {
     use HasFactory, ApiResource, UUID;
 
-    protected $fillable = ['title', 'abstract', 'state', 'users'];
+    protected $fillable = ['title', 'abstract', 'state', 'user_id', 'type_id'];
 
     private const STATES = [ 'UNDER_REVIEW', 'ACCEPTED', 'REJECTED' ];
 
@@ -115,13 +114,5 @@ class Article extends Model
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);
-    }
-
-    /** Defines a 1-to-many relationship between articles and tags
-     * @return HasOne The type of the relationship
-     */
-    public function type(): HasOne
-    {
-        return $this->hasOne(Type::class);
     }
 }
