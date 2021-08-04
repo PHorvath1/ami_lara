@@ -18,6 +18,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @package App\Models
  *
  * @property string id
+ * @property string user_id
+ * @property string editor_id
  * @property string title
  * @property string abstract
  * @property int state
