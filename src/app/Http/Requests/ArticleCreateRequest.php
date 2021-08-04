@@ -16,7 +16,7 @@ class ArticleCreateRequest extends FormRequest
             'article_type' => [ 'required' ],
             'note' => [],
             'doi' => [],
-            'language' => [ 'required' ],
+            'language' => [],
             'authors' => [ 'required' ],
             'categories' => [ 'required' ],
             'latex' => []
