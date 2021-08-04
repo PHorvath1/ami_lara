@@ -17,4 +17,31 @@ class StaticController extends Controller
     {
         return view('pages.home');
     }
+
+    /**
+     * Shows the about page
+     * @return Application|Factory|View
+     */
+    public function about(): Factory|View|Application
+    {
+        return view('pages.about');
+    }
+
+    /**
+     * Shows the content page
+     * @return Application|Factory|View
+     */
+    public function content(): Factory|View|Application
+    {
+        return view('pages.volumes.index', ['volumes' => Volume::latest()->paginate(10)]);
+    }
+
+    /**
+     * Shows the submissions page
+     * @return Application|Factory|View
+     */
+    public function submissions(): Factory|View|Application
+    {
+        return view('pages.articles.form');
+    }
 }
