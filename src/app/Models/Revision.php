@@ -34,7 +34,7 @@ class Revision extends Model
         return $this->hasMany(Comment::class);
     }
 
-    /** Defines an inverse one-to-many relationship between revisions and users
+    /** Defines an inverse one-to-many relationship between revisions and articles
      * @return BelongsTo The type of the relationship
      */
     public function article(): BelongsTo {
