@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Article;
 use App\Models\Revision;
 use Illuminate\Database\Seeder;
 

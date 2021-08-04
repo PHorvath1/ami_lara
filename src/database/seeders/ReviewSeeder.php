@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Review;
 use Database\Factories\ReviewFactory;
 use Illuminate\Database\Seeder;
 
