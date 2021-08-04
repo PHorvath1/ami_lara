@@ -26,62 +26,67 @@
                                     @foreach($article->getStates() as $state)
                                         <option value="{{$state}}">{{$state}}</option>
                                     @endforeach
+
                                 </select>
+                                <!-- // TODO: Technikai szerkesztő jogosultság implementálása -->
+                                <x-form.input name="source"
+                                              class="my-6">
+                                    Source
+                                </x-form.input>
+
+                                <x-form.input name="page count"
+                                              class="my-6">
+                                    Page count
+                                </x-form.input>
+
+                                <x-form.input type="file"
+                                              name="latex"
+                                              class="my-3"
+                                              multiple
+                                              :value="old('latex') ?? $article->latex ?? ''"
+                                              :required="false">
+                                    Upload LaTeX files
+                                </x-form.input>
+
+                                @if($article->editor_id === Auth::id())
+                                <x-form.input name="note"
+                                              class="my-3"
+                                              placeholder="Note"
+                                              :value="old('note') ?? $article->note ?? ''"
+                                              :required="false">
+                                    Note
+                                </x-form.input>
+                                @endif
                             @endif
 
-                            <x-form.input name="name"
+                            <x-form.input name="title"
                                           class="my-3"
-                                          placeholder="Name of your article"
-                                          :value="old('name') ?? $article->name ?? ''"
+                                          placeholder="Title of your article"
+                                          :value="old('title') ?? $article->title ?? ''"
                                           :required="true">
-                                Name
+                                Title
                             </x-form.input>
-                            <x-form.input name="summary"
+                            <x-form.input name="abstract"
                                           type="textarea"
                                           class="my-3"
-                                          placeholder="A short description of your article"
-                                          :value="old('summary') ?? $article->summary ?? ''"
+                                          :value="old('abstract') ?? $article->abstract ?? ''"
                                           :required="true">
-                                Summary
+                                Abstract
                             </x-form.input>
 
                             <x-divider/>
 
-                            <x-form.input name="article_type"
-                                          class="my-3"
-                                          placeholder="Type of the article"
-                                          :value="old('article_type') ?? $article->article_type ?? ''"
-                                          :required="true">
-                                Type
-                            </x-form.input>
+                            <label for="type">Type</label>
+                            <select id="type"
+                                    name="type"
+                                    class="my-6"
+                                    required>
+                                <option value="{{$article->type_id}}" selected hidden>{{$article->getTypeTextAttribute()}}</option>
+                                @foreach($article->getTypes() as $type)
+                                    <option value="{{$article->type_id}}">{{$type}}</option>
+                                @endforeach
+                            </select>
 
-                            <x-form.input name="note"
-                                          class="my-3"
-                                          placeholder="Note"
-                                          :value="old('note') ?? $article->note ?? ''"
-                                          :required="false">
-                                Note
-                            </x-form.input>
-
-                            <x-divider/>
-
-                            <x-form.input name="page_count"
-                                          class="my-3"
-                                          placeholder="Number of pages"
-                                          :value="old('page_count') ?? $article->page_count ?? ''"
-                                          :required="true">
-                                Page count
-                            </x-form.input>
-
-                            <x-form.input name="language"
-                                          class="my-3"
-                                          placeholder="Language"
-                                          :value="old('language') ?? $article->language ?? ''"
-                                          :required="true">
-                                Language
-                            </x-form.input>
-
-                            <x-divider/>
 
                             @php
                                 $categoryString = implode(', ', $article?->categories
@@ -96,6 +101,8 @@
                                 Categories
                             </x-form.input>
 
+                            <x-divider/>
+
                             @php
                                 $userString = "";
                                 $pivot = null;
@@ -109,22 +116,10 @@
                                           placeholder="Ex. user@test.com::Author"
                                           :value="old('authors') ?? $userString ?? ''"
                                           :required="true">
-                                Contributors
+                                Authors
                             </x-form.input>
 
-                            @php
-                                $tagString = implode(', ', $article
-                                    ?->tags
-                                    ->map( fn(\App\Models\Tag $tag) => $tag->name )
-                                    ->toArray() ?? [])
-                            @endphp
-                            <x-form.input name="tags"
-                                          class="my-3"
-                                          placeholder="Ex. IoT"
-                                          :value="old('tags') ?? $tagString ?? ''"
-                                          :required="false">
-                                Tags
-                            </x-form.input>
+
 
                             <x-divider/>
 
@@ -136,14 +131,6 @@
                                 Upload PDF file
                             </x-form.input>
 
-                            <x-form.input type="file"
-                                          name="latex"
-                                          class="my-3"
-                                          multiple
-                                          :value="old('latex') ?? $article->latex ?? ''"
-                                          :required="false">
-                                Upload LaTeX files
-                            </x-form.input>
 
                             <x-form.submit/>
 
