@@ -12,10 +12,8 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Revision::class);
-            $table->tinyInteger('state');
             $table->text('content');
+            $table->boolean('public')->default(false);
             $table->timestamps();
         });
     }
