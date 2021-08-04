@@ -2,14 +2,20 @@
 
 namespace Database\Seeders;
 
-use App\Models\Review;
-use Database\Factories\ReviewFactory;
+use App\Models\Revision;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class ReviewSeeder extends Seeder
 {
     public function run(): void
     {
-        Review::factory(20)->create();
+        User::all()->each(function (User $user) {
+            $revisions = Revision::sample(random_int(1, 10));
+            foreach ($revisions as $revision) {
+                $user->reviews()->attach($revision->id);
+            }
+            $user->save();
+        });
     }
 }
