@@ -10,7 +10,7 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->uuid('id');
-            $table->uuid('user_id');
+            $table->uuid('user_id')->default(null);
             $table->uuid('editor_id')->default(null);
             $table->string('title');
             $table->text('abstract');
