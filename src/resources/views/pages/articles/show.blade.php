@@ -12,15 +12,15 @@
 
         <div class="card text-center" id="cardtextbc">
             <div class="card-header articletitle">
-                <h4>Title: {{ $article->name }}</h4>
+                <h4>Title: {{ $article->title }}</h4>
             </div>
             <div class="card-bodywrap">
                 <h5 class="closer">Summary:</h5>
-                <p class="lefty"> {{ $article->summary }}</p>
+                <p class="lefty">Abstract {{ $article->abstract }}</p>
             </div>
             <div class="articleshowcol">
                 <div class="articleshowrow row_rnd">
-                    <h5>Article type: {{ $article->article_type }}</h5>
+                    <h5>Type: {{ $article->type }}</h5>
                 </div>
                 <div class="articleshowrow row_btw">
                     <h5>Page count: {{ $article->page_count }}</h5>
