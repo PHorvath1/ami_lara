@@ -11,7 +11,8 @@ class RevisionRequest extends ExtendedFormRequest
     {
         return [
             'note' => 'required',
-            'pdf_path' => ['required']
+            'pdf_path' => ['required'],
+            'article_id' => []
         ];
     }
 }
