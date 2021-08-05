@@ -10,7 +10,7 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->uuid('id');
-            $table->uuid('user_id')->default(null);
+            $table->uuid('user_id')->nullable()->default(null);
             $table->uuid('editor_id')->nullable()->default(null);
             $table->string('title');
             $table->text('abstract');
@@ -20,7 +20,7 @@ class CreateArticlesTable extends Migration
             $table->string('language')->default('en');
             $table->string('doi')->nullable()->default(null);
             $table->text('source')->nullable()->default(null);
-            $table->integer('type_id');
+            $table->integer('type_id')->nullable();
             $table->string('latex_path')->nullable()->default(null);
             $table->timestamp('deleted_at')->nullable()->default(null);
             $table->timestamps();

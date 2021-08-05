@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Symfony\Component\Routing\Exception\InvalidParameterException;
 
 /**
  * Class Article
@@ -34,14 +35,12 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property int type_id
  * @property string latex_path
  * @property Collection categories
- * @property User editor
- * @property Type type
  */
 class Article extends Model
 {
     use HasFactory, ApiResource, UUID;
 
-    protected $fillable = ['title', 'abstract', 'state', 'user_id', 'type_id'];
+    protected $fillable = ['user_id', 'editor_id', 'title', 'abstract', 'state', 'type_id'];
 
     private const STATES = [ 'UNDER_REVIEW', 'ACCEPTED', 'REJECTED' ];
 
@@ -114,5 +113,13 @@ class Article extends Model
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    /** Defines a one-to-many relationship between articles and tags
+     * @return HasMany The type of the relationship
+     */
+    public function type(): HasMany
+    {
+        return $this->hasMany(Type::class);
     }
 }
