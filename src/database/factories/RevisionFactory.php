@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Article;
 use App\Models\Revision;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -13,7 +14,8 @@ class RevisionFactory extends Factory
     {
         return [
             'note' => $this->faker->text(),
-            'pdf_path' => 'pdfs/example.pdf'
+            'pdf_path' => 'pdfs/example.pdf',
+            'article_id' => Article::random()
         ];
     }
 }
