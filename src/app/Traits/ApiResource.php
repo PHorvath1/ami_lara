@@ -29,6 +29,7 @@ use Illuminate\Support\Collection;
 
 trait ApiResource
 {
+    use Filters;
 
     public static function latestOne(): Model
     {
