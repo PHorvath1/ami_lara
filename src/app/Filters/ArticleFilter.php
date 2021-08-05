@@ -13,9 +13,9 @@ class ArticleFilter extends Filter
             ->orWhere('summary', 'LIKE', '%'.request('name').'%');
     }
 
-    public function contributor(Builder $query) : Builder {
+    public function author(Builder $query) : Builder {
         return $query->whereHas('users', function ($q) {
-            $q->where('users.name','LIKE','%'.request('contributor').'%');
+            $q->where('users.name','LIKE','%'.request('author').'%');
         });
     }
 
@@ -30,13 +30,6 @@ class ArticleFilter extends Filter
             return $query;
         }
         return $query->where('categories', 'LIKE', '%'.request('category').'%');
-    }
-
-    public function tags(Builder $query) : Builder {
-        if (empty(request('tag'))) {
-            return $query;
-        }
-        return $query->where('tags', 'LIKE', '%'.request('tag').'%');
     }
 }
 
