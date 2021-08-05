@@ -95,7 +95,7 @@ class Article extends Model
     /** Defines a many-to-one relationship between articles and volumes
      * @return BelongsTo The type of the relationship
      */
-    public function volumes(): BelongsTo
+    public function volume(): BelongsTo
     {
         return $this->belongsTo(Volume::class);
     }
@@ -118,7 +118,7 @@ class Article extends Model
     /** Defines a one-to-many relationship between articles and tags
      * @return HasMany The type of the relationship
      */
-    public function type(): HasMany
+    public function types(): HasMany
     {
         return $this->hasMany(Type::class);
     }

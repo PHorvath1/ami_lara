@@ -7,6 +7,7 @@ use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Volume
@@ -42,11 +43,11 @@ class Volume extends Model
         $this->title_str = $value;
     }
 
-    /** Defines a many-to-many relationship between volumes and articles
-     * @return BelongsToMany The type of the relationship
+    /** Defines a one-to-many relationship between volumes and articles
+     * @return HasMany The type of the relationship
      */
-    public function articles(): BelongsToMany
+    public function articles(): HasMany
     {
-        return $this->belongsToMany(Article::class);
+        return $this->HasMany(Article::class);
     }
 }
