@@ -10,16 +10,20 @@ class ArticleCreateRequest extends FormRequest
     {
         return [
             'pdf' => [ 'required' ],
+            'user_id' => [],
+            'editor_id' => [],
             'title' => [ 'required', 'min:10' ],
             'abstract' => [ 'required', 'min:10' ],
             'page_count' => [],
             'article_type' => [ 'required' ],
             'note' => [],
+            'type_id' => [],
             'doi' => [],
             'language' => [],
             'authors' => [ 'required' ],
             'categories' => [ 'required' ],
             'latex' => []
+
         ];
     }
 }
