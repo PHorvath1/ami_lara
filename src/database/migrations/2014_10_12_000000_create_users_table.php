@@ -21,6 +21,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('api_key')->nullable();
             $table->rememberToken();
+            $table->integer('appointed_as_reviewer')->default(0);
+            $table->integer('accepted_reviewer')->default(0);
+            $table->integer('completed_reviewer')->default(0);
             $table->timestamps();
         });
     }
