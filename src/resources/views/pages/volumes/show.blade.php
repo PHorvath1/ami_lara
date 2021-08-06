@@ -3,10 +3,10 @@
 @section('content')
     @php
         /**
-        * @var \App\Models\Volume $volume
-        * @var \Illuminate\Pagination\LengthAwarePaginator $articles
-        * @var \App\Models\Article $article
-        */
+        * @var Volume $volume
+        * @var LengthAwarePaginator $articles
+        * @var Article $article
+        */use App\Models\Article;use App\Models\Volume;use Illuminate\Pagination\LengthAwarePaginator;
     @endphp
 
     <div class="container-fluid p-4 volume_container_color">
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div>
-            {{ $articles->render() }}
+            {{ $articles->links() }}
         </div>
         <div class="row">
             <div class="row px-4">
@@ -39,28 +39,17 @@
                     @php
                         /**
                         * @var App\Models\Article $article
-                        * @var \Illuminate\Database\Eloquent\Collection $authors
-                        * @var App\Models\Volume $volume
                         */
-                        $authors=$article->users;
-                        $author_text=$authors->map(fn(\App\Models\User $user) => $user->name)->implode(', ');
-                        $pivot = null;
-                        foreach ($volume->articles as $temp_article){
-                            if($temp_article->id = $article->id){
-                                    $pivot = $temp_article->pivot;
-                                    break;
-                            }
-                        }
+                        $author=$article->user->name;
                     @endphp
                     <div class="col-4 col-md-4">
                         <div class="card m-3">
                             <a href="{{route('articles.show', $article->id)}}" class="text-decoration-none text-dark">
                                 <div class="card-body p-5 mx-auto card_color">
-                                    <h4 class="card-title"> {{ $article->name }}</h4>
-                                    <h6 class="text-muted card-subtitle mb-2">by: {{ $author_text }}<br></h6>
-                                    <p class="card-text"><em>Pages: {{ $pivot->from_page }} - {{$pivot->to_page }}</em><br></p>
+                                    <h4 class="card-title"> {{ $article->title }}</h4>
+                                    <h6 class="text-muted card-subtitle mb-2">by: {{ $author }}<br></h6>
                                     <p class="card-text">DOI:&nbsp;{{ $article->doi }}<br></p>
-                                    <p class="card-text">Summary: {{ $article->summary }}</p>
+                                    <p class="card-text">Summary: {{ $article->abstract }}</p>
                                 </div>
                             </a>
                         </div>
