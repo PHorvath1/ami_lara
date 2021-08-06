@@ -18,7 +18,7 @@ class AdminAuth
      */
     public function handle(Request $request, Closure $next): mixed
     {
-        if (Auth::user()?->isNotA('superadmin', 'editor', 'technical-editor')) abort(StatusCode::FORBIDDEN);
+        if (Auth::user()?->isNotA('superuser', 'editor', 'technical-editor')) abort(StatusCode::FORBIDDEN);
 
         return $next($request);
     }
