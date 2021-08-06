@@ -7,6 +7,7 @@ use App\Traits\ApiResource;
 use App\Traits\UUID;
 use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
@@ -35,4 +36,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Defines a many-to-many relationship between users and revisions
+     * @return HasMany
+     */
+    public function reviews() : HasMany {
+        return $this->hasMany(Revision::class)->withPivot(['state', 'content']);
+    }
 }
