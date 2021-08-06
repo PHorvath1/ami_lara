@@ -12,9 +12,9 @@
     <!-- Scripts before page load-->
     <script src="{{ mix('js/app.js') }}"></script>
     <script src="https://kit.fontawesome.com/{{ env('FONTAWESOME_KIT') }}.js" crossorigin="anonymous"></script>
-    @stack('pre-js')
+@stack('pre-js')
 
-    <!-- Fonts -->
+<!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
@@ -27,21 +27,24 @@
 
 </head>
 <body>
-    <div id="app">
-        <x-navbar />
+<div id="app">
+    <x-navbar />
+    <x-header />
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-        <footer class="footer mt-auto py-3">
-            <x-footer />
-        </footer>
-    </div>
+    <main class="main">
+        @yield('content')
+    </main>
+    <footer class="footer mt-auto">
+        <x-footer />
+    </footer>
 
-    @stack('js')
-    @if($liveWire ?? false)
-        @livewireScripts
-    @endif
-    {!! Brian2694\Toastr\Facades\Toastr::message() !!}
+
+</div>
+
+@stack('js')
+@if($liveWire ?? false)
+    @livewireScripts
+@endif
+{!! Brian2694\Toastr\Facades\Toastr::message() !!}
 </body>
 </html>
