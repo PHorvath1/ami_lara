@@ -2,7 +2,7 @@
     <!-- Navbar Search -->
     <x-admin.navbar.search />
     <!-- Messages Dropdown Menu -->
-    <x-admin.navbar.message />
+
     <!-- Notifications Dropdown Menu -->
     <x-admin.navbar.notifications />
     <li class="nav-item">
@@ -10,9 +10,7 @@
             <i class="fas fa-expand-arrows-alt"></i>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-            <i class="fas fa-th-large"></i>
-        </a>
+    <li class="nav-item d-none d-sm-inline-block">
+        <a href="logout" class="nav-link">Logout</a>
     </li>
 </ul>

@@ -17,19 +17,20 @@
                 Last 10 articles
             </h3>
         </div>
-        <div class="card-body">
+       {{-- <div class="card-body">
             <ul class="todo-list ui-sortable" data-widget="todo-list">
-            <!--php /** @var \App\Models\Article $article */ endphp
-                foreach($articles as $article)
+            @php /** @var \App\Models\Article $article */ @endphp
+                @foreach($articles as $article)
                     <li>
-                        <span class="text">{{--$article->name--}}</span>
+                @dd($article)
+                        <span class="text">--}}{{--$article->name--}}{{--</span>
                         <small class="badge badge-success"><i class="far fa-clock"></i>
-                            {{--$article->created_at->diffForHumans()--}}
-                            {{-- TODO: Fix carbon parse --}}
+                            --}}{{--$article->created_at->diffForHumans()--}}{{--
+                            --}}{{-- TODO: Fix carbon parse --}}{{--
                         </small>
                     </li>
-                endforeach-->
+                @endforeach
             </ul>
-        </div>
+        </div>--}}
     </div>
 @endsection
