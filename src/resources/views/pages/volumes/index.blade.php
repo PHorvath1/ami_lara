@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row justify-content-start">
             <div class="col-3">
-                <h6><em>Browse volumes or latest articles: </em></h6>
+                <h6><em>Browse volumes</em> or <a href="{{route('articles.index')}}">all articles</a></h6>
             </div>
         </div>
         <hr>
@@ -25,7 +25,7 @@
                     <a href="{{route('volumes.show',$v)}}" class="text-decoration-none text-dark">
                         <div class="card ami-yellow m-2">
                             <div class="article_header_color">
-                                <h5 class="card-title article-card-header">Name: {{$v->name}} </h5>
+                                <h5 class="card-title article-card-header">Name: {{$v->title}} </h5>
                             </div>
                             <div class="card-body">
                                 <p class="card-text">{{$v->description}}</p>
