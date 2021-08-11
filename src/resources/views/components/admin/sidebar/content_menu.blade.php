@@ -37,7 +37,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="volume" class="nav-link">
+        <a href="volumes" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
             <p>Volumes</p>
         </a>
