@@ -9,10 +9,28 @@
         <a href="#" data-toggle="modal" data-target=".bd-modal-sm" class="nav-link">Contact</a>
     </li>
 </ul>
-<div class="modal fade bd-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+<div  class="modal fade bd-modal-sm" tabindex="-1" role="dialog">
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Contact</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p> test@test.hu</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div class="modal fade bd-modal-sm" tabindex="-1" role="dialog" >
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             test@test.hu
         </div>
     </div>
-</div>
+</div>-->
