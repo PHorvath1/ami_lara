@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Type;
+use App\Models\Volume;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -13,7 +15,7 @@ class StaticController extends Controller
         return view('pages.welcome');
     }
 
-    public function Home(): Factory|View|Application
+    public function home(): Factory|View|Application
     {
         return view('pages.home');
     }
@@ -42,6 +44,6 @@ class StaticController extends Controller
      */
     public function submissions(): Factory|View|Application
     {
-        return view('pages.articles.form');
+        return view('pages.articles.form', ['types' => Type::all()]);
     }
 }

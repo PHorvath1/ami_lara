@@ -52,17 +52,7 @@
                     </button >
                 </form>
                 <div class="rightfloat">
-                    @php
-                        $authors=$article->users;
-                        $contains = false;
-                        foreach ($authors as $author) {
-                            if ($author->id === Auth::user()->id) {
-                                $contains = true;
-                                break;
-                            }
-                        }
-                    @endphp
-                    @if(\App\Utils\Bouncer::can('edit', $article) || $contains)
+                    @if(\App\Utils\Bouncer::can('edit', $article))
 
                         <div class="btnd">
                             <x-button.magic class="btn-warning"

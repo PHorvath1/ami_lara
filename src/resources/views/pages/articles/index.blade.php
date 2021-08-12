@@ -72,6 +72,7 @@
                         </div>
                         <div class="card-body">
                             <p class="card-text">{{$a->summary}}</p>
+
                             <p class="card-text">{{$a->language}}</p>
                             <p class="card-text text-muted">{{$a->doi}}</p>
                         </div>
