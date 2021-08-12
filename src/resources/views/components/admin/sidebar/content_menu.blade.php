@@ -1,7 +1,7 @@
 <li class="nav-header">CONTENT</li>
 <li class="nav-item">
     <li class="nav-item">
-        <a href="article" class="nav-link">
+        <a href="articles" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
             <p>Articles</p>
         </a>

@@ -13,7 +13,7 @@
 
         <x-admin.sidebar.content_menu />
 
-        <li class="nav-header">OTHERS</li>
+        <li class="nav-header">OTHERS not important</li>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="../layout/top-nav.html" class="nav-link">

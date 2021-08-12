@@ -19,10 +19,9 @@
             @php /** @var \App\Models\Article $article */ @endphp
                 @foreach($articles as $article)
                     <li>
-                        <span class="text">{{$article->title }}</span>
-                        <small class="badge badge-success"><i class="far fa-clock"></i>
+                        <a href="{{ route('articles.show', $article) }}" class="text">{{$article->title }}</a>
+                        <small class="badge badge-warning"><i class="far fa-clock"></i>
                             {{ $article->created_at->diffForHumans() }}
-                            {{-- TODO: Fix carbon parse --}}
                         </small>
                     </li>
                 @endforeach

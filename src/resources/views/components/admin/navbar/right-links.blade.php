@@ -3,7 +3,6 @@
     <x-admin.navbar.search />
 
     <!-- Messages Dropdown Menu -->
-    <x-admin.navbar.message />
 
     <!-- Notifications Dropdown Menu -->
     <x-admin.navbar.notifications />
