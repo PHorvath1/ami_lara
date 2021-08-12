@@ -1,9 +1,16 @@
 <?php
 
+use App\Http\Controllers\Admin\StaticAdminController;
+use App\Http\Controllers\Admin\UserAdminController;
+use App\Http\Controllers\admin\VolumeAdminController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\BouncerController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StaticController;
-use App\Http\Controllers\UserAdminController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\VolumeController;
+use App\Http\Controllers\DownloadFileController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 

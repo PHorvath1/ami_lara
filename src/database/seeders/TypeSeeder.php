@@ -10,6 +10,8 @@ class TypeSeeder extends Seeder
 {
     public function run(): void
     {
-        Type::factory(10)->create();
+        Type::factory(['name' => 'Research Paper', 'active' => true])->create();
+        Type::factory(['name' => 'Methodological', 'active' => true])->create();
+        Type::factory(['name' => 'Special', 'active' => false])->create();
     }
 }

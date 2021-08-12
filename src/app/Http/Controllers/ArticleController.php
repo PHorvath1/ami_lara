@@ -7,6 +7,7 @@ use App\Http\Requests\ArticleCreateRequest;
 use App\Http\Requests\ArticleEditRequest;
 use App\Models\Article;
 use App\Models\Revision;
+use App\Models\Type;
 use App\Utils\Bouncer;
 use App\Utils\StatusCode;
 use Brian2694\Toastr\Facades\Toastr;
@@ -34,7 +35,7 @@ class ArticleController extends Controller
      */
     public function create(): Factory|View|Application|RedirectResponse
     {
-        return view('pages.articles.form');
+        return view('pages.articles.form', ['types' => Type::all()]);
     }
 
     /**
@@ -67,7 +68,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article): Factory|View|Application|RedirectResponse
     {
-        return view('pages.articles.show', ['article' => $article]);
+        return view('pages.articles.show', ['article' => $article, 'types' => Type::all()]);
     }
 
     /**
@@ -77,7 +78,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article): Factory|View|Application|RedirectResponse
     {
-        return view('pages.articles.form', ['article' => $article]);
+        return view('pages.articles.form', ['article' => $article, 'types' => Type::all()]);
     }
 
     /**

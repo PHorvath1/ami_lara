@@ -1,22 +1,28 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light" aria-label="Main navbar">
-    <div class="container-xl">
-        <x-nav.brand>My App</x-nav.brand>
-        <x-nav.toggler />
 
-        <div class="collapse navbar-collapse" id="navbarMain">
-            <ul class="navbar-nav me-5 mb-2 mb-lg-0">
-                <x-nav.link to="home" />
-                @can('index', \App\Models\User::class)
-                    <x-nav.link to="users.index">Users</x-nav.link>
-                @endcan
+<nav class="navbar navbar-light navbar-expand-md navigation-clean-search" id="navclass">
+    <div class="container"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse d-lg-flex align-content-start justify-content-lg-center" id="navcol-1" >
+            <ul class="navbar-nav d-lg-flex align-content-start justify-content-lg-center" id="navul">
+
+                <x-nav.link class="notlastlink" to="home"  />
+
+                <x-nav.link class="notlastlink" to="content">Browse</x-nav.link>
+
+                <x-nav.link class="notlastlink"  to="submissions" />
+
+                <x-nav.link class="lastlink"  to="about" />
+
             </ul>
-            <div class="d-inline-block me-auto">
-{{--                <x-nav.search />--}}
-            </div>
-            <div class="d-none d-lg-inline btn-group">
-                <x-nav.auth />
-            </div>
+        </div>
+        <div id="divdflexcontainer" class="d-flex">
+
+            <x-nav.search />
+
+
+            <x-nav.auth />
+
 
         </div>
     </div>
 </nav>
+
