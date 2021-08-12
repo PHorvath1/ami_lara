@@ -26,10 +26,10 @@
                 <form target="_self">
                     <div class="row m-2 align-items-center">
                         <div class="col-2">
-                            <label for="contributor">Contributor:</label>
+                            <label for="author">Author:</label>
                         </div>
                         <div class="col-4">
-                            <input type="text" id="contributor" name="contributor" placeholder="Contributor">
+                            <input type="text" id="author" name="author" placeholder="Author">
                         </div>
                     </div>
                     <div class="row m-2 align-items-center">
@@ -48,14 +48,6 @@
                             <input type="text" id="category" name="categories" placeholder="Categories">
                         </div>
                     </div>
-                    <div class="row m-2 align-items-center">
-                        <div class="col-2">
-                            <label for="tag">Tags:</label>
-                        </div>
-                        <div class="col-4">
-                            <input type="text" id="tag" name="tags" placeholder="Tags">
-                        </div>
-                    </div>
                     <div class="m-2">
                         <button class="btn btn-primary rounded" type="submit">Filter search</button>
                     </div>
@@ -64,17 +56,13 @@
             @foreach($articles as $a)
                 <a href="{{route('articles.show',$a)}}" class="text-decoration-none text-dark"><div class="card ami-yellow m-2">
                         <div class="article_header_color">
-                            <h5 class="card-title article-card-header">{{$a->name}}</h5>
-                            @foreach($a->users as $author)
-                                <span class="article-card-header text-muted">{{$author->name}} </span>
-                            @endforeach
+                            <h5 class="card-title article-card-header">{{$a->title}}</h5>
+                            <span class="article-card-header text-muted">{{$a->user->name}} </span>
                             <h6 class="card-subtitle article-card-header mb-2 text-muted">{{$a->created_at}}</h6>
                         </div>
                         <div class="card-body">
-                            <p class="card-text">{{$a->summary}}</p>
-
+                            <p class="card-text">{{$a->abstract}}</p>
                             <p class="card-text">{{$a->language}}</p>
-                            <p class="card-text text-muted">{{$a->doi}}</p>
                         </div>
                     </div></a>
             @endforeach

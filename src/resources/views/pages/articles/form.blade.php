@@ -81,9 +81,9 @@
                                     name="type"
                                     class="my-6"
                                     required>
-                                <option value="{{$article->type_id}}" selected hidden>{{$article->getTypeTextAttribute()}}</option>
-                                @foreach($article->getTypes() as $type)
-                                    <option value="{{$article->type_id}}">{{$type}}</option>
+                                <option value="{{$article !== null ? $article->type_id : 1}}" selected hidden>{{$article !== null ? $article->getTypeTextAttribute() : \App\Models\Type::first()->name}}</option>
+                                @foreach(\App\Models\Type::all() as $type)
+                                    <option value="{{$type->id}}">{{$type->name}}</option>
                                 @endforeach
                             </select>
 
