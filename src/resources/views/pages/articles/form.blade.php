@@ -81,8 +81,9 @@
                                     name="type"
                                     class="my-6"
                                     required>
-                                @foreach($types as $type)
-                                    <option value="{{$type->id}}">{{$type->name}}</option>
+                                <option value="{{$article->type_id}}" selected hidden>{{$article->getTypeTextAttribute()}}</option>
+                                @foreach($article->getTypes() as $type)
+                                    <option value="{{$article->type_id}}">{{$type}}</option>
                                 @endforeach
                             </select>
 

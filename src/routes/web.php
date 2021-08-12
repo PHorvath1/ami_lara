@@ -14,6 +14,7 @@ use App\Http\Controllers\DownloadFileController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
+
 Route::get('/', [StaticController::class, 'home'])->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
@@ -28,6 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/auth/{user}/assign_role/{role}', [BouncerController::class, 'assign_role'])->name('user.role.assign_role');
     Route::post('/auth/{user}/unassign_role/{role}', [BouncerController::class, 'unassign_role'])->name('user.role.unassign_role');
     Route::get('/download/{fileName}', [DownloadFileController::class, 'download'])->name('download');
+
 });
     Route::get('/about', [StaticController::class, 'about'])->name('about');
     Route::get('/submissions', [StaticController::class, 'submissions'])->name('submissions');
