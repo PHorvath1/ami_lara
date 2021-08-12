@@ -28,4 +28,3 @@
         <a href="#" class="small-box-footer">View users <i class="fas fa-arrow-circle-right"></i></a>
     </div>
 </div>
-
