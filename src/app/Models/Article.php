@@ -64,6 +64,16 @@ class Article extends Model
 
     }
 
+    /** Returns the type of the article.
+     * @return string The type of the article, or UNKNOWN if not a valid type.
+     */
+    public function getTypeTextAttribute(){
+        return $this->type_id > count(Type::all()) || $this->state < 0
+            ? 'UNKNOWN'
+            : Type::where('id', '=', $this->type_id)->first()->name;
+
+    }
+
     /** Set the state of the article
      * @throws InvalidParameterException If state text is not found in STATES
      */
