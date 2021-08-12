@@ -28,13 +28,6 @@ class Revision extends Model
 
     protected $fillable = ['note', 'pdf_path', 'article_id'];
 
-    /** Defines a one-to-many relationship between revisions and comments
-     * @return HasMany The type of the relationship
-     */
-    public function comments(): HasMany {
-        return $this->hasMany(Comment::class);
-    }
-
     /** Defines an inverse one-to-many relationship between revisions and articles
      * @return BelongsTo The type of the relationship
      */

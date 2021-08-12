@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Builder;
 class ArticleFilter extends Filter
 {
     public function name(Builder $query) : Builder {
-        return $query->where('name', 'LIKE', '%'.request('name').'%')
-            ->orWhere('summary', 'LIKE', '%'.request('name').'%');
+        return $query->where('title', 'LIKE', '%'.request('name').'%')
+            ->orWhere('abstract', 'LIKE', '%'.request('name').'%');
     }
 
     public function author(Builder $query) : Builder {
