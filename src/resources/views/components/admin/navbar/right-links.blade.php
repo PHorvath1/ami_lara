@@ -1,8 +1,10 @@
 <ul class="navbar-nav ml-auto">
     <!-- Navbar Search -->
     <x-admin.navbar.search />
+
     <!-- Messages Dropdown Menu -->
     <x-admin.navbar.message />
+
     <!-- Notifications Dropdown Menu -->
     <x-admin.navbar.notifications />
     <li class="nav-item">

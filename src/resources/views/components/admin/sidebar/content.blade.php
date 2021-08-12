@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Blank Page</h1>
+                    <h1>Dashboard</h1>
                 </div>
 
                 <x-breadcrumb :path="['admin:dashboard' => 'Admin Page']">Dashboard</x-breadcrumb>

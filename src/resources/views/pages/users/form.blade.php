@@ -2,7 +2,7 @@
 
 @section('content')
     @php
-    $user = $user ?? null; //If you do not set a variable it throws an error, so we set it to something easy to check
+        $user = $user ?? null; //If you do not set a variable it throws an error, so we set it to something easy to check
     @endphp
     <div class="container">
         <div class="wrapper row">
