@@ -43,7 +43,7 @@
                                 <div class="card-body p-5 mx-auto card_color">
                                     <h4 class="card-title"> {{ $article->title }}</h4>
                                     <h6 class="text-muted card-subtitle mb-2">by: {{ $article->user->name }}<br></h6>
-                                    <p class="card-text">Summary: {{ $article->abstract }}</p>
+                                    <p class="card-text">Abstract: {{ $article->abstract }}</p>
                                 </div>
                             </a>
                         </div>
