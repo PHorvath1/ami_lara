@@ -13,7 +13,7 @@
     <div class="container-fluid p-4 volume_container_color">
         <div class="card text-center">
             <div class="card-header">
-                <h3>Name: {{ $volume->name }}</h3>
+                <h3>Name: {{ $volume->title }}</h3>
             </div>
             <div class="card-body">
                 <h4>Description: {{ $volume->description }}</h4>
@@ -43,7 +43,6 @@
                                 <div class="card-body p-5 mx-auto card_color">
                                     <h4 class="card-title"> {{ $article->title }}</h4>
                                     <h6 class="text-muted card-subtitle mb-2">by: {{ $article->user->name }}<br></h6>
-                                    <p class="card-text">DOI:&nbsp;{{ $article->doi }}<br></p>
                                     <p class="card-text">Summary: {{ $article->abstract }}</p>
                                 </div>
                             </a>
