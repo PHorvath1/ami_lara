@@ -8,7 +8,7 @@
     <div class="card">
         <div class="card-header d-inline-block align-middle">
             <span>
-                <a href="#" class="btn btn-success">
+                <a href="{{route('admin:volumes.create')}}" class="btn btn-success">
                     <i class="fa fa-plus text-light"></i>
                     <span class="text-light">Add</span>
                 </a>
@@ -18,7 +18,7 @@
             <ul class="todo-list" data-widget="todo-list">
                 @foreach($volumes as $volume)
                     <div class="mb-4 rounded">
-                        <a href="#">
+                        <a href="{{route('admin:volumes.show',$volume)}}">
                             <li class="m-2">
                                 <span class="text text-dark text-bold">{{$volume->Title}}</span>
                                 <span class="ml-2 text-muted">#{{$volume->id}}</span>
@@ -28,8 +28,8 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="#" class="btn btn-warning">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
+                        <a href="{{route('admin:volumes.edit',$volume)}}" class="btn btn-warning">Edit</a>
+                        <a href="{{route('volumes.destroy',$volume)}}" class="btn btn-danger">Delete</a>
                     </div>
                     <hr>
                 @endforeach

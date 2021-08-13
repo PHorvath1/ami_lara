@@ -24,7 +24,7 @@ class VolumeAdminController extends GuardedController
 
     public function create(): Factory|View|Application|RedirectResponse
     {
-        return view('volumes.form');
+        return view('pages.admin.volumes.form');
     }
 
     public function store(VolumeRequest $request): Factory|View|Application|RedirectResponse
@@ -36,12 +36,12 @@ class VolumeAdminController extends GuardedController
 
     public function show(Volume $volume): Factory|View|Application|RedirectResponse
     {
-        return view('volumes.show', ['volume' => $volume]);
+        return view('pages.admin.volumes.show', ['volume' => $volume, 'articles' => $volume->articles()->paginate(3)]);
     }
 
     public function edit(Volume $volume): Factory|View|Application|RedirectResponse
     {
-        return view('volumes.form', ['volume' => $volume]);
+        return view('pages.admin.volumes.form', ['volume' => $volume]);
     }
 
     public function update(VolumeRequest $request, Volume $volume): Factory|View|Application|RedirectResponse
