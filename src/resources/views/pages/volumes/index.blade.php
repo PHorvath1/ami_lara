@@ -18,7 +18,7 @@
         <hr>
         <div class="row">
             <div>
-                {{ $volumes->render() }}
+                {{ $volumes->links() }}
             </div>
             @foreach($volumes as $v)
                 <div class="col-sm col-md-5 mx-auto">
@@ -37,7 +37,7 @@
             @endforeach
         </div>
         <div>
-            {{ $volumes->render() }}
+            {{ $volumes->links() }}
         </div>
     </div>
 @endsection
