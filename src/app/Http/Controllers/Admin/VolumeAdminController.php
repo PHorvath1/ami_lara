@@ -32,7 +32,7 @@ class VolumeAdminController extends GuardedController
     {
        $volume = Volume::create($request->validated());
         Toastr::success('New volume created');
-        return redirect(route('volumes.show', [$volume]));
+        return redirect(route('admin:volumes.show', [$volume]));
     }
 
     public function show(Volume $volume): Factory|View|Application|RedirectResponse
@@ -51,13 +51,13 @@ class VolumeAdminController extends GuardedController
         $volume->save();
 
         Toastr::success('Volume modified');
-        return redirect(route('volumes.show', [$volume]));
+        return redirect(route('admin:volumes.show', [$volume]));
     }
 
     public function destroy(Volume $volume): Factory|View|Application|RedirectResponse
     {
         Toastr::warning("Volume deleted: $volume->id");
         $volume->delete();
-        return redirect(route('volumes.index'));
+        return redirect(route('admin:volumes.index'));
     }
 }
