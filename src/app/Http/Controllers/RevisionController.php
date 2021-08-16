@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RevisionRequest;
+use App\Models\Article;
 use App\Models\Revision;
 use App\Utils\Bouncer;
 use App\Utils\StatusCode;
@@ -29,9 +30,9 @@ class RevisionController extends GuardedController
      * Shows the revision create form
      * @return Factory|View|Application|RedirectResponse
      */
-    public function create(): Factory|View|Application|RedirectResponse
+    public function create(Article $article): Factory|View|Application|RedirectResponse
     {
-        return view('pages.revisions.form');
+        return view('pages.revisions.form', ['article' => $article]);
     }
 
     /**
@@ -39,9 +40,11 @@ class RevisionController extends GuardedController
      * @param RevisionRequest $request Revision form data
      * @return Factory|View|Application|RedirectResponse
      */
-    public function store(RevisionRequest $request): Factory|View|Application|RedirectResponse
+    public function store(RevisionRequest $request, Article $article): Factory|View|Application|RedirectResponse
     {
         $revision = Revision::create($request->validated());
+        $revision->article_id = $article->id;
+        $revision ->save();
         Toastr::success('New revision created');
         return redirect(route('revisions.show', [$revision]));
     }
