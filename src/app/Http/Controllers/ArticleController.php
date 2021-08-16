@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\File\FileManager;
 use App\Filters\ArticleFilter;
 use App\Http\Requests\ArticleCreateRequest;
 use App\Http\Requests\ArticleEditRequest;
 use App\Models\Article;
 use App\Models\Revision;
 use App\Models\Type;
-use App\Utils\Bouncer;
-use App\Utils\StatusCode;
+use App\Providers\CategoryServiceProvider;
 use Brian2694\Toastr\Facades\Toastr;
-use FileManager;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -45,18 +44,16 @@ class ArticleController extends Controller
     public function store(ArticleCreateRequest $request): Factory|View|Application|RedirectResponse
     {
         $rq = $request->validated();
-        $rqe = $request->except(['categories', 'authors']);
+        $rqe = $request->except(['categories']);
         $article = Article::create($rqe);
 
         $categories = explode(',', $rq['categories']);
-        $authors = explode(',', $rq['authors']);
 
         $fm = new FileManager();
-        $pdf = $fm->upload('pdf', 'articles');
-        $latex = $fm->upload('latex', 'articles');
+        $pdf = $fm->upload($request, 'pdf', 'articles');
+        //$latex = $fm->upload($request, 'latex', 'articles');
         CategoryServiceProvider::attachAll($categories, $article);
-        ContributorServiceProvider::attachAll($authors, $article);
-        Revision::create(['pdf_path' => $pdf, 'article_id' => $article->id]);
+        Revision::create(['note' => 'Article submitted','pdf_path' => $pdf, 'article_id' => $article->id]);
         Toastr::success('New article created');
         return redirect(route('articles.show', [$article]));
     }
@@ -90,21 +87,18 @@ class ArticleController extends Controller
     public function update(ArticleEditRequest $request, Article $article): Factory|View|Application|RedirectResponse
     {
         $rq = $request->validated();
-        $rqe = $request->except(['categories', 'authors']);
+        $rqe = $request->except(['categories']);
         $article->update($rqe);
         $article->setStateTextAttribute($rq['state']);
         $categories = explode(',', $rq['categories']);
-        $authors = explode(',', $rq['authors']);
         if ($request->has('pdf') || $request->has('latex')) {
             $fm = new FileManager();
             $pdf = $fm->upload('pdf', 'articles');
-            $latex = $fm->upload('latex', 'articles');
+            //$latex = $fm->upload('latex', 'articles');
             Revision::create(['pdf_path' => $pdf, 'article_id' => $article->id]);
         }
 
-
         CategoryServiceProvider::attachAll($categories, $article);
-        ContributorServiceProvider::attachAll($authors, $article);
         Toastr::success('Article successfully updated');
         return redirect(route('articles.show', [$article]));
     }
