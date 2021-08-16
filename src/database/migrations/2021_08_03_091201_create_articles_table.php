@@ -14,7 +14,7 @@ class CreateArticlesTable extends Migration
             $table->uuid('editor_id')->nullable()->default(null);
             $table->string('title');
             $table->text('abstract');
-            $table->tinyInteger('state');
+            $table->tinyInteger('state')->default(0);
             $table->integer('page_count')->nullable()->default(null);
             $table->text('note')->nullable()->default(null);
             $table->string('language')->default('en');
