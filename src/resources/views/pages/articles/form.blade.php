@@ -3,6 +3,7 @@
 @section('content')
     @php
         $article = $article ?? null; //If you do not set a variable it throws an error, so we set it to something easy to check
+        dump($article);
     @endphp
     <div class="container">
         <div class="wrapped row">
@@ -49,13 +50,13 @@
                                 </x-form.input>
 
                                 @if($article->editor_id === Auth::id())
-                                <x-form.input name="note"
-                                              class="my-3"
-                                              placeholder="Note"
-                                              :value="old('note') ?? $article->note ?? ''"
-                                              :required="false">
-                                    Note
-                                </x-form.input>
+                                    <x-form.input name="note"
+                                                  class="my-3"
+                                                  placeholder="Note"
+                                                  :value="old('note') ?? $article->note ?? ''"
+                                                  :required="false">
+                                        Note
+                                    </x-form.input>
                                 @endif
                             @endif
 
@@ -76,9 +77,9 @@
 
                             <x-divider/>
 
-                            <label for="type">Type</label>
-                            <select id="type"
-                                    name="type"
+                            <label for="type_id">Type</label>
+                            <select id="type_id"
+                                    name="type_id"
                                     class="my-6"
                                     required>
                                 <option value="{{$article !== null ? $article->type_id : 1}}" selected hidden>{{$article !== null ? $article->getTypeTextAttribute() : \App\Models\Type::first()->name}}</option>
@@ -104,19 +105,14 @@
                             <x-divider/>
 
                             @php
-                                $userString = "";
-                                $pivot = null;
-                                foreach (($article?->users ?? []) as $user)
-                                    $userString .= $user->email . '::' . $user->pivot->contribution_type . ', ';
-
-                                $userString = trim($userString, ', ');
+                                $userId = \Illuminate\Support\Facades\Auth::user()->id;
                             @endphp
-                            <x-form.input name="authors"
+                            <x-form.input name="user_id"
                                           class="my-3"
-                                          placeholder="Ex. user@test.com::Author"
-                                          :value="old('authors') ?? $userString ?? ''"
-                                          :required="true">
-                                Authors
+                                          :value="$userId"
+                                          :required="true"
+                                          hidden="true">
+                                Author
                             </x-form.input>
 
 
@@ -127,7 +123,7 @@
                                           name="pdf"
                                           class="my-3"
                                           :value="old('pdf') ?? $article->pdf ?? ''"
-                                          :required="$article===null">
+                                          :required>
                                 Upload PDF file
                             </x-form.input>
 
