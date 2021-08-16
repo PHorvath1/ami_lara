@@ -47,7 +47,8 @@ class VolumeAdminController extends GuardedController
 
     public function update(VolumeRequest $request, Volume $volume): Factory|View|Application|RedirectResponse
     {
-        $volume->update($request->validated());
+        $rq = $request->validated();
+        $volume->update($rq);
         $volume->save();
 
         Toastr::success('Volume modified');
