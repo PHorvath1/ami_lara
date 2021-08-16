@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\GuardedController;
 use App\Http\Requests\VolumeRequest;
+use App\Models\Article;
 use App\Models\Volume;
 use App\Utils\Bouncer;
 use App\Utils\StatusCode;
@@ -24,7 +25,7 @@ class VolumeAdminController extends GuardedController
 
     public function create(): Factory|View|Application|RedirectResponse
     {
-        return view('pages.admin.volumes.form');
+        return view('pages.admin.volumes.form', ['articles' => Article::where('volume_id', 'LIKE', '0')->get()]);
     }
 
     public function store(VolumeRequest $request): Factory|View|Application|RedirectResponse
