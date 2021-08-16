@@ -18,13 +18,15 @@
 
                             <label for="title">Title</label>
                             <x-form.input name="title"
-                                          class="my-2">
+                                          class="my-2"
+                                          :value="old('title') ?? $volume->title ?? ''">
                             </x-form.input>
 
                             <label for="description">Description</label>
                             <x-form.input name="description"
                                           class="my-2"
-                                          :value="old('title') ?? $volume->title ?? ''"
+                                          type="textarea"
+                                          :value="old('description') ?? $volume->description ?? ''"
                                           :required="true">
                             </x-form.input>
 
