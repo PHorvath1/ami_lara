@@ -6,7 +6,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ArticleEditRequest extends FormRequest
+class ArticleEditRequest extends ExtendedFormRequest
 {
     public function rules(): array
     {
@@ -14,13 +14,15 @@ class ArticleEditRequest extends FormRequest
             'pdf' => [],
             'title' => [ 'required', 'min:10' ],
             'abstract' => [ 'required', 'min:10' ],
+            'state' => ['required'],
             'page_count' => [],
-            'article_type' => [ 'required' ],
             'note' => [],
             'doi' => [],
-            'language' => [ 'required' ],
-            'authors' => [ 'required' ],
+            'language' => [],
+            'user_id' => [],
             'categories' => [ 'required' ],
+            'volume_id' => [],
+            'type_id' => [],
             'latex' => []
         ];
     }
