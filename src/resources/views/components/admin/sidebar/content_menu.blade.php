@@ -37,7 +37,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="volumes" class="nav-link">
+        <a href="{{route('admin:volumes.index')}}" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
             <p>Volumes</p>
         </a>
