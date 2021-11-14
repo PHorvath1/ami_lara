@@ -27,6 +27,8 @@ class Volume extends Model
 
     protected $appends = ['title'];
 
+    protected $fillable = ['title', 'description', 'release_year'];
+
     /** Returns the title of the volume
      * @return string
      */
