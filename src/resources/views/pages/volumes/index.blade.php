@@ -25,7 +25,7 @@
                     <a href="{{route('volumes.show',$v)}}" class="text-decoration-none text-dark">
                         <div class="card ami-yellow m-2">
                             <div class="article_header_color">
-                                <h5 class="card-title article-card-header">Name: {{$v->title}} </h5>
+                                <h5 class="card-title article-card-header">Name: {{$v->title_str}} </h5>
                             </div>
                             <div class="card-body">
                                 <p class="card-text">{{$v->description}}</p>

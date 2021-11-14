@@ -42,7 +42,7 @@ class Article extends Model
 
     protected $fillable = ['user_id', 'editor_id', 'title', 'abstract', 'state', 'type_id'];
 
-    private const STATES = [ 'UNDER_REVIEW', 'ACCEPTED', 'REJECTED' ];
+    private const STATES = ['SUBMITTED', 'UNDER REVIEW', 'RECEIVED', 'ACCEPTED', 'REJECTED', 'WAITING FOR REVISED VERSION', 'ACCEPTED, WAITING FOR SOURCE FILE', 'EDITING', 'WAITING FOR COMMENTS', 'WILL BE PUBLISHED', 'PUBLISHED' ];
 
     protected $appends = ['stateText'];
 
