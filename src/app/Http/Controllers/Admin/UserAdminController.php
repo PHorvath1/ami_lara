@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\GuardedController;
 use App\Http\Middleware\BouncerCheck;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
