@@ -17,7 +17,7 @@ class ArticleFactory extends Factory
             'title' => $this->faker->sentence(),
             'user_id' => User::random(),
             'abstract' => $this->faker->paragraph(),
-            'state' => $this->faker->numberBetween(0, count(Article::first()->getStates())-1),
+            'state' => $this->faker->numberBetween(0, 10),
             'volume_id' => Volume::random()
         ];
     }
