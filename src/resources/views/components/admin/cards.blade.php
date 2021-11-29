@@ -25,6 +25,6 @@
             Users
             <div class="text-right"><i class="fas fa-users"></i></div>
         </div>
-        <a href="users" class="small-box-footer">View users <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="{{route('admin:users.index')}}" class="small-box-footer">View users <i class="fas fa-arrow-circle-right"></i></a>
     </div>
 </div>
