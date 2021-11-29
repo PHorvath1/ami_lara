@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\GuardedController;
+use App\Models\Article;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -40,8 +42,10 @@ class ArticleAdminController extends GuardedController
     {
         return true;
     }
-    public function destroy(): Factory|View|Application|RedirectResponse
+    public function destroy(Article $article): Factory|View|Application|RedirectResponse
     {
-        return true;
+        Toastr::warning("Article deleted: $article->id");
+        $article->delete();
+        return redirect(route('admin:articles.index'));
     }
 }
