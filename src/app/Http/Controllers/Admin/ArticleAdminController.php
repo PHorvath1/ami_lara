@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\GuardedController;
 use App\Models\Article;
+use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -34,9 +35,9 @@ class ArticleAdminController extends GuardedController
         return true;
     }
 
-    public function edit(): Factory|View|Application|RedirectResponse
+    public function edit(Article $article): Factory|View|Application|RedirectResponse
     {
-        return true;
+        return view('pages.admin.articles.form', ['article' => $article, 'types' => Type::all()]);
     }
     public function update(): Factory|View|Application|RedirectResponse
     {
