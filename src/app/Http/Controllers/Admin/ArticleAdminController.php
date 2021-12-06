@@ -47,7 +47,7 @@ class ArticleAdminController extends GuardedController
 
     public function show(Article $article): Factory|View|Application|RedirectResponse
     {
-        return redirect(route('articles.show', [$article]));
+        return view('pages.admin.articles.show', ['article' => $article]);
     }
 
     public function edit(): Factory|View|Application|RedirectResponse
