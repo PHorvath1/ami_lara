@@ -42,7 +42,7 @@ class ArticleAdminController extends GuardedController
         CategoryServiceProvider::attachAll($categories, $article);
         Revision::create(['note' => 'Article submitted','pdf_path' => $pdf, 'article_id' => $article->id]);
         Toastr::success('New article created');
-        return redirect(route('articles.show', [$article]));
+        return redirect(route('admin:articles.show', [$article]));
     }
 
     public function show(Article $article): Factory|View|Application|RedirectResponse
