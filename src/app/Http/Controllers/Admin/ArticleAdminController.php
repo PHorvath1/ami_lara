@@ -47,7 +47,7 @@ class ArticleAdminController extends GuardedController
         $article->save();
 
         Toastr::success('Article successfully modified');
-        return redirect(route('admin:volumes.show', [$article]));
+        return redirect(route('admin:articles.show', [$article]));
     }
     public function destroy(Article $article): Factory|View|Application|RedirectResponse
     {
