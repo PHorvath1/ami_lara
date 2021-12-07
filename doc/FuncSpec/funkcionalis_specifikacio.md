@@ -2,23 +2,22 @@
 
 ## Funkcionális Specifikáció
 
-## 1. Áttekintés
-● Ebben a fejezetben röviden ismertetni kell a projektünk egészét.
-● Példa: ”Egy olyan rendszert fejlesztünk, ami segíti a fiatalok tanulását,
-és a célunk, hogy a felhasználó a lehető legfrissebb tudáshoz jusson.
-Lehetőségük lesz a felhasználóknak játékos formában tanulni és ezáltal
-az oktató színesebbé, és játékosabbá teheti az óráját. Rengeteg téma
-közül lehet majd választani, épp ezért szinte bárki számára hasznos lesz
-ez az online felület. Természetesen nem csak számítógépen lesz
-elérhető az alkalmazás, hanem célunk hogy minél több platformon
-hozzá lehessen férni, legyen az tablet vagy telefon. Ez a rendszer
-ingyenes lesz, ezért bárki bárhonnan le tudja majd tölteni a telefonjára
-vagy esetleg interneten keresztül beregisztrál és máris hozzájut a
-legfrissebb tudáshoz. Különböző feladatok lesznek az egyes témák
-végén amivel a felhasználó próbára teheti a tudását. Minden ilyen
-feladat megoldása után az adott személy láthatja, hogy mennyi pontot
-szerzett, és mint ez egy vissza igazolást ad a számára, hogy mennyire
-sikerült elsajátítania az adott témakört.”
+## 1. Overview
+This website is an official website for Annales Mathematicae et
+Informaticae, which is an international journal of
+the Institute of Mathematics and Informatics of
+Eszterházy Károly University (Eger, Hungary), published
+by Líceum University Press. This journal is open for
+scientific publications in mathematics and computer
+science, where the field of number theory, group theory,
+constructive and computer aided geometry as well as theoretical
+and practical aspects of programming languages receive particular
+emphasis. Our goal is to provide our users with a convenient platform.
+They will have the access to publish the work on out website. Every user
+will have their own account, and they can submit and view their articles
+via a very beautiful UI. Everything is free, and everyone will be able to publish
+articles. we welcome good articles about mathematics and computer science
+as lone as they are new and unpublished.
 
 ## 2. Jelenlegi helyzet
 ● Kifejti, hogy miért van szükség az adott alkalmazásra, de itt már
