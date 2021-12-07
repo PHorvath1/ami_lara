@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\GuardedController;
+use App\Http\Requests\ArticleEditRequest;
 use App\Models\Article;
 use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
@@ -39,9 +40,14 @@ class ArticleAdminController extends GuardedController
     {
         return true;
     }
-    public function update(): Factory|View|Application|RedirectResponse
+    public function update(ArticleEditRequest $request, Article $article): Factory|View|Application|RedirectResponse
     {
-        return true;
+        $rq = $request->validated();
+        $article->update($rq);
+        $article->save();
+
+        Toastr::success('Article successfully modified');
+        return redirect(route('admin:articles.show', [$article]));
     }
     public function destroy(Article $article): Factory|View|Application|RedirectResponse
     {
