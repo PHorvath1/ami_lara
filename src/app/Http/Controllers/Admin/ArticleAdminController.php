@@ -9,6 +9,8 @@ use App\Http\Requests\ArticleCreateRequest;
 use App\Models\Article;
 use App\Models\Revision;
 use App\Providers\CategoryServiceProvider;
+use App\Http\Requests\ArticleEditRequest;
+use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -20,7 +22,7 @@ class ArticleAdminController extends GuardedController
 {
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return true;
+        return view('pages.admin.articles.index', ['article' => Article::all()]);
     }
 
     public function create(): Factory|View|Application|RedirectResponse
@@ -54,12 +56,19 @@ class ArticleAdminController extends GuardedController
     {
         return true;
     }
-    public function update(): Factory|View|Application|RedirectResponse
+    public function update(ArticleEditRequest $request, Article $article): Factory|View|Application|RedirectResponse
     {
-        return true;
+        $rq = $request->validated();
+        $article->update($rq);
+        $article->save();
+
+        Toastr::success('Article successfully modified');
+        return redirect(route('admin:articles.show', [$article]));
     }
-    public function destroy(): Factory|View|Application|RedirectResponse
+    public function destroy(Article $article): Factory|View|Application|RedirectResponse
     {
-        return true;
+        Toastr::warning("Article deleted: $article->id");
+        $article->delete();
+        return redirect(route('admin:articles.index'));
     }
 }

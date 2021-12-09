@@ -5,7 +5,7 @@
             Articles
             <div class="text-right"><i class="fas fa-book"></i></div>
         </div>
-        <a href="articles" class="small-box-footer">View articles <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="{{route('admin:articles.index')}}" class="small-box-footer">View articles <i class="fas fa-arrow-circle-right"></i></a>
     </div>
 </div>
     <div class="col-6 col-sm">
@@ -25,6 +25,6 @@
             Users
             <div class="text-right"><i class="fas fa-users"></i></div>
         </div>
-        <a href="users" class="small-box-footer">View users <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="{{route('admin:users.index')}}" class="small-box-footer">View users <i class="fas fa-arrow-circle-right"></i></a>
     </div>
 </div>
