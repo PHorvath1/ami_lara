@@ -52,9 +52,9 @@ class ArticleAdminController extends GuardedController
         return view('pages.admin.articles.show', ['article' => $article]);
     }
 
-    public function edit(): Factory|View|Application|RedirectResponse
+    public function edit(Article $article): Factory|View|Application|RedirectResponse
     {
-        return true;
+        return view('pages.admin.articles.form', ['article' => $article, 'types' => Type::all()]);
     }
     public function update(ArticleEditRequest $request, Article $article): Factory|View|Application|RedirectResponse
     {
