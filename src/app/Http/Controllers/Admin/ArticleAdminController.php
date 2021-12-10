@@ -27,7 +27,7 @@ class ArticleAdminController extends GuardedController
 
     public function create(): Factory|View|Application|RedirectResponse
     {
-        return true;
+        return view('pages.admin.articles.form', ['types' => Type::all()]);
     }
 
     public function store(ArticleCreateRequest $request): Factory|View|Application|RedirectResponse
