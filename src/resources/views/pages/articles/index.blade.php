@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@extends('layouts.admin')
 
 @push('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
@@ -9,6 +10,10 @@
     {{--    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>--}}
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 @endpush
+
+@section('content_header')
+    <h1>Articles</h1>
+@endsection
 
 @section('content')
     <div class="container">
