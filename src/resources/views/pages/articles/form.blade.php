@@ -16,6 +16,22 @@
                     <div class="card-body">
                         <x-form :to="$article ? route('articles.update', [$article]) : route('articles.store')"
                                 :method="$article ? 'put' : 'post'" :allowFile="true">
+                            @for ($i = 0; $i < $articles->count(); $i++)
+                                <div>
+                                    @switch($articles[$i]->state)
+                                        @case(0)
+                                        Submitted:
+                                        @break
+                                        @case(1)
+                                        Under review:
+                                        @break
+                                        @case(2)
+                                        Received:
+                                        @break
+                                    @endswitch
+                                        {{$articles[$i]->title}}
+                                </div>
+                            @endfor
 
                             @if ($article != null)
                                 <label for="state">State</label>
