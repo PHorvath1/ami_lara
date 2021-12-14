@@ -19,32 +19,16 @@ via a very beautiful UI. Everything is free, and everyone will be able to publis
 articles. we welcome good articles about mathematics and computer science
 as lone as they are new and unpublished.
 
-## 2. Jelenlegi helyzet
-● Kifejti, hogy miért van szükség az adott alkalmazásra, de itt már
-nem a kifejtés mértéke és részletessége a fontos, hanem a
-lényegretörő, vázlatos, egyértelmű leírása.
-● Példa: “A megrendelő szeretné kibővíteni az általa nyújtott oktatási
-szolgáltatások elérhetőségét, hogy versenytársaihoz képest így
-jusson piaci előnyökhöz. Egy új rendszer előállítását rendelte meg,
-amely interneten keresztül modern megoldásokat használva
-működik. A rendszer segítséget nyújt azok számára, akik valamilyen
-módon szeretnék tudásukat elmélyíteni egy adott területen, vagy új
-ismereteket szeretnének szerezni. A XXI. század megköveteli, hogy
-mindez hálózaton is elérhető legyen, ennek megfelelően Android
-alkalmazást és weboldalt is a megrendelő rendelkezésére kell
-bocsátani. Eddig a megrendelő csak számítógépen való gyors írás
-elsajátításához használt egy Stamina nevű alkalmazást. Ez a fajta
-tanulás megtetszett a diákoknak, és a tanárok is felismerték, hogy
-egy játékos oktatóprogrammal eredményesebbé, szórakoztatóbbá
-tehetik az oktatást, mint a hagyományos, táblára írásos módszerrel.
-Ezért elkezdtek keresni számukra megfelelő, létező programokat.
-Találtak többet is (pl.:Kahoot), viszont ezek nem tetszettek nekik. Egy
-olyan programra lenne szükségük, amellyel a diákok önállóan tudnak
-feladatot megoldani, és a többi játékos pontszámához képest tudják
-viszonyítani magukat. Mindezek mellet a megrendelőnek szüksége
-van a saját logojuk feltüntetésére is. Ezen okokból kifolyólag
-megkértek minket, hogy csináljuk meg nekik a vágyott alkalmazást,
-ami sokkal könnyebbé teheti számukra az oktatást.”
+## 2. Present Situation
+Authors want to publish their work of the in our journal
+they provide in order to share their knowledge and experience with
+other authors and users. They can create accounts in this
+system that would work using modern solutions over the Internet.
+The service requires that all of this be available online,
+and accordingly a website must be made available to the customer.
+So far, the customer can use a website to read and publish.
+For the reasons above, we made this website, which fit the requirement.
+
 
 ## 3. Követelménylista
 ● Itt kell leírni azt, hogy milyen funkciókkal kell rendelkeznie a
