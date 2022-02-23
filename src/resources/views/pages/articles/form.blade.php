@@ -3,36 +3,27 @@
 @section('content')
     @php
         $article = $article ?? null; //If you do not set a variable it throws an error, so we set it to something easy to check
-        dump($article);
     @endphp
     <div class="container">
         <div class="wrapped row">
             <div class="col-auto col-lg-3"></div>
             <div class="col 12 col-lg-6">
+            @foreach ($articles as $a)
+                <div class="border border-dark p-2 mb-2">                                    
+                    <p>{{$a->title}}</p>
+                    <p>{{$a->stateText}}</p>
+                    <p>{{$a->abstract}}</p>
+                    <button>Review</button>
+                    <button>Out of Scope</button>
+                </div>
+            @endforeach
                 <div class="card" id="form_body">
                     <div class="card-header" id="form_header">
                         <h4>{{$article ? 'Edit' : 'Create'}} Article Form</h4>
                     </div>
                     <div class="card-body">
                         <x-form :to="$article ? route('articles.update', [$article]) : route('articles.store')"
-                                :method="$article ? 'put' : 'post'" :allowFile="true">
-                            @for ($i = 0; $i < $articles->count(); $i++)
-                                <div>
-                                    @switch($articles[$i]->state)
-                                        @case(0)
-                                        Submitted:
-                                        @break
-                                        @case(1)
-                                        Under review:
-                                        @break
-                                        @case(2)
-                                        Received:
-                                        @break
-                                    @endswitch
-                                        {{$articles[$i]->title}}
-                                </div>
-                            @endfor
-
+                                :method="$article ? 'put' : 'post'" :allowFile="true">                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                             @if ($article != null)
                                 <label for="state">State</label>
                                 <select id="state"
