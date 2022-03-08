@@ -1,26 +1,33 @@
 @extends('layouts.admin')
 
-@push('pre-js')
-    {{--    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>--}}
-    {{--    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>--}}
-@endpush
-
-@push('css')
-    {!! \App\Datatable\Datatable::css() !!}
-@endpush
+@section('content_header')
+    <h1>Users</h1>
+@stop
 
 @section('content')
-    <div class="container">
-        <div class="wrapper">
-            <x-table.datatable
-                id="user_data"
-                class="table-responsive"
-                :for="$users"
-                :as="['ID', 'Name', 'Email', 'Created At']"
-                :view="true"
-                :delete="true"
-                :edit="true"
-            />
+    <div class="card">
+        <div class="card-body">
+            <ul class="todo-list" data-widget="todo-list">
+                @foreach($users as $user)
+                    <div class="mb-4 rounded">
+                        <a href="{{route('admin:users.show',[$user])}}">
+                            <li class="m-2">
+                                <span class="text text-dark text-bold">{{$user->name}}</span>
+                                <div>
+                                    <p class="text-dark">{{$user->email}}</p>
+                                    <p class="text-dark">Created at: {{$user->created_at}}</p>
+                                </div>
+                            </li>
+                        </a>
+                        <a href="{{route('admin:users.edit',[$user])}}" class="btn btn-warning">Edit</a>
+                        <x-button.magic :route='route("admin:users.destroy", [$user])' method="delete" confirm="Are you sure? This can not be undone!" class="btn btn-danger">
+                            Delete
+                        </x-button.magic>
+                    </div>
+                    <hr>
+                @endforeach
+            </ul>
         </div>
     </div>
-@endsection
+
+@stop

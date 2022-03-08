@@ -12,48 +12,22 @@
                     <h4>{{$user ? 'Edit' : 'Create'}} Profile</h4>
                 </div>
                 <div class="card-body">
-                    <x-form :to="$user ? route('users.update', [$user]) : route('users.store')" :method="$user ? 'put' : 'post'">
+                    <x-form :to="$user ? route('admin:users.update', [$user]) : route('admin:users.store')" :method="$user ? 'put' : 'post'">
+                        <label for="full_name">Full name</label>
                         <x-form.input name="name"
                                       class="my-3"
                                       placeholder="Some Name"
                                       :value="old('name') ?? $user->name ?? ''"
                                       :required="true">
-                            Full name
                         </x-form.input>
+                        <label for="email_address">Email address</label>
                         <x-form.input type="email"
                                       name="email"
                                       class="my-3"
                                       placeholder="someone@example.com"
                                       :value="old('email') ?? $user->email ?? ''"
                                       :required="true">
-                            Email address
                         </x-form.input>
-                        <x-divider />
-                        <x-form.input type="password"
-                                      name="password"
-                                      class="my-3"
-                                      placeholder="********"
-                                      :required="!$user"
-                        >
-                            New Password {{$user ? '(Empty for unchanged)' : ''}}
-                        </x-form.input>
-                        <x-form.input type="password"
-                                      name="password_confirmation"
-                                      class="my-3"
-                                      placeholder="********"
-                                      :required="!$user"
-                        >
-                            Confirm new Password
-                        </x-form.input>
-                        <x-divider />
-                        <x-form.input type="password"
-                                      name="current_password"
-                                      class="my-3"
-                                      placeholder="********"
-                                      :required="true">
-                            Your Current Password
-                        </x-form.input>
-
                         <x-form.submit />
                     </x-form>
                 </div>
