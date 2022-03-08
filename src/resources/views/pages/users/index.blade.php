@@ -16,7 +16,7 @@
                 id="user_data"
                 class="table-responsive"
                 :for="$users"
-                :as="['ID', 'Name', 'Email', 'Created At']"
+                :as="['Name', 'Email', 'Created At']"
                 :view="true"
                 :delete="true"
                 :edit="true"
