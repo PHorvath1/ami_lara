@@ -1,4 +1,3 @@
-@extends('layouts.app')
 @extends('layouts.admin')
 
 @push('css')
