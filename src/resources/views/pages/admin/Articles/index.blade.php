@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @push('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
@@ -58,10 +58,10 @@
                 </form>
             </div>
             @foreach($articles as $a)
-                <a href="{{route('articles.show',$a)}}" class="text-decoration-none text-dark"><div class="card ami-yellow m-2">
+                <a href="{{route('admin:articles.show',$a)}}" class="text-decoration-none text-dark"><div class="card ami-yellow m-2">
                         <div class="article_header_color">
                             <h5 class="card-title article-card-header">{{$a->title}}</h5>
-                             <h6>State: {{ $a->stateText }}</h6>
+                            <h6>State: {{ $a->stateText }}</h6>
                             <span class="article-card-header text-muted">{{$a->user->name}} </span>
                             <h6 class="card-subtitle article-card-header mb-2 text-muted">{{$a->created_at}}</h6>
                         </div>
@@ -70,6 +70,10 @@
                             <p class="card-text">{{$a->language}}</p>
                         </div>
                     </div></a>
+                <a href="{{route('admin:articles.edit',[$article])}}" class="btn btn-warning">Edit</a>
+                <x-button.magic :route='route("admin:articles.destroy", [$article])' method="delete" confirm="Are you sure? This can not be undone!" class="btn btn-danger">
+                    Delete
+                </x-button.magic>
             @endforeach
             <div>
                 {{ $articles->appends(request()->except('page'))->links() }}
