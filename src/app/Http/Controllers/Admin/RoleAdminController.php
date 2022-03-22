@@ -24,9 +24,9 @@ class RoleAdminController extends Controller
         return true;
     }
 
-    public function modify(): Factory|View|Application|RedirectResponse
+    public function edit(Role $role): Factory|View|Application|RedirectResponse
     {
-        return true;
+        return view('pages.admin.roles.form', ['role' => $role]);
     }
 
     public function update(): Factory|View|Application|RedirectResponse
