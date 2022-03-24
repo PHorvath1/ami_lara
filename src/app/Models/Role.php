@@ -15,30 +15,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @package App\Models
  *
  * @property int id
- * @property string pdf_path
- * @property string latex_path
- * @property DateTime deleted_at
- * @property DateTime created_at
- * @property DateTime updated_at
- * @property string article_id
+ * @property string name
+ * @property string title
+ * @property int level
+ * @property int scope
  */
-class Revision extends Model
+class Role extends Model
 {
     use HasFactory, ApiResource;
 
-    protected $fillable = ['note', 'pdf_path', 'article_id'];
-
-    /** Defines an inverse one-to-many relationship between revisions and articles
-     * @return BelongsTo The type of the relationship
-     */
-    public function article(): BelongsTo {
-        return $this->belongsTo(Article::class);
-    }
-
-    /** Defines a many-to-many relationship between revisions and users
-     * @return BelongsToMany The type of the relationship
-     */
-    public function users(): BelongsToMany {
-        return $this->belongsToMany(User::class)->withPivot(['state', 'content']);
-    }
+    protected $fillable = ['name', 'title','level','scope'];
 }
