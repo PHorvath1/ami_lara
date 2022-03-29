@@ -30,76 +30,16 @@ So far, the customer can use a website to read and publish.
 For the reasons above, we made this website, which fit the requirement.
 
 
-## 3. Követelménylista
-● Itt kell leírni azt, hogy milyen funkciókkal kell rendelkeznie a
-programunknak, ezeknek milyen al-funkciói vannak. A követelmény
-specifikációhoz képest itt sokkal részletesebben és pontosabban le
-vannak írva a követelmények.
-● Példa:
-Modul ID Név v. Kifejtés
-Jogosultság K1 Bejelentkezési
-felület 1.0
-A felhasználó az email címe és a jelszava
-segítségével bejelentkezhet.
-Ha a megadott email cím vagy jelszó nem
-megfelelő, akkor a felhasználó hibaüzenetet kap.
-Jogosultság K2 Regisztráció 1.0
-A felhasználó a felhasználói nevének, email
-címének és jelszavának megadásával regisztrálja
-magát.
-A jelszó tárolása kódolva történik az adatbázisban.
-Ha valamelyik adat ezek közül hiányzik vagy nem
-felel meg a követelményeknek,
-akkor a rendszer értesíti erről a felhasználót.
-Jogosultság K3 Jogosultsági szintek 1.0
-- Admin : új feladat feltöltése
-- Felhasználó : feladatok kitöltése, toplista
-megtekintése, jelszó módosítása
-- Vendég : regisztráció, belépés
-Modifikáció K4 Felhasználó
-módosítása 1.0
-A felhasználó módosítani tudja saját
-Felhasználónevét. Ehhez szükséges a régi és az új
-felhasználók megadása, az új megerősítése,
-valamint a felhasználó jelszavának megadása.
-Modifikáció K5 Jelszó módosítása 1.0
-A felhasználó módosítani tudja saját jelszavát.
-Ehhez szükséges a régi és az új jelszavának
-megadása, valamint az új megerősítése.
-Modifikáció K6
-Elfelejtett
-felhasználónév /
-jelszó
-1.0
-Ha a felhasználó elfelejtette a felhasználónevét,
-vagy jelszavát akkor ezzel az opcióval egy
-Adminhoz tud fordulni.
-Feladattípus K7 Kvíz 1.0
-Több kérdésből áll, a feladat a helyes válasz
-kiválasztása több lehetőség közül. A felhasználó
-az eltelt idő függvényében pontot kap.
-Feladattípus K8 Teszt 1.0
-A teszthez hasonló, ugyanolyan több kérdésből
-álló feladatsor, ahol az idő számít. A kapott
-pontszám alapján érdemjegyet kap a felhasználó.
-Statisztika K9 Toplista 1.0 Egy lista a játékosok pontszámairól, a lista elején
-a legtöbb pontot elért felhasználó található.
-Felület K10 Üzenetek 1.0 A felhasználók egymást között tudnak küldeni
-üzeneteket, jogosultságuktól függően.
-Felület K11 Órarend 1.0
-A felhasználóknak, szerepkörtől függően, van egy
-órarendje, ahol láthatják, melyik órák, mikor hol
-lesznek.
-Felület K12 Elektronikus Napló 1.0
-A felhasználók itt láthatják megszerzett
-érdemjegyeiket, dicséreteiket, rovásaikat.
-Szerepkörtől függően mást látnak.
-Felület K13 Fórum 1.0 Egy felhasználói fórum, ahol a felhasználók
-tudnak érdekességekről beszélni, vitatkozni.
-Jogosultság K14 Admin felület 1.0
-Felület az admin fiókkal rendelkező felhasználó
-számára. Tartalmaz egy felületet az új feladatok
-feltöltéséhez.
+## 3. List of requirements
+| Modul  | ID  | Name |  Version | Explanation |
+|---|---|---|---|---|
+| Permission  | K1  | Login | 1.0  | The user can login with his E-mail and Password. If one of them is(or both are) incorrect then an error will pop up for the user.  |
+| Permission | K2 | Register |  1.0 | The user have to give a username, e-mail address and a password. If one of them is missing from the requirement, the user will be alerted about the problem. |
+| Permission | K3 | User rang |  1.0 | - Admin : Article reviewing, acces to the Admin panel |
+| | | | | - User : create articles, user modification |
+| | | | | - Guest : register, login |
+| Modify | K4 | user modification |  1.0 | Users have an option to change their username and password. If the user wants to change the password then he has to write the NEW password, the verification of the new one and the old password. |
+| Modify | K5 | Elfelejtett jelszó |  1.0 | If the user forgets his password he has an option to reset his password which will be sent to his registered E-mail address. |
 
 ## 4. Jelenlegi üzleti folyamatok modellje
 Példa: “A mai világban az oktatás nem használja ki a már meglévő technológiákat
