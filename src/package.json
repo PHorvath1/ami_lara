@@ -26,6 +26,7 @@
         "bootstrap": "^5.0.1",
         "jquery": "^3.6.0",
         "jszip": "^3.6.0",
+        "lumen": "^2.0.0",
         "moment": "^2.29.1",
         "pdfmake": "^0.1.71",
         "toastr": "^2.1.4"

@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Models\Role;
 
 class RoleAdminController extends GuardedController
 {
@@ -36,8 +37,10 @@ class RoleAdminController extends GuardedController
         return true;
     }
 
-    public function delete(): Factory|View|Application|RedirectResponse
+    public function destroy(Role $role): Factory|View|Application|RedirectResponse
     {
-        return true;
+        Toastr::warning("Role deleted: $role->name");
+        $role->delete();
+        return redirect(route('admin:roles.index'));
     }
 }
