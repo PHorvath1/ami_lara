@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\GuardedController;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Role;
-
 
 class RoleAdminController extends GuardedController
 {
@@ -18,7 +19,7 @@ class RoleAdminController extends GuardedController
 
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return true;
+        return view('pages.admin.roles.index', ['roles' => Role::all()]);
     }
 
     public function show(): Factory|View|Application|RedirectResponse
@@ -26,9 +27,9 @@ class RoleAdminController extends GuardedController
         return true;
     }
 
-    public function modify(): Factory|View|Application|RedirectResponse
+    public function edit(Role $role): Factory|View|Application|RedirectResponse
     {
-        return true;
+        return view('pages.admin.roles.form', ['role' => $role]);
     }
 
     public function update(): Factory|View|Application|RedirectResponse
