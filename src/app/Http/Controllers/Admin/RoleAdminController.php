@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 
 
 class RoleAdminController extends GuardedController
