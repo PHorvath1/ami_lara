@@ -42,7 +42,7 @@
                             <a href="{{route('articles.show', $article->id)}}" class="text-decoration-none text-dark">
                                 <div class="card-body p-5 mx-auto card_color">
                                     <h4 class="card-title"> {{ $article->title_str }}</h4>
-                                    <h6 class="text-muted card-subtitle mb-2">by: {{ $author }}<br></h6>
+                                    <h6 class="text-muted card-subtitle mb-2">by: {{ $article->author }}<br></h6>
                                     <p class="card-text">DOI:&nbsp;{{ $article->doi }}<br></p>
                                     <p class="card-text">Summary: {{ $article->abstract }}</p>
                                 </div>
