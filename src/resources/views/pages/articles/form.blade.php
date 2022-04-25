@@ -7,23 +7,57 @@
     <div class="container">
         <div class="wrapped row">
             <div class="col-auto col-lg-3"></div>
-            <div class="col 12 col-lg-6">
-            @foreach ($articles as $a)
-                <div class="border border-dark p-2 mb-2">                                    
-                    <p>{{$a->title}}</p>
-                    <p>{{$a->stateText}}</p>
-                    <p>{{$a->abstract}}</p>
-                    <button>Review</button>
-                    <button>Out of Scope</button>
+            <div class="xl:w-1/4 p-5 sm:w-2/5">
+                <div class="flex justify-center">
+                    <div style="background-color:#fef3c7; border-collapse: separate;
+                        border-spacing: 0; border-radius: 15px; border: 2px solid #000000">
+                    <table>
+                        <thead class="text-center">
+                        <td class="w-5/6 pt-4"></td>
+                        <td class="w-min pt-4"></td>
+                        <td class="w-min pt-4"></td>
+                        </thead>
+                        <tbody>
+
+                        @forelse ($articles as $a)
+                            <tr class="pb-10">
+                                <td>
+                                    <ul class="list-unstyled" style="margin: 0px 20px">
+                                        <li>TITLE: {{ $a->title }} </li>
+                                        <br>
+                                        <li>STATE: {{ $a->StateText }}</li>
+                                        <br>
+                                        <li>{{ $a->abstract }}</li>
+                                    </ul>
+                                    <br>
+                                    <hr class="pt-1 w-75">
+                                </td>
+                                <td>
+                                    <button style="background-color: #8fcb8f; text-align: center; padding: 7.5px 42px; margin: 4px 4px;
+                                        border-collapse: separate; border-spacing: 0; border-radius: 15px;" type="button" >Review</button>
+                                    <button style="background-color: #cd5c5c; text-align: center; padding: 7.5px 20px; margin: 4px 4px;
+                                        border-collapse: separate; border-spacing: 0; border-radius: 15px;" type="button" >Out of Scope</button>
+                                </td>
+                            </tr>
+
+                        @empty
+
+                            <div class="flex justify-center font-sans font-bold text-2xl text-black">
+                                <p>there is no article to be reviewed</p>
+                            </div>
+
+                        @endforelse
+                        </tbody>
+                    </table>
                 </div>
-            @endforeach
+            </div>
                 <div class="card" id="form_body">
                     <div class="card-header" id="form_header">
                         <h4>{{$article ? 'Edit' : 'Create'}} Article Form</h4>
                     </div>
                     <div class="card-body">
                         <x-form :to="$article ? route('articles.update', [$article]) : route('articles.store')"
-                                :method="$article ? 'put' : 'post'" :allowFile="true">                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                                :method="$article ? 'put' : 'post'" :allowFile="true">
                             @if ($article != null)
                                 <label for="state">State</label>
                                 <select id="state"
