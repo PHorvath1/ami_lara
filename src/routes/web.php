@@ -14,6 +14,7 @@ use App\Http\Controllers\VolumeController;
 use App\Http\Controllers\DownloadFileController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Controllers\Mailcontroller;
 
 
 Route::get('/', [StaticController::class, 'home'])->name('home');
@@ -22,6 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [ProfileController::class, 'profile'])->name('user.profile');
     Route::get('/profile/edit', [ProfileController::class, 'editProfile'])->name('user.profile.edit');
     Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('signout');
+    Route::get('/mail',  [MailController::class,'sendMail']);
 
     Route::resource('users', UserController::class);
     Route::resource('articles', ArticleController::class);
