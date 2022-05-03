@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 
 class RoleAdminController extends GuardedController
 {
@@ -31,9 +32,14 @@ class RoleAdminController extends GuardedController
         return view('pages.admin.roles.form', ['role' => $role]);
     }
 
-    public function update(): Factory|View|Application|RedirectResponse
+    public function update(RoleRequest $request,  Role $role): Factory|View|Application|RedirectResponse
     {
-        return true;
+        $req = $request->validated();
+        $role->update($req);
+        $role->save();
+
+        Toastr::success('Role modified');
+        return redirect(route('admin:roles.show', [$role]));
     }
 
     public function destroy(Role $role): Factory|View|Application|RedirectResponse
