@@ -11,6 +11,7 @@ use App\Models\Revision;
 use App\Providers\CategoryServiceProvider;
 use App\Http\Requests\ArticleEditRequest;
 use App\Models\User;
+use App\Models\Type;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
