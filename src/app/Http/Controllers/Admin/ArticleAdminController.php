@@ -22,7 +22,7 @@ class ArticleAdminController extends GuardedController
 {
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return view('pages.admin.articles.index', ['article' => Article::all()]);
+        return view('pages.admin.articles.index', ['articles' => Article::all()]);
     }
 
     public function create(): Factory|View|Application|RedirectResponse

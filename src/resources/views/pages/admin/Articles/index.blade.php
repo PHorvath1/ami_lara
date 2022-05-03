@@ -24,7 +24,6 @@
                         <button class="btn rounded btn-advanced-search" id="btn-advanced-search" type="button" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="collapse">Advanced search</button>
                     </div>
                 </form>
-                {{ $articles->appends(request()->except('page'))->links() }}
             </div>
             <div class="collapse" id="searchCollapse">
                 <form target="_self">
@@ -70,14 +69,11 @@
                             <p class="card-text">{{$a->language}}</p>
                         </div>
                     </div></a>
-                <a href="{{route('admin:articles.edit',[$article])}}" class="btn btn-warning">Edit</a>
-                <x-button.magic :route='route("admin:articles.destroy", [$article])' method="delete" confirm="Are you sure? This can not be undone!" class="btn btn-danger">
+                <a href="{{route('admin:articles.edit',[$a])}}" class="btn btn-warning">Edit</a>
+                <x-button.magic :route='route("admin:articles.destroy", [$a])' method="delete" confirm="Are you sure? This can not be undone!" class="btn btn-danger">
                     Delete
                 </x-button.magic>
             @endforeach
-            <div>
-                {{ $articles->appends(request()->except('page'))->links() }}
-            </div>
         </div>
     </div>
 
