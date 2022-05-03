@@ -12,7 +12,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 
-
 class RoleAdminController extends GuardedController
 {
 
@@ -23,9 +22,9 @@ class RoleAdminController extends GuardedController
         return view('pages.admin.roles.index', ['roles' => Role::all()]);
     }
 
-    public function show(): Factory|View|Application|RedirectResponse
+    public function show(Role $role): Factory|View|Application|RedirectResponse
     {
-        return true;
+        return view("pages.admin.roles.show", ['role' => $role]);
     }
 
     public function edit(Role $role): Factory|View|Application|RedirectResponse
