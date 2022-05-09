@@ -18,7 +18,7 @@ class StaticController extends Controller
 
     public function home(): Factory|View|Application
     {
-        return view('pages.home');
+        return view('pages.home',['articles' => Article::latest()->paginate(1)]);
     }
 
     /**
