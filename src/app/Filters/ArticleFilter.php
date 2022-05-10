@@ -14,7 +14,7 @@ class ArticleFilter extends Filter
     }
 
     public function author(Builder $query) : Builder {
-        return $query->whereHas('users', function ($q) {
+        return $query->whereHas('user', function ($q) {
             $q->where('users.name','LIKE','%'.request('author').'%');
         });
     }
