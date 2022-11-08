@@ -7,3 +7,4 @@ src/resources/views/pages/test.blade.php
 src/public/mix-manifest.json
 
 src/resources/lang/vendor/
+/src/public/uploads/articles/

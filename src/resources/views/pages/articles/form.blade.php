@@ -10,7 +10,7 @@
             <div class="xl:w-1/4 p-5 sm:w-2/5">
                 <div class="flex justify-center">
                     <div style="background-color:#fef3c7; border-collapse: separate;
-                        border-spacing: 0; border-radius: 15px; border: 2px solid #000000">
+                        border-spacing: 0; border: 2px solid #000000">
                     <table>
                         <thead class="text-center">
                         <td class="w-5/6 pt-4"></td>
@@ -20,8 +20,8 @@
                         <tbody>
 
                         @forelse ($articles as $a)
-                            <tr class="pb-10">
-                                <td>
+                            <tr class="pb-10 col-sm-12">
+                                <td class="col-lg-10" >
                                     <ul class="list-unstyled" style="margin: 0px 20px">
                                         <li>TITLE: {{ $a->title }} </li>
                                         <br>
@@ -29,17 +29,17 @@
                                         <br>
                                         <li>{{ $a->abstract }}</li>
                                     </ul>
+                                </td>
+                            </tr>
+                            <tr style="height: 100px;">
+                                <td>
+                                    <x-articles.buttonlist
+                                        :stateText="$a->StateText">
+                                    </x-articles.buttonlist>
                                     <br>
                                     <hr class="pt-1 w-75">
                                 </td>
-                                <td>
-                                    <button style="background-color: #8fcb8f; text-align: center; padding: 7.5px 42px; margin: 4px 4px;
-                                        border-collapse: separate; border-spacing: 0; border-radius: 15px;" type="button" >Review</button>
-                                    <button style="background-color: #cd5c5c; text-align: center; padding: 7.5px 20px; margin: 4px 4px;
-                                        border-collapse: separate; border-spacing: 0; border-radius: 15px;" type="button" >Out of Scope</button>
-                                </td>
                             </tr>
-
                         @empty
 
                             <div class="flex justify-center font-sans font-bold text-2xl text-black">
@@ -49,9 +49,9 @@
                         @endforelse
                         </tbody>
                     </table>
+                    </div>
                 </div>
-            </div>
-                <div class="card" id="form_body">
+                <div  id="form_body">
                     <div class="card-header" id="form_header">
                         <h4>{{$article ? 'Edit' : 'Create'}} Article Form</h4>
                     </div>
@@ -121,7 +121,7 @@
                             <label for="type_id">Type</label>
                             <select id="type_id"
                                     name="type_id"
-                                    class="my-6"
+                                    class="my-6 mx-2"
                                     required>
                                 <option value="{{$article !== null ? $article->type_id : 1}}" selected hidden>{{$article !== null ? $article->getTypeTextAttribute() : \App\Models\Type::first()->name}}</option>
                                 @foreach(\App\Models\Type::all() as $type)
@@ -146,17 +146,15 @@
                             <x-divider/>
 
                             @php
-                                $userId = \Illuminate\Support\Facades\Auth::user()->id;
+                                $author = $article?->user()->first()->name ?? \Illuminate\Support\Facades\Auth::user()->name;
                             @endphp
-                            <x-form.input name="user_id"
+                            <x-form.input name="user_name"
                                           class="my-3"
-                                          :value="$userId"
+                                          :value="$author"
                                           :required="true"
                                           hidden="true">
                                 Author
                             </x-form.input>
-
-
 
                             <x-divider/>
 
@@ -168,8 +166,8 @@
                                 Upload PDF file
                             </x-form.input>
 
-
                             <x-form.submit/>
+
 
                         </x-form>
                     </div>

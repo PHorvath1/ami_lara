@@ -7,6 +7,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BouncerController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\RevisionController;
 use App\Http\Controllers\StaticController;
 use App\Http\Controllers\UserController;
@@ -27,6 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('users', UserController::class);
     Route::resource('articles', ArticleController::class);
+    Route::resource('reviews', ReviewController::class);
     Route::resource('volumes', VolumeController::class);
     Route::resource('revisions', RevisionController::class);
     Route::post('articles/{article}', [CommentController::class, 'store']) -> name('comment.store');

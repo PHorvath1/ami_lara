@@ -13,7 +13,7 @@ class ArticleCreateRequest extends ExtendedFormRequest
             'title' => [ 'required', 'min:10' ],
             'abstract' => [ 'required', 'min:10' ],
             'type_id' => [ 'required' ],
-            'user_id' => [ 'required' ],
+            'user_name' => [ 'required' ],
             'categories' => [ 'required' ],
 
         ];

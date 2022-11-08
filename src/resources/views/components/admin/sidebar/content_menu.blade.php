@@ -1,7 +1,7 @@
 <li class="nav-header">CONTENT</li>
 <li class="nav-item">
     <li class="nav-item">
-        <a href="articles" class="nav-link">
+        <a href="{{route('admin:articles.index')}}" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
             <p>Articles</p>
         </a>
@@ -13,7 +13,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="review" class="nav-link">
+        <a href="reviews" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
             <p>Review</p>
         </a>

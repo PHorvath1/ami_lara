@@ -15,16 +15,27 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container align-middle">
+        <span>
+            <a href="{{route('admin:articles.create')}}" class="btn btn-success">
+                <i class="fa fa-plus text-light"></i>
+                <span class="text-light">Add</span>
+            </a>
+        </span>
+        <div class="d-inline advanced-searchbar-width" style="float: right">
+            <form class="d-lg-flex me-auto justify-content-lg-start search-form float-lg-end" target="_self">
+                <div class="d-flex justify-content-lg-end">
+                    <input class="border rounded form-control search-field" value="{{request('search')}}" type="text" id="search" name="search">
+                    <button id="searchbtn" class="btn btn-primary d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" type="submit"><i class="fas fa-search"></i></button>
+{{--                                            <button class="btn rounded btn-advanced-search" id="btn-advanced-search" type="button" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="collapse">Advanced search</button>--}}
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="container mt-3">
         <div class="wrapper">
-            <div class="d-inline-block advanced-searchbar-width">
-                <form class="d-lg-flex me-auto justify-content-lg-start search-form float-lg-end" target="_self">
-                    <div class="d-flex justify-content-lg-end"><input class="border rounded form-control search-field" type="text" id="search-field" name="name">
-                        <button id="searchbtn" class="btn btn-primary d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" type="submit"><i class="fas fa-search"></i></button>
-                        <button class="btn rounded btn-advanced-search" id="btn-advanced-search" type="button" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="collapse">Advanced search</button>
-                    </div>
-                </form>
-            </div>
+
             <div class="collapse" id="searchCollapse">
                 <form target="_self">
                     <div class="row m-2 align-items-center">
@@ -57,11 +68,11 @@
                 </form>
             </div>
             @foreach($articles as $a)
-                <a href="{{route('admin:articles.show',$a)}}" class="text-decoration-none text-dark"><div class="card ami-yellow m-2">
-                        <div class="article_header_color">
-                            <h5 class="card-title article-card-header">{{$a->title}}</h5>
+                <a href="{{route('admin:articles.show',$a)}}" class="text-decoration-none text-dark "><div class="card ami-yellow mt-2">
+                        <div class="article_header_color p-2">
+                            <h5 class="font-weight-bold card-title article-card-header">{{$a->title}}</h5><br>
                             <h6>State: {{ $a->stateText }}</h6>
-                            <span class="article-card-header text-muted">{{$a->user->name}} </span>
+                            <span class="article-card-header text-muted">{{$a->user->name ?? ''}} </span>
                             <h6 class="card-subtitle article-card-header mb-2 text-muted">{{$a->created_at}}</h6>
                         </div>
                         <div class="card-body">
@@ -74,6 +85,9 @@
                     Delete
                 </x-button.magic>
             @endforeach
+            <div class="mt-6 p-4">
+                {{ $articles->appends(request()->except('page'))->links() }}
+            </div>
         </div>
     </div>
 

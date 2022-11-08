@@ -18,54 +18,79 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ArticleAdminController extends GuardedController
 {
+
+    //Show all articles
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return view('pages.admin.articles.index', ['articles' => Article::all()]);
+        return view('pages.admin.articles.index', ['articles' =>
+            Article::latest()->filter(request(['search']))->paginate(5)]);
     }
 
+    //Show article create form
     public function create(): Factory|View|Application|RedirectResponse
     {
         return view('pages.admin.articles.form', ['types' => Type::all()]);
     }
 
+    //Store article data
     public function store(ArticleCreateRequest $request): Factory|View|Application|RedirectResponse
     {
         $rq = $request->validated();
+        $userId = DB::table('users')->where('name',$request->user_name)->value('id');
         $rqe = $request->except(['categories']);
-        $article = Article::create($rqe);
+        $rqe = array_merge($rqe,array('user_id' => $userId));
 
         $categories = explode(',', $rq['categories']);
 
-        $fm = new FileManager();
-        $pdf = $fm->upload($request, 'pdf', 'articles');
-        //$latex = $fm->upload($request, 'latex', 'articles');
+        if($request->hasFile('pdf')) {
+            $rqe['pdf'] = $request->file('pdf')->store('pdfs', 'public');
+        }
+        $article = Article::create($rqe);
         CategoryServiceProvider::attachAll($categories, $article);
-        Revision::create(['note' => 'Article submitted','pdf_path' => $pdf, 'article_id' => $article->id]);
+        Revision::create(['note' => 'Article submitted','pdf_path' => $rqe['pdf'], 'article_id' => $article->id]);
         Toastr::success('New article created');
         return redirect(route('admin:articles.show', [$article]));
     }
 
+    //Show single article
     public function show(Article $article): Factory|View|Application|RedirectResponse
     {
-        return view('pages.admin.articles.show', ['article' => $article]);
+        return view('pages.admin.articles.show', ['article' => $article, 'types' => Type::all()]);
     }
 
+    //Show edit form
     public function edit(Article $article): Factory|View|Application|RedirectResponse
     {
         return view('pages.admin.articles.form', ['article' => $article, 'types' => Type::all()]);
     }
+
+    //Update article data
     public function update(ArticleEditRequest $request, Article $article): Factory|View|Application|RedirectResponse
     {
         $rq = $request->validated();
-        $article->update($rq);
-        $article->save();
+        $userId = DB::table('users')->where('name',$request->user_name)->value('id');
+        $rqe = $request->except(['categories']);
+        $rqe = array_merge($rqe,array('user_id' => $userId));
+        $article->update($rqe);
+        $article->setStateTextAttribute($rq['state']);
+        $categories = explode(',', $rq['categories']);
+        if ($request->has('pdf') || $request->has('latex')) {
+            $fm = new FileManager();
+            $pdf = $fm->upload($request,'pdf', 'articles');
+            //$latex = $fm->upload('latex', 'articles');
+            Revision::create(['note' => 'Article submitted','pdf_path' => $pdf, 'article_id' => $article->id]);
+        }
 
-        Toastr::success('Article successfully modified');
+        CategoryServiceProvider::attachAll($categories, $article);
+        Toastr::success('Article successfully updated');
         return redirect(route('admin:articles.show', [$article]));
     }
+
+    //Delete article
     public function destroy(Article $article): Factory|View|Application|RedirectResponse
     {
         Toastr::warning("Article deleted: $article->id");

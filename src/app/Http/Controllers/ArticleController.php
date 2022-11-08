@@ -16,6 +16,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
@@ -25,7 +26,13 @@ class ArticleController extends Controller
      */
     public function index(): Factory|View|Application|RedirectResponse
     {
-        return view('pages.articles.index')->with('articles', Article::filterWith(ArticleFilter::class)->through('name', 'author', 'date', 'categories')->paginate(6));
+        return view('pages.articles.index', ['articles' =>
+            Article::latest()
+                ->name(request(['name']))
+                ->author(request(['author']))
+                ->date(request(['date']))
+                ->categories(request(['categories']))
+                ->paginate(6)]);
     }
 
     /**
@@ -44,7 +51,9 @@ class ArticleController extends Controller
     public function store(ArticleCreateRequest $request): Factory|View|Application|RedirectResponse
     {
         $rq = $request->validated();
+        $userId = DB::table('users')->where('name',$request->user_name)->value('id');
         $rqe = $request->except(['categories']);
+        $rqe = array_merge($rqe,array('user_id' => $userId));
         $article = Article::create($rqe);
 
         $categories = explode(',', $rq['categories']);
@@ -87,15 +96,17 @@ class ArticleController extends Controller
     public function update(ArticleEditRequest $request, Article $article): Factory|View|Application|RedirectResponse
     {
         $rq = $request->validated();
+        $userId = DB::table('users')->where('name',$request->user_name)->value('id');
         $rqe = $request->except(['categories']);
+        $rqe = array_merge($rqe,array('user_id' => $userId));
         $article->update($rqe);
         $article->setStateTextAttribute($rq['state']);
         $categories = explode(',', $rq['categories']);
         if ($request->has('pdf') || $request->has('latex')) {
             $fm = new FileManager();
-            $pdf = $fm->upload('pdf', 'articles');
+            $pdf = $fm->upload($request,'pdf', 'articles');
             //$latex = $fm->upload('latex', 'articles');
-            Revision::create(['pdf_path' => $pdf, 'article_id' => $article->id]);
+            Revision::create(['note' => 'Article submitted','pdf_path' => $pdf, 'article_id' => $article->id]);
         }
 
         CategoryServiceProvider::attachAll($categories, $article);

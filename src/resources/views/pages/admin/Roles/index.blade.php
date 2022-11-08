@@ -6,6 +6,14 @@
 
 @section('content')
     <div class="card">
+        <div class="container align-middle p-3 pl-4 card-header">
+        <span>
+            <a href="{{route('admin:roles.create')}}" class="btn btn-success">
+                <i class="fa fa-plus text-light"></i>
+                <span class="text-light">Add</span>
+            </a>
+        </span>
+        </div>
         <div class="card-body">
             <ul class="todo-list" data-widget="todo-list">
                 @foreach($roles as $role)

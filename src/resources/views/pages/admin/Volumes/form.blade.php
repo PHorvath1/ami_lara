@@ -6,8 +6,8 @@
     @endphp
     <div class="container">
         <div class="wrapped row">
-            <div class="col-auto col-lg-3"></div>
-            <div class="col 12 col-lg-6">
+            <div class="col-auto col-lg-2"></div>
+            <div class="col 12 col-lg-8">
                 <div class="card" id="form_body">
                     <div class="card-header" id="form_header">
                         <h4>{{$volume ? 'Edit' : 'Create'}} Volume Form</h4>

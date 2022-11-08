@@ -19,7 +19,10 @@
                 <h4>Scope: {{ $role->scope }}</h4>
             </div>
             <div class="card-footer text-muted">
-                Registration date: {{ $role->created_at }}
+                <a href="{{route('admin:roles.edit',[$role])}}" class="btn btn-warning">Edit</a>
+                <x-button.magic :route='route("admin:roles.destroy", [$role])' method="delete" confirm="Are you sure? This can not be undone!" class="btn btn-danger">
+                    Delete
+                </x-button.magic>
             </div>
         </div>
     </div>

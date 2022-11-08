@@ -19,7 +19,7 @@ class ArticleEditRequest extends ExtendedFormRequest
             'note' => [],
             'doi' => [],
             'language' => [],
-            'user_id' => [],
+            'user_name' => [],
             'categories' => [ 'required' ],
             'volume_id' => [],
             'type_id' => [],

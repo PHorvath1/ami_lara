@@ -33,7 +33,7 @@
                             <label for="author">Author:</label>
                         </div>
                         <div class="col-4">
-                            <input type="text" id="author" name="author" placeholder="Author">
+                            <input type="text" id="author" name="author" placeholder="Author" value="{{request('author')}}">
                         </div>
                     </div>
                     <div class="row m-2 align-items-center">
@@ -41,7 +41,7 @@
                             <label for="date">Date:</label>
                         </div>
                         <div class="col-4">
-                            <input type="text" id="date" name="date" value="{{date('Y-m-d')}}">
+                            <input type="text" id="date" name="date" value="{{request('date')}}">
                         </div>
                     </div>
                     <div class="row m-2 align-items-center">
@@ -49,7 +49,7 @@
                             <label for="category">Categories:</label>
                         </div>
                         <div class="col-4">
-                            <input type="text" id="category" name="categories" placeholder="Categories">
+                            <input type="text" id="category" name="categories" value="{{request('categories')}}" placeholder="Categories">
                         </div>
                     </div>
                     <div class="m-2">
@@ -61,7 +61,7 @@
                 <a href="{{route('articles.show',$a)}}" class="text-decoration-none text-dark"><div class="card ami-yellow m-2">
                         <div class="article_header_color">
                             <h5 class="card-title article-card-header">{{$a->title}}</h5>
-                             <h6>State: {{ $a->stateText }}</h6>
+                             <h6 class="article-card-header">State: {{ $a->stateText }}</h6>
                             <span class="article-card-header text-muted">{{$a->user->name}} </span>
                             <h6 class="card-subtitle article-card-header mb-2 text-muted">{{$a->created_at}}</h6>
                         </div>

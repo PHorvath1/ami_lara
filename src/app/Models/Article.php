@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\ApiResource;
 use App\Traits\UUID;
 use Carbon\Traits\Timestamp;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Str;
 use Symfony\Component\Routing\Exception\InvalidParameterException;
 
 /**
@@ -84,6 +86,39 @@ class Article extends Model
 
         $this->state = $index;
         $this->save();
+    }
+
+    //filters
+    public function scopeFilter($query, array $filters){
+        if($filters['search'] ?? false) {
+            $query->where('title', 'like', '%' . request('search') . '%')
+                ->orWhere('abstract', 'like', '%' . request('search') . '%');
+        }
+    }
+    public function scopeName($query){
+         $query->where('title', 'LIKE', '%'.request('name').'%')
+            ->orWhere('abstract', 'LIKE', '%'.request('name').'%');
+    }
+
+    public function scopeAuthor($query) {
+         $query->whereHas('user', function ($q) {
+            $q->where('users.name','LIKE','%'.request('author').'%');
+        });
+
+    }
+
+    public function scopeDate($query) {
+        if($request['date'] ?? false) {
+            $dates = explode('-', request('date'));
+             $query->where('created_at', '>=', $dates[0])
+                ->where('created_at', '<=', $dates[1]);
+        }
+    }
+
+    public function scopeCategories($query) {
+        if($request['date'] ?? false) {
+        return $query->where('categories', 'LIKE', '%'.request('category').'%');
+        }
     }
 
     /** Defines a one-to-one relationship between articles and users
