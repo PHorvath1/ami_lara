@@ -28,9 +28,10 @@ class ArticleController extends Controller
     {
         return view('pages.articles.index', ['articles' =>
             Article::latest()
+                ->where('state',9)
                 ->name(request(['name']))
                 ->author(request(['author']))
-                ->date(request(['date']))
+                ->date(request(['date'] ))
                 ->categories(request(['categories']))
                 ->paginate(6)]);
     }

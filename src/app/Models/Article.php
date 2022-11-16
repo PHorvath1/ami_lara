@@ -44,7 +44,7 @@ class Article extends Model
 
     protected $fillable = ['user_id', 'editor_id', 'title', 'abstract', 'state', 'type_id'];
 
-    private const STATES = ['SUBMITTED', 'UNDER REVIEW', 'RECEIVED', 'ACCEPTED', 'REJECTED', 'WAITING FOR REVISED VERSION', 'ACCEPTED, WAITING FOR SOURCE FILE', 'EDITING', 'WAITING FOR COMMENTS', 'WILL BE PUBLISHED', 'PUBLISHED' ];
+    private const STATES = ['SUBMITTED', 'RECEIVED', 'UNDER REVIEW', 'REJECTED', 'WAITING FOR REVISED VERSION', 'ACCEPTED, WAITING FOR SOURCE FILE', 'EDITING', 'WAITING FOR COMMENTS', 'WILL BE PUBLISHED', 'PUBLISHED' ];
 
     protected $appends = ['stateText'];
 
@@ -117,7 +117,7 @@ class Article extends Model
 
     public function scopeCategories($query) {
         if($request['date'] ?? false) {
-        return $query->where('categories', 'LIKE', '%'.request('category').'%');
+            return $query->where('categories', 'LIKE', '%'.request('category').'%');
         }
     }
 

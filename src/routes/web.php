@@ -31,12 +31,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('reviews', ReviewController::class);
     Route::resource('volumes', VolumeController::class);
     Route::resource('revisions', RevisionController::class);
-    Route::post('articles/{article}', [CommentController::class, 'store']) -> name('comment.store');
-    Route::post('/auth/{user}/assign_role/{role}', [BouncerController::class, 'assign_role'])->name('user.role.assign_role');
-    Route::post('/auth/{user}/unassign_role/{role}', [BouncerController::class, 'unassign_role'])->name('user.role.unassign_role');
+//    Route::post('articles/{article}', [CommentController::class, 'store']) -> name('comment.store');
+//    Route::post('/auth/{user}/assign_role/{role}', [BouncerController::class, 'assign_role'])->name('user.role.assign_role');
+//    Route::post('/auth/{user}/unassign_role/{role}', [BouncerController::class, 'unassign_role'])->name('user.role.unassign_role');
     Route::get('/download/{fileName}', [DownloadFileController::class, 'download'])->name('download');
     Route::get('/submissions', [StaticController::class, 'submissions'])->name('submissions');
 
 });
     Route::get('/about', [StaticController::class, 'about'])->name('about');
     Route::get('/content', [StaticController::class, 'content'])->name('content');
+    Route::get('/content/articles', [ArticleController::class, 'index'])->name('content.articles');

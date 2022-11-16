@@ -45,6 +45,10 @@ class StaticController extends Controller
      */
     public function submissions(): Factory|View|Application
     {
-        return view('pages.articles.form', ['types' => Type::all(),'articles'=>Article::where('state',0)->orwhere('state',1)->orwhere('state',2)->get()]);
+        return view('pages.articles.form', ['types' => Type::all(),
+            'articles'=>Article::where('state','!=',9)
+                ->where('state','!=',3)
+                ->orderBy('state')
+                ->paginate(10)]);
     }
 }

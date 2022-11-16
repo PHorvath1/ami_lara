@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row justify-content-start">
             <div class="col-3">
-                <h6><em>Browse volumes</em> or <a href="{{route('articles.index')}}">all articles</a></h6>
+                <h6><em>Browse volumes</em> or <a href="{{route('content.articles')}}">all articles</a></h6>
             </div>
         </div>
         <hr>

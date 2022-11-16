@@ -11,15 +11,16 @@
 
     <!-- Scripts before page load-->
     <script src="{{ mix('js/app.js') }}"></script>
-    <script src="https://kit.fontawesome.com/{{ env('FONTAWESOME_KIT') }}.js" crossorigin="anonymous"></script>
 @stack('pre-js')
 
 <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     @stack('css')
     @if($liveWire ?? false)
         @livewireStyles
@@ -40,6 +41,7 @@
 
 
 </div>
+
 
 @stack('js')
 @if($liveWire ?? false)

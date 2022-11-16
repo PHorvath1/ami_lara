@@ -2,55 +2,62 @@
 
 @section('content')
     @php
-        $article = $article ?? null; //If you do not set a variable it throws an error, so we set it to something easy to check
+        $article = $article ?? null;
+        $articles = $articles ?? null;//If you do not set a variable it throws an error, so we set it to something easy to check
     @endphp
-    <div class="container">
+    <div class="col-lg-9">
         <div class="wrapped row">
-            <div class="col-auto col-lg-3"></div>
-            <div class="xl:w-1/4 p-5 sm:w-2/5">
-                <div class="flex justify-center">
-                    <div style="background-color:#fef3c7; border-collapse: separate;
-                        border-spacing: 0; border: 2px solid #000000">
-                    <table>
-                        <thead class="text-center">
-                        <td class="w-5/6 pt-4"></td>
-                        <td class="w-min pt-4"></td>
-                        <td class="w-min pt-4"></td>
-                        </thead>
-                        <tbody>
-
-                        @forelse ($articles as $a)
-                            <tr class="pb-10 col-sm-12">
-                                <td class="col-lg-10" >
-                                    <ul class="list-unstyled" style="margin: 0px 20px">
-                                        <li>TITLE: {{ $a->title }} </li>
-                                        <br>
-                                        <li>STATE: {{ $a->StateText }}</li>
-                                        <br>
-                                        <li>{{ $a->abstract }}</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr style="height: 100px;">
-                                <td>
-                                    <x-articles.buttonlist
-                                        :stateText="$a->StateText">
-                                    </x-articles.buttonlist>
-                                    <br>
-                                    <hr class="pt-1 w-75">
-                                </td>
-                            </tr>
-                        @empty
-
-                            <div class="flex justify-center font-sans font-bold text-2xl text-black">
-                                <p>there is no article to be reviewed</p>
-                            </div>
-
-                        @endforelse
-                        </tbody>
-                    </table>
+            <div class="xl:w-1/4 px-5 sm:w-2/5">
+                @if($articles != null)
+                    <div class="flex justify-center">
+                        <div>
+                            {{ $articles->appends(request()->except('page'))->links() }}
+                        </div>
+                        <div style="background-color:#fef3c7; border-collapse: separate;
+                            border-spacing: 0; border: 2px solid #000000">
+                            <table>
+                                <thead class="text-center">
+                                <td class="w-5/6 pt-4"></td>
+                                <td class="w-min pt-4"></td>
+                                <td class="w-min pt-4"></td>
+                                </thead>
+                                <tbody>
+                                @forelse ($articles as $a)
+                                    <tr class="pb-10 col-sm-12">
+                                        <td class="col-lg-10" >
+                                            <a href="{{route('articles.show',$a)}}" class="text-decoration-none text-dark">
+                                                <ul class="list-unstyled" style="margin: 0px 20px">
+                                                    <li>TITLE: {{ $a->title }} </li>
+                                                    <br>
+                                                    <li>STATE: {{ $a->StateText }}</li>
+                                                    <br>
+                                                    <li>{{ $a->abstract }}</li>
+                                                </ul>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr style="height: 100px;">
+                                        <td>
+                                            <x-articles.buttonlist
+                                                :stateText="$a->StateText">
+                                            </x-articles.buttonlist>
+                                            <br>
+                                            <hr class="pt-1 w-75">
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <div class="flex justify-center font-sans font-bold text-2xl text-black">
+                                        <p>there is no article to be reviewed</p>
+                                    </div>
+                                @endforelse
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
+                    <div class="mt-3">
+                        {{ $articles->appends(request()->except('page'))->links() }}
+                    </div>
+                @endif
                 <div  id="form_body">
                     <div class="card-header" id="form_header">
                         <h4>{{$article ? 'Edit' : 'Create'}} Article Form</h4>
@@ -68,7 +75,6 @@
                                     @foreach($article->getStates() as $state)
                                         <option value="{{$state}}">{{$state}}</option>
                                     @endforeach
-
                                 </select>
                                 <!-- // TODO: Technikai szerkesztő jogosultság implementálása -->
                                 <x-form.input name="source"
@@ -129,7 +135,6 @@
                                 @endforeach
                             </select>
 
-
                             @php
                                 $categoryString = implode(', ', $article?->categories
                                     ->map( fn(\App\Models\Category $category) => $category->name )
@@ -168,12 +173,10 @@
 
                             <x-form.submit/>
 
-
                         </x-form>
                     </div>
                 </div>
             </div>
-            <div class="col-auto col-lg-3"></div>
         </div>
     </div>
 @endsection

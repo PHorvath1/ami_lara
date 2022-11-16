@@ -1,25 +1,73 @@
 @switch($stateText)
     @case ("SUBMITTED")
     <x-articles.button
-        bgColor="#8fcb8f"
+        class="btn-outline-success"
         :route="route('reviews.create')">
-        Review
+        Receive
     </x-articles.button>
     <x-articles.button
-        bgColor="#cd5c5c"
+        class="btn-outline-danger"
         :route="route('reviews.create')">
         Out of Scope
-    </x-articles.button>
-    <x-articles.button
-        bgColor="#cd5c5c"
-        :route="route('reviews.create')">
-        Revision
     </x-articles.button>
     @break
-    @default
+    @case ("RECEIVED")
     <x-articles.button
-        bgColor="#cd5c5c"
+        class="btn-outline-success"
         :route="route('reviews.create')">
-        Out of Scope
+        Add reviewer
     </x-articles.button>
+    @break
+    @case ("UNDER REVIEW")
+    <x-articles.button
+        class="btn-outline-success"
+        :route="route('reviews.create')">
+        Accept
+    </x-articles.button>
+    <x-articles.button
+        class="btn-outline-danger"
+        :route="route('reviews.create')">
+        Reject
+    </x-articles.button>
+    <x-articles.button
+        class="btn-outline-primary"
+        :route="route('reviews.create')">
+        Request revision
+    </x-articles.button>
+    @break
+    @case ("WAITING FOR REVISED VERSION")
+    <x-articles.button
+        class="btn-outline-success"
+        :route="route('reviews.create')">
+        Add revision
+    </x-articles.button>
+    @break
+    @case ("ACCEPTED, WAITING FOR SOURCE FILE")
+    <x-articles.button
+        class="btn-outline-success"
+        :route="route('reviews.create')">
+        Upload source file
+    </x-articles.button>
+    @break
+    @case ("EDITING")
+    <x-articles.button
+        class="btn-outline-success"
+        :route="route('reviews.create')">
+        Add file
+    </x-articles.button>
+    @break
+    @case ("WAITING FOR COMMENTS")
+    <x-articles.button
+        class="btn-outline-success"
+        :route="route('reviews.create')">
+        Add comment
+    </x-articles.button>
+    @break
+    @case ("WILL BE PUBLISHED")
+    <x-articles.button
+        class="btn-outline-success"
+        :route="route('reviews.create')">
+        Publish
+    </x-articles.button>
+    @break
 @endswitch
